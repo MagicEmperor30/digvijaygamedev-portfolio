@@ -49,6 +49,58 @@
   --r: 0px;
 }
 
+/* ─── LIGHT THEME OVERRIDES ──────────────────────────── */
+body.light {
+  --bg:        #f5f5f5;
+  --bg-2:      #ffffff;
+  --bg-3:      #eeeeee;
+  --bg-card:   #ffffff;
+  --bg-hover:  #f0f0f0;
+  --line:      #dddddd;
+  --line-lt:   #e8e8e8;
+  --text:      #111111;
+  --text-2:    #555555;
+  --text-3:    #999999;
+  --purple-bg: #ede9fe;
+  --blue-bg:   #dbeafe;
+  --pink-bg:   #fce7f3;
+  --yellow-bg: #fef3c7;
+  --green-bg:  #d1fae5;
+  --shadow-sm: 4px 4px 0px #cccccc;
+  --shadow-md: 6px 6px 0px #cccccc;
+  --shadow-lg: 8px 8px 0px #cccccc;
+}
+body.light .grid-bg {
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(#e0e0e0 1px, transparent 1px),
+    linear-gradient(90deg, #e0e0e0 1px, transparent 1px);
+}
+body.light nav { background: rgba(245,245,245,0.94); }
+body.light .hero-terminal { box-shadow: 12px 12px 0 #ccc, 0 0 0 1px var(--purple-dk); }
+body.light #hero::before { background: radial-gradient(ellipse, rgba(124,58,237,0.05) 0%, transparent 70%); }
+body.light .btn-outline { background: white; color: var(--text); box-shadow: 5px 5px 0 #ccc; border-color: var(--line); }
+body.light .btn-outline:hover { box-shadow: 7px 7px 0 #bbb; }
+body.light .skill-bar-wrap { background: #e8e8e8; }
+body.light .form-input, body.light .form-textarea { background: #fff; }
+body.light footer { background: #1a1a1a; }
+body.light .demo-screen { background: #f0f0ff; }
+body.light #gameCanvas { background: #f0f0ff; }
+
+/* ─── THEME TOGGLE BUTTON ────────────────────────────── */
+.theme-toggle {
+  width: 34px; height: 34px;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  display: grid; place-items: center;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background .15s, border-color .15s, transform .1s;
+  flex-shrink: 0;
+  margin-left: 0.8rem;
+}
+.theme-toggle:hover { border-color: var(--purple-dk); background: var(--purple-bg); transform: scale(1.08); }
+
 /* ─── RESET ──────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -59,6 +111,7 @@ body {
   font-size: 16px;
   line-height: 1.6;
   overflow-x: hidden;
+  transition: background .25s, color .25s;
 }
 
 /* ─── SUBTLE GRID BG ─────────────────────────────────── */
@@ -742,7 +795,9 @@ footer a:hover { color: var(--purple); }
     <li><a href="#skills">Skills</a></li>
     <li><a href="#demo">Demo</a></li>
     <li><a href="#contact">Contact</a></li>
+    <li><a href="https://magicemperor30.github.io/" target="_blank" style="color:var(--text-3);">GitHub</a></li>
   </ul>
+  <button class="theme-toggle" id="themeToggle" title="Toggle theme">🌙</button>
 </nav>
 
 <!-- ═══ HERO ═══════════════════════════════════════════ -->
@@ -966,6 +1021,7 @@ footer a:hover { color: var(--purple); }
           </div>
         </div>
         <div class="card-footer">
+          <a href="https://magicemperor30.itch.io/zombie-killer" target="_blank" class="card-link">Play on itch.io</a>
           <span style="font-family:'Press Start 2P',monospace;font-size:0.36rem;color:var(--text-3);">⭐ PERSONAL PROJECT</span>
         </div>
       </div>
@@ -1160,6 +1216,10 @@ footer a:hover { color: var(--purple); }
             <div class="contact-link-icon">🌐</div>
             <div><div class="contact-link-name">LinkedIn</div><div class="contact-link-val">linkedin.com/in/digvijay-sasane</div></div>
           </a>
+          <a href="https://magicemperor30.github.io/" target="_blank" class="contact-link-card" style="--lc-color:var(--text-2)">
+            <div class="contact-link-icon">🐙</div>
+            <div><div class="contact-link-name">GitHub</div><div class="contact-link-val">https://github.com/MagicEmperor30</div></div>
+          </a>
         </div>
       </div>
     </div>
@@ -1170,6 +1230,7 @@ footer a:hover { color: var(--purple); }
 <footer>
   <p>© 2025 Digvijay Sasane · Game Developer · Mumbai</p>
   <div style="display:flex;gap:1.5rem;">
+    <a href="https://magicemperor30.github.io/" target="_blank">GitHub</a>
     <a href="https://magicemperor30.itch.io" target="_blank">itch.io</a>
     <a href="mailto:piyushsasane30@gmail.com">Email</a>
     <a href="https://linkedin.com/in/digvijay-sasane-725163260" target="_blank">LinkedIn</a>
@@ -1178,6 +1239,20 @@ footer a:hover { color: var(--purple); }
 
 <!-- ═══ SCRIPTS ══════════════════════════════════════════ -->
 <script>
+/* ── Theme Toggle ── */
+const themeToggle = document.getElementById('themeToggle');
+const body = document.body;
+// Restore saved preference
+if(localStorage.getItem('theme') === 'light') {
+  body.classList.add('light');
+  themeToggle.textContent = '☀️';
+}
+themeToggle.addEventListener('click', () => {
+  body.classList.toggle('light');
+  const isLight = body.classList.contains('light');
+  themeToggle.textContent = isLight ? '☀️' : '🌙';
+  localStorage.setItem('theme', isLight ? 'light' : 'dark');
+});
 /* ── Typewriter role ── */
 const roles = ['Building Worlds in Unity','Crafting Pixel Art Games','Shipping Mobile Games','Designing Enemy AI','Writing Clean C# Code'];
 let ri=0, ci=0, del=false;
