@@ -1,1500 +1,2346 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Digvijay Sasane — Game Developer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Audiowide&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digvijay Sasane — Game Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Audiowide&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap"
+    rel="stylesheet">
 
-<style>
-/* ─── TOKENS ─────────────────────────────────────────── */
-:root {
-  /* Dark theme palette */
-  --bg:        #080808;
-  --bg-2:      #0e0e0e;
-  --bg-3:      #141414;
-  --bg-card:   #111111;
-  --bg-hover:  #1a1a1a;
-  --line:      #222222;
-  --line-lt:   #2a2a2a;
+  <style>
+    /* ─── TOKENS ─────────────────────────────────────────── */
+    :root {
+      /* Dark theme palette */
+      --bg: #080808;
+      --bg-2: #0e0e0e;
+      --bg-3: #141414;
+      --bg-card: #111111;
+      --bg-hover: #1a1a1a;
+      --line: #222222;
+      --line-lt: #2a2a2a;
 
-  --text:      #f0f0f0;
-  --text-2:    #a0a0a0;
-  --text-3:    #606060;
+      --text: #f0f0f0;
+      --text-2: #a0a0a0;
+      --text-3: #606060;
 
-  /* Accents — keep the vivid game-dev colors, darker bgs */
-  --purple:    #a78bfa;
-  --purple-dk: #7c3aed;
-  --purple-bg: #1a1030;
+      /* Accents — keep the vivid game-dev colors, darker bgs */
+      --purple: #a78bfa;
+      --purple-dk: #7c3aed;
+      --purple-bg: #1a1030;
 
-  --blue:      #60a5fa;
-  --blue-bg:   #0a1628;
+      --blue: #60a5fa;
+      --blue-bg: #0a1628;
 
-  --pink:      #f472b6;
-  --pink-bg:   #280a1a;
+      --pink: #f472b6;
+      --pink-bg: #280a1a;
 
-  --yellow:    #fbbf24;
-  --yellow-bg: #201400;
+      --yellow: #fbbf24;
+      --yellow-bg: #201400;
 
-  --green:     #34d399;
-  --green-bg:  #001a10;
+      --green: #34d399;
+      --green-bg: #001a10;
 
-  --px: 2px;
+      --px: 2px;
 
-  --shadow-sm: 4px 4px 0px #000;
-  --shadow-md: 6px 6px 0px #000;
-  --shadow-lg: 8px 8px 0px #000;
+      --shadow-sm: 4px 4px 0px #000;
+      --shadow-md: 6px 6px 0px #000;
+      --shadow-lg: 8px 8px 0px #000;
 
-  --r: 0px;
-}
+      --r: 0px;
+    }
 
-/* ─── LIGHT THEME OVERRIDES ──────────────────────────── */
-body.light {
-  --bg:        #f5f5f5;
-  --bg-2:      #ffffff;
-  --bg-3:      #eeeeee;
-  --bg-card:   #ffffff;
-  --bg-hover:  #f0f0f0;
-  --line:      #dddddd;
-  --line-lt:   #e8e8e8;
-  --text:      #111111;
-  --text-2:    #555555;
-  --text-3:    #999999;
-  --purple-bg: #ede9fe;
-  --blue-bg:   #dbeafe;
-  --pink-bg:   #fce7f3;
-  --yellow-bg: #fef3c7;
-  --green-bg:  #d1fae5;
-  --shadow-sm: 4px 4px 0px #cccccc;
-  --shadow-md: 6px 6px 0px #cccccc;
-  --shadow-lg: 8px 8px 0px #cccccc;
-}
-body.light .grid-bg {
-  background-color: var(--bg);
-  background-image:
-    linear-gradient(#e0e0e0 1px, transparent 1px),
-    linear-gradient(90deg, #e0e0e0 1px, transparent 1px);
-}
-body.light nav { background: rgba(245,245,245,0.94); }
-body.light .hero-terminal { box-shadow: 12px 12px 0 #ccc, 0 0 0 1px var(--purple-dk); }
-body.light #hero::before { background: radial-gradient(ellipse, rgba(124,58,237,0.05) 0%, transparent 70%); }
-body.light .btn-outline { background: white; color: var(--text); box-shadow: 5px 5px 0 #ccc; border-color: var(--line); }
-body.light .btn-outline:hover { box-shadow: 7px 7px 0 #bbb; }
-body.light .skill-bar-wrap { background: #e8e8e8; }
-body.light .form-input, body.light .form-textarea { background: #fff; }
-body.light footer { background: #1a1a1a; }
-body.light .demo-screen { background: #f0f0ff; }
-body.light #gameCanvas { background: #f0f0ff; }
+    /* ─── LIGHT THEME OVERRIDES ──────────────────────────── */
+    body.light {
+      --bg: #f5f5f5;
+      --bg-2: #ffffff;
+      --bg-3: #eeeeee;
+      --bg-card: #ffffff;
+      --bg-hover: #f0f0f0;
+      --line: #dddddd;
+      --line-lt: #e8e8e8;
+      --text: #111111;
+      --text-2: #555555;
+      --text-3: #999999;
+      --purple-bg: #ede9fe;
+      --blue-bg: #dbeafe;
+      --pink-bg: #fce7f3;
+      --yellow-bg: #fef3c7;
+      --green-bg: #d1fae5;
+      --shadow-sm: 4px 4px 0px #cccccc;
+      --shadow-md: 6px 6px 0px #cccccc;
+      --shadow-lg: 8px 8px 0px #cccccc;
+    }
 
-/* ─── THEME TOGGLE BUTTON ────────────────────────────── */
-.theme-toggle {
-  width: 34px; height: 34px;
-  background: var(--bg-card);
-  border: 1px solid var(--line);
-  display: grid; place-items: center;
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: background .15s, border-color .15s, transform .1s;
-  flex-shrink: 0;
-  margin-left: 0.8rem;
-}
-.theme-toggle:hover { border-color: var(--purple-dk); background: var(--purple-bg); transform: scale(1.08); }
+    body.light .grid-bg {
+      background-color: var(--bg);
+      background-image:
+        linear-gradient(#e0e0e0 1px, transparent 1px),
+        linear-gradient(90deg, #e0e0e0 1px, transparent 1px);
+    }
 
-/* ─── RESET ──────────────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'DM Sans', sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
-  overflow-x: hidden;
-  transition: background .25s, color .25s;
-}
+    body.light nav {
+      background: rgba(245, 245, 245, 0.94);
+    }
 
-/* ─── SUBTLE GRID BG ─────────────────────────────────── */
-.grid-bg {
-  background-color: var(--bg);
-  background-image:
-    linear-gradient(var(--line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--line) 1px, transparent 1px);
-  background-size: 40px 40px;
-}
+    body.light .hero-terminal {
+      box-shadow: 12px 12px 0 #ccc, 0 0 0 1px var(--purple-dk);
+    }
 
-/* ─── BORDER UTILS ───────────────────────────────────── */
-.px-border { border: var(--px) solid var(--line); }
-.px-border-purple { border: var(--px) solid var(--purple-dk); }
-.px-border-blue   { border: var(--px) solid var(--blue); }
-.px-border-pink   { border: var(--px) solid var(--pink); }
+    body.light #hero::before {
+      background: radial-gradient(ellipse, rgba(124, 58, 237, 0.05) 0%, transparent 70%);
+    }
 
-/* ─── PIXEL CORNERS ───────────────────────────────────── */
-.px-corners { position: relative; }
-.px-corners::before, .px-corners::after,
-.px-corners .c3, .px-corners .c4 {
-  content: '';
-  position: absolute;
-  width: 7px; height: 7px;
-  background: var(--purple);
-  z-index: 2;
-}
-.px-corners::before  { top: -3px; left: -3px; }
-.px-corners::after   { top: -3px; right: -3px; }
-.px-corners .c3 { bottom: -3px; left: -3px; }
-.px-corners .c4 { bottom: -3px; right: -3px; }
+    body.light .btn-outline {
+      background: white;
+      color: var(--text);
+      box-shadow: 5px 5px 0 #ccc;
+      border-color: var(--line);
+    }
 
-/* ─── NAV ─────────────────────────────────────────────── */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  background: rgba(8,8,8,0.92);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--line);
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 3rem;
-  height: 60px;
-}
-.nav-logo {
-  font-family: 'Audiowide', sans-serif;
-  font-size: 0.85rem;
-  color: var(--text);
-  text-decoration: none;
-  display: flex; align-items: center; gap: 10px;
-  letter-spacing: 0.04em;
-}
-.nav-logo-icon {
-  width: 30px; height: 30px;
-  background: var(--purple-dk);
-  display: grid; place-items: center;
-  font-size: 0.9rem;
-  border: 1px solid var(--purple);
-}
-.nav-logo span { color: var(--purple); }
-.nav-links { display: flex; gap: 0; list-style: none; }
-.nav-links a {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.45rem;
-  color: var(--text-3);
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  letter-spacing: 0.08em;
-  transition: color .15s, background .15s;
-  display: block;
-}
-.nav-links a:hover { color: var(--purple); background: var(--purple-bg); }
+    body.light .btn-outline:hover {
+      box-shadow: 7px 7px 0 #bbb;
+    }
 
-/* ─── HERO ────────────────────────────────────────────── */
-#hero {
-  min-height: 100vh;
-  display: flex; align-items: center; justify-content: center;
-  position: relative; overflow: hidden;
-  padding: 7rem 3rem 4rem;
-  background: var(--bg);
-}
+    body.light .skill-bar-wrap {
+      background: #e8e8e8;
+    }
 
-/* subtle radial glow behind hero */
-#hero::before {
-  content: '';
-  position: absolute;
-  top: 20%; left: 50%;
-  transform: translateX(-50%);
-  width: 700px; height: 500px;
-  background: radial-gradient(ellipse, rgba(124,58,237,0.08) 0%, transparent 70%);
-  pointer-events: none;
-}
+    body.light .form-input,
+    body.light .form-textarea {
+      background: #fff;
+    }
 
-.hero-inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-  align-items: center;
-  max-width: 1100px;
-  width: 100%;
-  position: relative; z-index: 1;
-}
+    body.light footer {
+      background: #1a1a1a;
+    }
 
-/* hero visual — replaced sprite with a sleek code terminal look */
-.hero-visual-wrap {
-  display: flex; justify-content: center; align-items: center;
-  position: relative;
-}
-.hero-terminal {
-  width: 320px;
-  background: var(--bg-card);
-  border: 1px solid var(--line);
-  box-shadow: 12px 12px 0 #000, 0 0 0 1px var(--purple-dk);
-  position: relative;
-  overflow: hidden;
-}
-.hero-terminal-bar {
-  background: var(--bg-3);
-  border-bottom: 1px solid var(--line);
-  padding: 0.55rem 0.9rem;
-  display: flex; align-items: center; gap: 0.5rem;
-}
-.t-dot { width: 8px; height: 8px; display: inline-block; }
-.t-dot-r { background: #f47174; }
-.t-dot-y { background: var(--yellow); }
-.t-dot-g { background: var(--green); }
-.terminal-title {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.38rem;
-  color: var(--text-3);
-  margin-left: auto;
-  letter-spacing: 0.1em;
-}
-.terminal-body {
-  padding: 1.4rem 1.2rem;
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.42rem;
-  line-height: 1.9;
-  color: var(--text-2);
-}
-.t-comment { color: var(--text-3); }
-.t-key { color: var(--blue); }
-.t-val { color: var(--green); }
-.t-str { color: var(--yellow); }
-.t-num { color: var(--pink); }
-.t-cursor {
-  display: inline-block;
-  width: 7px; height: 0.9em;
-  background: var(--purple);
-  vertical-align: text-bottom;
-  animation: blink .7s step-end infinite;
-}
+    body.light .demo-screen {
+      background: #f0f0ff;
+    }
 
-/* corner decoration dots */
-.hero-terminal::before { content: ''; position: absolute; top: -3px; left: -3px; width: 7px; height: 7px; background: var(--purple); z-index:3; }
-.hero-terminal::after  { content: ''; position: absolute; top: -3px; right: -3px; width: 7px; height: 7px; background: var(--purple); z-index:3; }
-.tc3 { position: absolute; bottom: -3px; left: -3px; width: 7px; height: 7px; background: var(--purple); z-index:3; }
-.tc4 { position: absolute; bottom: -3px; right: -3px; width: 7px; height: 7px; background: var(--purple); z-index:3; }
+    body.light #gameCanvas {
+      background: #f0f0ff;
+    }
 
-/* floating lines / particles */
-.hero-particle {
-  position: absolute;
-  background: var(--purple);
-  image-rendering: pixelated;
-  animation: particleFloat linear infinite;
-  opacity: 0;
-}
-@keyframes particleFloat {
-  0%   { transform: translateY(0) rotate(0deg); opacity: 0; }
-  15%  { opacity: 0.4; }
-  85%  { opacity: 0.2; }
-  100% { transform: translateY(-80px) rotate(90deg); opacity: 0; }
-}
+    /* ─── THEME TOGGLE BUTTON ────────────────────────────── */
+    .theme-toggle {
+      width: 34px;
+      height: 34px;
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background .15s, border-color .15s, transform .1s;
+      flex-shrink: 0;
+      margin-left: 0.8rem;
+    }
 
-.hero-text {}
-.hero-eyebrow {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.5rem;
-  color: var(--purple);
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  margin-bottom: 1.2rem;
-  display: flex; align-items: center; gap: 0.8rem;
-}
-.hero-eyebrow::before {
-  content: '';
-  width: 20px; height: 2px;
-  background: var(--purple);
-  display: inline-block;
-}
-.hero-name {
-  font-family: 'Audiowide', sans-serif;
-  font-size: clamp(2.2rem, 4vw, 3.2rem);
-  color: var(--text);
-  line-height: 1.1;
-  margin-bottom: 0.5rem;
-  letter-spacing: -0.01em;
-}
-.hero-name span {
-  color: var(--purple);
-  position: relative;
-  display: inline-block;
-}
-.hero-name span::after {
-  content: '';
-  position: absolute;
-  bottom: 2px; left: 0; right: 0;
-  height: 3px;
-  background: repeating-linear-gradient(90deg, var(--pink) 0, var(--pink) 6px, transparent 6px, transparent 10px);
-}
-.hero-role {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.65rem;
-  color: var(--text-3);
-  letter-spacing: 0.08em;
-  margin-bottom: 1.8rem;
-  display: flex; align-items: center; gap: 0.6rem;
-}
-.role-cursor {
-  display: inline-block;
-  width: 9px; height: 1.1em;
-  background: var(--text);
-  animation: blink .8s step-end infinite;
-  vertical-align: text-bottom;
-}
-@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+    .theme-toggle:hover {
+      border-color: var(--purple-dk);
+      background: var(--purple-bg);
+      transform: scale(1.08);
+    }
 
-.hero-desc {
-  font-size: 1rem;
-  color: var(--text-2);
-  line-height: 1.75;
-  margin-bottom: 2.2rem;
-  max-width: 460px;
-}
-.hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+    /* ─── RESET ──────────────────────────────────────────── */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-/* ─── BUTTONS ─────────────────────────────────────────── */
-.btn {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.5rem;
-  letter-spacing: 0.06em;
-  padding: 0.85rem 1.6rem;
-  border: 1px solid var(--line);
-  cursor: pointer;
-  text-decoration: none;
-  display: inline-block;
-  transition: transform .1s, box-shadow .1s;
-  position: relative;
-  user-select: none;
-}
-.btn:active { transform: translate(4px, 4px) !important; box-shadow: 0 0 0 !important; }
+    html {
+      scroll-behavior: smooth;
+    }
 
-.btn-primary {
-  background: var(--text);
-  color: var(--bg);
-  box-shadow: 5px 5px 0 var(--purple-dk);
-  border-color: var(--text);
-}
-.btn-primary:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 var(--purple-dk); }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+      transition: background .25s, color .25s;
+    }
 
-.btn-outline {
-  background: transparent;
-  color: var(--text);
-  box-shadow: 5px 5px 0 #000;
-  border-color: var(--line);
-}
-.btn-outline:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 #000; border-color: var(--text-3); }
+    /* ─── SUBTLE GRID BG ─────────────────────────────────── */
+    .grid-bg {
+      background-color: var(--bg);
+      background-image:
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
 
-.btn-purple {
-  background: var(--purple-dk);
-  color: white;
-  box-shadow: 5px 5px 0 #3b1a8a;
-  border-color: var(--purple);
-}
-.btn-purple:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 #3b1a8a; }
+    /* ─── BORDER UTILS ───────────────────────────────────── */
+    .px-border {
+      border: var(--px) solid var(--line);
+    }
 
-/* ─── SECTION SHELL ───────────────────────────────────── */
-.section { padding: 6rem 3rem; }
-.section-inner { max-width: 1100px; margin: 0 auto; }
+    .px-border-purple {
+      border: var(--px) solid var(--purple-dk);
+    }
 
-.section-label {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.45rem;
-  color: var(--text-3);
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  margin-bottom: 0.8rem;
-  display: flex; align-items: center; gap: 0.7rem;
-}
-.section-label::before { content: '//'; color: var(--purple); }
+    .px-border-blue {
+      border: var(--px) solid var(--blue);
+    }
 
-.section-title {
-  font-family: 'Audiowide', sans-serif;
-  font-size: clamp(1.6rem, 3vw, 2.4rem);
-  color: var(--text);
-  margin-bottom: 3.5rem;
-  line-height: 1.2;
-}
-.section-title em { font-style: normal; color: var(--purple); }
+    .px-border-pink {
+      border: var(--px) solid var(--pink);
+    }
 
-/* ─── DIVIDER ─────────────────────────────────────────── */
-.px-divider {
-  height: 4px;
-  background: repeating-linear-gradient(90deg,
-    var(--blue) 0, var(--blue) 12px,
-    var(--purple-dk) 12px, var(--purple-dk) 24px,
-    var(--pink) 24px, var(--pink) 36px,
-    var(--yellow) 36px, var(--yellow) 48px,
-    var(--green) 48px, var(--green) 60px);
-}
+    /* ─── PIXEL CORNERS ───────────────────────────────────── */
+    .px-corners {
+      position: relative;
+    }
 
-/* ─── ABOUT ───────────────────────────────────────────── */
-#about { background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .px-corners::before,
+    .px-corners::after,
+    .px-corners .c3,
+    .px-corners .c4 {
+      content: '';
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      background: var(--purple);
+      z-index: 2;
+    }
 
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  gap: 4rem;
-  align-items: start;
-}
-.about-card {
-  background: var(--bg-card);
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow-lg);
-  padding: 2rem;
-  position: relative;
-}
-.about-stat-row { display: flex; flex-direction: column; gap: 1.2rem; }
-.about-stat {
-  background: var(--bg-3);
-  border: 1px solid var(--line);
-  padding: 1.2rem 1.5rem;
-  display: flex; align-items: center; gap: 1.2rem;
-  transition: transform .15s, box-shadow .15s, border-color .15s;
-}
-.about-stat:hover { transform: translate(-2px,-2px); box-shadow: 4px 4px 0 var(--purple-dk); border-color: var(--purple-dk); }
-.about-stat-icon {
-  font-size: 1.5rem;
-  width: 46px; height: 46px;
-  background: var(--bg);
-  display: grid; place-items: center;
-  border: 1px solid var(--line);
-  flex-shrink: 0;
-}
-.about-stat-num {
-  font-family: 'Audiowide', sans-serif;
-  font-size: 1.5rem;
-  color: var(--text);
-  line-height: 1;
-}
-.about-stat-lbl { font-size: 0.8rem; color: var(--text-2); margin-top: 2px; }
-.about-text p { color: var(--text-2); line-height: 1.8; margin-bottom: 1.2rem; }
-.about-text p:last-child { margin-bottom: 0; }
-.about-text strong { color: var(--text); font-weight: 600; }
-.highlight-tag {
-  display: inline-block;
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.42rem;
-  padding: 0.3rem 0.7rem;
-  margin: 0.2rem;
-  letter-spacing: 0.08em;
-}
+    .px-corners::before {
+      top: -3px;
+      left: -3px;
+    }
 
-/* ─── PROJECTS ────────────────────────────────────────── */
-#projects { background: var(--bg); }
+    .px-corners::after {
+      top: -3px;
+      right: -3px;
+    }
 
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 1.5rem;
-}
+    .px-corners .c3 {
+      bottom: -3px;
+      left: -3px;
+    }
 
-.project-card {
-  background: var(--bg-card);
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow-md);
-  overflow: hidden;
-  transition: transform .2s, box-shadow .2s, border-color .2s;
-  display: flex; flex-direction: column;
-  position: relative;
-}
-.project-card.accent-blue   { --card-color: var(--blue);   --card-bg: var(--blue-bg);   }
-.project-card.accent-purple { --card-color: var(--purple); --card-bg: var(--purple-bg); }
-.project-card.accent-pink   { --card-color: var(--pink);   --card-bg: var(--pink-bg);   }
-.project-card.accent-yellow { --card-color: var(--yellow); --card-bg: var(--yellow-bg); }
-.project-card.accent-green  { --card-color: var(--green);  --card-bg: var(--green-bg);  }
+    .px-corners .c4 {
+      bottom: -3px;
+      right: -3px;
+    }
 
-.project-card:hover { transform: translate(-4px, -4px); border-color: var(--card-color); box-shadow: 8px 8px 0 var(--card-color); }
+    /* ─── NAV ─────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(8, 8, 8, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 3rem;
+      height: 60px;
+    }
 
-/* slider */
-.card-slider { position: relative; height: 195px; overflow: hidden; background: var(--bg-3); border-bottom: 1px solid var(--line); }
-.card-slider-track { display: flex; height: 100%; transition: transform .4s cubic-bezier(.4,0,.2,1); }
-.card-slider-track img { min-width: 100%; width: 100%; height: 100%; object-fit: cover; flex-shrink: 0; display: block; filter: saturate(0.85) brightness(0.9); transition: filter .3s; }
-.project-card:hover .card-slider-track img { filter: saturate(1) brightness(1); }
+    .nav-logo {
+      font-family: 'Audiowide', sans-serif;
+      font-size: 0.85rem;
+      color: var(--text);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      letter-spacing: 0.04em;
+    }
 
-.slide-btn {
-  position: absolute; top: 50%; transform: translateY(-50%);
-  width: 28px; height: 28px;
-  background: rgba(0,0,0,0.8);
-  border: 1px solid var(--line);
-  font-size: 0.75rem; color: var(--text);
-  display: flex; align-items: center; justify-content: center;
-  cursor: pointer; z-index: 5;
-  opacity: 0; transition: opacity .2s;
-  font-family: monospace; font-weight: bold;
-}
-.card-slider:hover .slide-btn { opacity: 1; }
-.slide-btn:hover { background: var(--bg-hover); border-color: var(--text-3); }
-.slide-prev { left: 6px; }
-.slide-next { right: 6px; }
-.slide-pips { position: absolute; bottom: 7px; left: 50%; transform: translateX(-50%); display: flex; gap: 4px; z-index: 5; }
-.pip { width: 5px; height: 5px; background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.1); transition: background .2s; cursor: pointer; }
-.pip.on { background: var(--card-color, var(--purple)); }
+    .nav-logo-icon {
+      width: 30px;
+      height: 30px;
+      background: var(--purple-dk);
+      display: grid;
+      place-items: center;
+      font-size: 0.9rem;
+      border: 1px solid var(--purple);
+    }
 
-.card-genre {
-  position: absolute; top: 10px; left: 10px; z-index: 5;
-  font-family: 'Press Start 2P', monospace; font-size: 0.36rem;
-  padding: 0.28rem 0.6rem;
-  background: var(--card-color, var(--purple));
-  color: #000; letter-spacing: 0.1em;
-}
-.card-platform {
-  position: absolute; top: 10px; right: 10px; z-index: 5;
-  font-family: 'Press Start 2P', monospace; font-size: 0.36rem;
-  padding: 0.28rem 0.6rem;
-  background: rgba(0,0,0,0.75);
-  color: var(--text-2);
-  border: 1px solid var(--line);
-  letter-spacing: 0.06em;
-}
+    .nav-logo span {
+      color: var(--purple);
+    }
 
-.card-body { padding: 1.4rem; flex: 1; display: flex; flex-direction: column; gap: 0.7rem; }
-.card-title { font-family: 'Audiowide', sans-serif; font-size: 1rem; color: var(--text); line-height: 1.25; }
-.card-desc { font-size: 0.85rem; color: var(--text-2); line-height: 1.65; flex: 1; }
-.card-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.3rem; }
-.card-tag {
-  font-family: 'Press Start 2P', monospace; font-size: 0.36rem;
-  padding: 0.22rem 0.5rem;
-  background: var(--bg-3);
-  border: 1px solid var(--line);
-  color: var(--text-3);
-  letter-spacing: 0.05em;
-}
-.card-footer {
-  padding: 0.9rem 1.4rem;
-  border-top: 1px solid var(--line);
-  display: flex; align-items: center; justify-content: space-between;
-}
-.card-link {
-  font-family: 'Press Start 2P', monospace; font-size: 0.38rem;
-  color: var(--card-color, var(--purple));
-  text-decoration: none; letter-spacing: 0.1em;
-  display: flex; align-items: center; gap: 0.4rem;
-  transition: gap .2s;
-}
-.card-link:hover { gap: 0.8rem; }
-.card-link::after { content: '→'; }
+    .nav-links {
+      display: flex;
+      gap: 0;
+      list-style: none;
+    }
 
-/* ─── SKILLS ──────────────────────────────────────────── */
-#skills { background: var(--bg-2); border-top: 1px solid var(--line); }
+    .nav-links a {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.45rem;
+      color: var(--text-3);
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      letter-spacing: 0.08em;
+      transition: color .15s, background .15s;
+      display: block;
+    }
 
-.skills-layout {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 4rem;
-  align-items: start;
-}
-.skill-category { margin-bottom: 2.5rem; }
-.skill-cat-title {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.5rem;
-  color: var(--text-2);
-  letter-spacing: 0.12em;
-  margin-bottom: 1rem;
-  display: flex; align-items: center; gap: 0.7rem;
-}
-.skill-cat-title::after { content: ''; flex: 1; height: 1px; background: var(--line); }
+    .nav-links a:hover {
+      color: var(--purple);
+      background: var(--purple-bg);
+    }
 
-.skill-bars { display: flex; flex-direction: column; gap: 0.9rem; }
-.skill-row { display: flex; align-items: center; gap: 1rem; }
-.skill-name-lbl {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.4rem;
-  letter-spacing: 0.06em;
-  color: var(--text-2);
-  min-width: 80px;
-}
-.skill-bar-wrap {
-  flex: 1; height: 12px;
-  background: var(--bg);
-  border: 1px solid var(--line);
-  position: relative;
-  overflow: hidden;
-}
-.skill-bar-fill {
-  height: 100%;
-  background: repeating-linear-gradient(90deg, var(--bar-color, var(--purple)) 0, var(--bar-color, var(--purple)) 10px, color-mix(in srgb, var(--bar-color, var(--purple)) 60%, black) 10px, color-mix(in srgb, var(--bar-color, var(--purple)) 60%, black) 12px);
-  width: 0%;
-  transition: width 1.2s cubic-bezier(.4,0,.2,1);
-}
-.skill-pct {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.36rem;
-  color: var(--text-3);
-  min-width: 28px;
-  text-align: right;
-}
+    /* ─── HERO ────────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 7rem 3rem 4rem;
+      background: var(--bg);
+    }
 
-/* tool grid */
-.tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; }
-.tool-chip {
-  background: var(--bg-card);
-  border: 1px solid var(--line);
-  padding: 1rem 0.8rem;
-  display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
-  transition: transform .15s, box-shadow .15s, border-color .15s;
-  cursor: default;
-}
-.tool-chip:hover {
-  transform: translate(-2px,-2px);
-  box-shadow: 4px 4px 0 var(--chip-color, var(--purple-dk));
-  border-color: var(--chip-color, var(--purple-dk));
-}
-.tool-chip-icon { font-size: 1.5rem; }
-.tool-chip-name { font-family: 'Press Start 2P', monospace; font-size: 0.35rem; color: var(--text-2); letter-spacing: 0.06em; text-align: center; }
-.tool-chip-badge {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.3rem;
-  padding: 0.15rem 0.4rem;
-  background: var(--bg);
-  color: var(--chip-color, var(--purple));
-  border: 1px solid var(--chip-color, var(--purple-dk));
-  letter-spacing: 0.05em;
-}
+    /* subtle radial glow behind hero */
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 500px;
+      background: radial-gradient(ellipse, rgba(124, 58, 237, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
 
-/* ─── DEMO SECTION ────────────────────────────────────── */
-#demo { background: var(--bg); border-top: 1px solid var(--line); position: relative; overflow: hidden; }
-#demo .section-label { color: var(--text-3); }
-#demo .section-label::before { color: var(--yellow); }
-#demo .section-title { color: var(--text); }
-#demo .section-title em { color: var(--yellow); }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      max-width: 1100px;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
 
-.demo-scanlines {
-  position: absolute; inset: 0; pointer-events: none; z-index: 0;
-  background: repeating-linear-gradient(0deg, rgba(0,0,0,0.08) 0, rgba(0,0,0,0.08) 1px, transparent 1px, transparent 3px);
-}
+    /* hero visual — replaced sprite with a sleek code terminal look */
+    .hero-visual-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
 
-.demo-layout {
-  position: relative; z-index: 1;
-  display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: center;
-}
+    .hero-terminal {
+      width: 320px;
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      box-shadow: 12px 12px 0 #000, 0 0 0 1px var(--purple-dk);
+      position: relative;
+      overflow: hidden;
+    }
 
-.demo-screen {
-  background: #050510;
-  border: 1px solid var(--line);
-  box-shadow: 0 0 0 1px var(--purple-dk), 12px 12px 0 #000, 0 0 60px rgba(124,58,237,0.1);
-  position: relative;
-  overflow: hidden;
-}
-.demo-screen-bar {
-  background: rgba(255,255,255,0.03);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  padding: 0.5rem 0.9rem;
-  display: flex; align-items: center; gap: 0.5rem;
-}
-.demo-dot { width: 8px; height: 8px; border-radius: 0; }
-.demo-dot-r { background: var(--pink); }
-.demo-dot-y { background: var(--yellow); }
-.demo-dot-g { background: var(--green); }
-.demo-screen-title {
-  font-family: 'Press Start 2P', monospace; font-size: 0.38rem;
-  color: rgba(255,255,255,0.25); margin-left: auto; letter-spacing: 0.1em;
-}
+    .hero-terminal-bar {
+      background: var(--bg-3);
+      border-bottom: 1px solid var(--line);
+      padding: 0.55rem 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
 
-#gameCanvas {
-  display: block;
-  width: 100%;
-  image-rendering: pixelated;
-  background: #050510;
-}
+    .t-dot {
+      width: 8px;
+      height: 8px;
+      display: inline-block;
+    }
 
-.demo-controls-hint {
-  padding: 0.7rem 0.9rem;
-  border-top: 1px solid rgba(255,255,255,0.05);
-  display: flex; gap: 1.5rem; flex-wrap: wrap;
-}
-.ctrl { font-family: 'Press Start 2P', monospace; font-size: 0.33rem; color: rgba(255,255,255,0.3); letter-spacing: 0.08em; display: flex; align-items: center; gap: 0.4rem; }
-.kbd {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.15);
-  border-bottom: 2px solid rgba(255,255,255,0.2);
-  padding: 0.2rem 0.45rem;
-  color: rgba(255,255,255,0.5);
-}
+    .t-dot-r {
+      background: #f47174;
+    }
 
-.demo-info { color: rgba(255,255,255,0.85); }
-.demo-info h3 { font-family: 'Audiowide', sans-serif; font-size: 1.5rem; color: white; margin-bottom: 1rem; line-height: 1.2; }
-.demo-info p { font-size: 0.9rem; color: rgba(255,255,255,0.5); line-height: 1.75; margin-bottom: 1.5rem; }
-.demo-stat-pills { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-bottom: 2rem; }
-.demo-pill {
-  font-family: 'Press Start 2P', monospace; font-size: 0.4rem;
-  padding: 0.45rem 0.9rem;
-  border: 1px solid var(--line);
-  color: var(--text-3); letter-spacing: 0.08em;
-  background: var(--bg-card);
-}
-.demo-pill.active { background: var(--purple-dk); border-color: var(--purple); color: white; }
+    .t-dot-y {
+      background: var(--yellow);
+    }
 
-/* ─── CONTACT ─────────────────────────────────────────── */
-#contact { background: var(--bg-2); border-top: 1px solid var(--line); }
-.contact-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 5rem; align-items: start; }
+    .t-dot-g {
+      background: var(--green);
+    }
 
-.contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
-.form-group { display: flex; flex-direction: column; gap: 0.5rem; }
-.form-label { font-family: 'Press Start 2P', monospace; font-size: 0.42rem; color: var(--text-2); letter-spacing: 0.1em; }
-.form-input, .form-textarea {
-  background: var(--bg-card);
-  border: 1px solid var(--line);
-  padding: 0.85rem 1rem;
-  font-family: 'DM Sans', sans-serif; font-size: 0.95rem;
-  color: var(--text);
-  outline: none;
-  transition: border-color .15s, box-shadow .15s;
-  width: 100%;
-  box-shadow: 3px 3px 0 #000;
-}
-.form-input::placeholder, .form-textarea::placeholder { color: var(--text-3); }
-.form-input:focus, .form-textarea:focus { border-color: var(--purple-dk); box-shadow: 3px 3px 0 var(--purple-dk); }
-.form-textarea { resize: vertical; min-height: 130px; }
+    .terminal-title {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.38rem;
+      color: var(--text-3);
+      margin-left: auto;
+      letter-spacing: 0.1em;
+    }
 
-.contact-links { display: flex; flex-direction: column; gap: 1rem; }
-.contact-link-card {
-  background: var(--bg-card);
-  border: 1px solid var(--line);
-  padding: 1.1rem 1.4rem;
-  display: flex; align-items: center; gap: 1.2rem;
-  text-decoration: none;
-  transition: transform .15s, box-shadow .15s, border-color .15s;
-  box-shadow: var(--shadow-sm);
-}
-.contact-link-card:hover { transform: translate(-3px,-3px); box-shadow: 5px 5px 0 var(--lc-color, var(--purple-dk)); border-color: var(--lc-color, var(--purple-dk)); }
-.contact-link-icon { font-size: 1.3rem; width: 42px; height: 42px; display: grid; place-items: center; background: var(--bg); border: 1px solid var(--line); flex-shrink: 0; }
-.contact-link-name { font-family: 'Press Start 2P', monospace; font-size: 0.42rem; color: var(--text); letter-spacing: 0.08em; margin-bottom: 0.3rem; }
-.contact-link-val { font-size: 0.82rem; color: var(--text-2); }
+    .terminal-body {
+      padding: 1.4rem 1.2rem;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.42rem;
+      line-height: 1.9;
+      color: var(--text-2);
+    }
 
-/* ─── FOOTER ──────────────────────────────────────────── */
-footer {
-  background: var(--bg-3);
-  border-top: 1px solid var(--line);
-  padding: 2rem 3rem;
-  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
-}
-footer p, footer a { font-family: 'Press Start 2P', monospace; font-size: 0.4rem; color: var(--text-3); letter-spacing: 0.1em; text-decoration: none; }
-footer a:hover { color: var(--purple); }
+    .t-comment {
+      color: var(--text-3);
+    }
 
-/* ─── SCROLL REVEAL ───────────────────────────────────── */
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
-.reveal.in { opacity: 1; transform: none; }
+    .t-key {
+      color: var(--blue);
+    }
 
-/* ─── RESPONSIVE ──────────────────────────────────────── */
-@media (max-width: 900px) {
-  .hero-inner, .about-grid, .skills-layout, .demo-layout, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-  .hero-visual-wrap { order: -1; }
-  .hero-terminal { width: 100%; max-width: 320px; }
-  nav { padding: 0 1.5rem; }
-  .nav-links a { font-size: 0.38rem; padding: 0.4rem 0.6rem; }
-  .section { padding: 4rem 1.5rem; }
-  .tools-grid { grid-template-columns: repeat(2, 1fr); }
-}
-</style>
+    .t-val {
+      color: var(--green);
+    }
+
+    .t-str {
+      color: var(--yellow);
+    }
+
+    .t-num {
+      color: var(--pink);
+    }
+
+    .t-cursor {
+      display: inline-block;
+      width: 7px;
+      height: 0.9em;
+      background: var(--purple);
+      vertical-align: text-bottom;
+      animation: blink .7s step-end infinite;
+    }
+
+    /* corner decoration dots */
+    .hero-terminal::before {
+      content: '';
+      position: absolute;
+      top: -3px;
+      left: -3px;
+      width: 7px;
+      height: 7px;
+      background: var(--purple);
+      z-index: 3;
+    }
+
+    .hero-terminal::after {
+      content: '';
+      position: absolute;
+      top: -3px;
+      right: -3px;
+      width: 7px;
+      height: 7px;
+      background: var(--purple);
+      z-index: 3;
+    }
+
+    .tc3 {
+      position: absolute;
+      bottom: -3px;
+      left: -3px;
+      width: 7px;
+      height: 7px;
+      background: var(--purple);
+      z-index: 3;
+    }
+
+    .tc4 {
+      position: absolute;
+      bottom: -3px;
+      right: -3px;
+      width: 7px;
+      height: 7px;
+      background: var(--purple);
+      z-index: 3;
+    }
+
+    /* floating lines / particles */
+    .hero-particle {
+      position: absolute;
+      background: var(--purple);
+      image-rendering: pixelated;
+      animation: particleFloat linear infinite;
+      opacity: 0;
+    }
+
+    @keyframes particleFloat {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+
+      15% {
+        opacity: 0.4;
+      }
+
+      85% {
+        opacity: 0.2;
+      }
+
+      100% {
+        transform: translateY(-80px) rotate(90deg);
+        opacity: 0;
+      }
+    }
+
+    .hero-text {}
+
+    .hero-eyebrow {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.5rem;
+      color: var(--purple);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 20px;
+      height: 2px;
+      background: var(--purple);
+      display: inline-block;
+    }
+
+    .hero-name {
+      font-family: 'Audiowide', sans-serif;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      color: var(--text);
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-name span {
+      color: var(--purple);
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero-name span::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: repeating-linear-gradient(90deg, var(--pink) 0, var(--pink) 6px, transparent 6px, transparent 10px);
+    }
+
+    .hero-role {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.65rem;
+      color: var(--text-3);
+      letter-spacing: 0.08em;
+      margin-bottom: 1.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .role-cursor {
+      display: inline-block;
+      width: 9px;
+      height: 1.1em;
+      background: var(--text);
+      animation: blink .8s step-end infinite;
+      vertical-align: text-bottom;
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0;
+      }
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      color: var(--text-2);
+      line-height: 1.75;
+      margin-bottom: 2.2rem;
+      max-width: 460px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* ─── BUTTONS ─────────────────────────────────────────── */
+    .btn {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.5rem;
+      letter-spacing: 0.06em;
+      padding: 0.85rem 1.6rem;
+      border: 1px solid var(--line);
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: transform .1s, box-shadow .1s;
+      position: relative;
+      user-select: none;
+    }
+
+    .btn:active {
+      transform: translate(4px, 4px) !important;
+      box-shadow: 0 0 0 !important;
+    }
+
+    .btn-primary {
+      background: var(--text);
+      color: var(--bg);
+      box-shadow: 5px 5px 0 var(--purple-dk);
+      border-color: var(--text);
+    }
+
+    .btn-primary:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 7px 7px 0 var(--purple-dk);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      box-shadow: 5px 5px 0 #000;
+      border-color: var(--line);
+    }
+
+    .btn-outline:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 7px 7px 0 #000;
+      border-color: var(--text-3);
+    }
+
+    .btn-purple {
+      background: var(--purple-dk);
+      color: white;
+      box-shadow: 5px 5px 0 #3b1a8a;
+      border-color: var(--purple);
+    }
+
+    .btn-purple:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 7px 7px 0 #3b1a8a;
+    }
+
+    /* ─── SECTION SHELL ───────────────────────────────────── */
+    .section {
+      padding: 6rem 3rem;
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.45rem;
+      color: var(--text-3);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .section-label::before {
+      content: '//';
+      color: var(--purple);
+    }
+
+    .section-title {
+      font-family: 'Audiowide', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      color: var(--text);
+      margin-bottom: 3.5rem;
+      line-height: 1.2;
+    }
+
+    .section-title em {
+      font-style: normal;
+      color: var(--purple);
+    }
+
+    /* ─── DIVIDER ─────────────────────────────────────────── */
+    .px-divider {
+      height: 4px;
+      background: repeating-linear-gradient(90deg,
+          var(--blue) 0, var(--blue) 12px,
+          var(--purple-dk) 12px, var(--purple-dk) 24px,
+          var(--pink) 24px, var(--pink) 36px,
+          var(--yellow) 36px, var(--yellow) 48px,
+          var(--green) 48px, var(--green) 60px);
+    }
+
+    /* ─── ABOUT ───────────────────────────────────────────── */
+    #about {
+      background: var(--bg-2);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .about-card {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-lg);
+      padding: 2rem;
+      position: relative;
+    }
+
+    .about-stat-row {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .about-stat {
+      background: var(--bg-3);
+      border: 1px solid var(--line);
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      transition: transform .15s, box-shadow .15s, border-color .15s;
+    }
+
+    .about-stat:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 4px 4px 0 var(--purple-dk);
+      border-color: var(--purple-dk);
+    }
+
+    .about-stat-icon {
+      font-size: 1.5rem;
+      width: 46px;
+      height: 46px;
+      background: var(--bg);
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      flex-shrink: 0;
+    }
+
+    .about-stat-num {
+      font-family: 'Audiowide', sans-serif;
+      font-size: 1.5rem;
+      color: var(--text);
+      line-height: 1;
+    }
+
+    .about-stat-lbl {
+      font-size: 0.8rem;
+      color: var(--text-2);
+      margin-top: 2px;
+    }
+
+    .about-text p {
+      color: var(--text-2);
+      line-height: 1.8;
+      margin-bottom: 1.2rem;
+    }
+
+    .about-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    .about-text strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .highlight-tag {
+      display: inline-block;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.42rem;
+      padding: 0.3rem 0.7rem;
+      margin: 0.2rem;
+      letter-spacing: 0.08em;
+    }
+
+    /* ─── PROJECTS ────────────────────────────────────────── */
+    #projects {
+      background: var(--bg);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+      transition: transform .2s, box-shadow .2s, border-color .2s;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .project-card.accent-blue {
+      --card-color: var(--blue);
+      --card-bg: var(--blue-bg);
+    }
+
+    .project-card.accent-purple {
+      --card-color: var(--purple);
+      --card-bg: var(--purple-bg);
+    }
+
+    .project-card.accent-pink {
+      --card-color: var(--pink);
+      --card-bg: var(--pink-bg);
+    }
+
+    .project-card.accent-yellow {
+      --card-color: var(--yellow);
+      --card-bg: var(--yellow-bg);
+    }
+
+    .project-card.accent-green {
+      --card-color: var(--green);
+      --card-bg: var(--green-bg);
+    }
+
+    .project-card:hover {
+      transform: translate(-4px, -4px);
+      border-color: var(--card-color);
+      box-shadow: 8px 8px 0 var(--card-color);
+    }
+
+    /* slider */
+    .card-slider {
+      position: relative;
+      height: 195px;
+      overflow: hidden;
+      background: var(--bg-3);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .card-slider-track {
+      display: flex;
+      height: 100%;
+      transition: transform .4s cubic-bezier(.4, 0, .2, 1);
+    }
+
+    .card-slider-track img {
+      min-width: 100%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      flex-shrink: 0;
+      display: block;
+      filter: saturate(0.85) brightness(0.9);
+      transition: filter .3s;
+    }
+
+    .project-card:hover .card-slider-track img {
+      filter: saturate(1) brightness(1);
+    }
+
+    .slide-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 28px;
+      height: 28px;
+      background: rgba(0, 0, 0, 0.8);
+      border: 1px solid var(--line);
+      font-size: 0.75rem;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 5;
+      opacity: 0;
+      transition: opacity .2s;
+      font-family: monospace;
+      font-weight: bold;
+    }
+
+    .card-slider:hover .slide-btn {
+      opacity: 1;
+    }
+
+    .slide-btn:hover {
+      background: var(--bg-hover);
+      border-color: var(--text-3);
+    }
+
+    .slide-prev {
+      left: 6px;
+    }
+
+    .slide-next {
+      right: 6px;
+    }
+
+    .slide-pips {
+      position: absolute;
+      bottom: 7px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 4px;
+      z-index: 5;
+    }
+
+    .pip {
+      width: 5px;
+      height: 5px;
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: background .2s;
+      cursor: pointer;
+    }
+
+    .pip.on {
+      background: var(--card-color, var(--purple));
+    }
+
+    .card-genre {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 5;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.36rem;
+      padding: 0.28rem 0.6rem;
+      background: var(--card-color, var(--purple));
+      color: #000;
+      letter-spacing: 0.1em;
+    }
+
+    .card-platform {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 5;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.36rem;
+      padding: 0.28rem 0.6rem;
+      background: rgba(0, 0, 0, 0.75);
+      color: var(--text-2);
+      border: 1px solid var(--line);
+      letter-spacing: 0.06em;
+    }
+
+    .card-body {
+      padding: 1.4rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .card-title {
+      font-family: 'Audiowide', sans-serif;
+      font-size: 1rem;
+      color: var(--text);
+      line-height: 1.25;
+    }
+
+    .card-desc {
+      font-size: 0.85rem;
+      color: var(--text-2);
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.3rem;
+    }
+
+    .card-tag {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.36rem;
+      padding: 0.22rem 0.5rem;
+      background: var(--bg-3);
+      border: 1px solid var(--line);
+      color: var(--text-3);
+      letter-spacing: 0.05em;
+    }
+
+    .card-footer {
+      padding: 0.9rem 1.4rem;
+      border-top: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card-link {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.38rem;
+      color: var(--card-color, var(--purple));
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: gap .2s;
+    }
+
+    .card-link:hover {
+      gap: 0.8rem;
+    }
+
+    .card-link::after {
+      content: '→';
+    }
+
+    /* ─── SKILLS ──────────────────────────────────────────── */
+    #skills {
+      background: var(--bg-2);
+      border-top: 1px solid var(--line);
+    }
+
+    .skills-layout {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .skill-category {
+      margin-bottom: 2.5rem;
+    }
+
+    .skill-cat-title {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.5rem;
+      color: var(--text-2);
+      letter-spacing: 0.12em;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .skill-cat-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--line);
+    }
+
+    .skill-bars {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .skill-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .skill-name-lbl {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.4rem;
+      letter-spacing: 0.06em;
+      color: var(--text-2);
+      min-width: 80px;
+    }
+
+    .skill-bar-wrap {
+      flex: 1;
+      height: 12px;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skill-bar-fill {
+      height: 100%;
+      background: repeating-linear-gradient(90deg, var(--bar-color, var(--purple)) 0, var(--bar-color, var(--purple)) 10px, color-mix(in srgb, var(--bar-color, var(--purple)) 60%, black) 10px, color-mix(in srgb, var(--bar-color, var(--purple)) 60%, black) 12px);
+      width: 0%;
+      transition: width 1.2s cubic-bezier(.4, 0, .2, 1);
+    }
+
+    .skill-pct {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.36rem;
+      color: var(--text-3);
+      min-width: 28px;
+      text-align: right;
+    }
+
+    /* tool grid */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.8rem;
+    }
+
+    .tool-chip {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      padding: 1rem 0.8rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      transition: transform .15s, box-shadow .15s, border-color .15s;
+      cursor: default;
+    }
+
+    .tool-chip:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 4px 4px 0 var(--chip-color, var(--purple-dk));
+      border-color: var(--chip-color, var(--purple-dk));
+    }
+
+    .tool-chip-icon {
+      font-size: 1.5rem;
+    }
+
+    .tool-chip-name {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.35rem;
+      color: var(--text-2);
+      letter-spacing: 0.06em;
+      text-align: center;
+    }
+
+    .tool-chip-badge {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.3rem;
+      padding: 0.15rem 0.4rem;
+      background: var(--bg);
+      color: var(--chip-color, var(--purple));
+      border: 1px solid var(--chip-color, var(--purple-dk));
+      letter-spacing: 0.05em;
+    }
+
+    /* ─── DEMO SECTION ────────────────────────────────────── */
+    #demo {
+      background: var(--bg);
+      border-top: 1px solid var(--line);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #demo .section-label {
+      color: var(--text-3);
+    }
+
+    #demo .section-label::before {
+      color: var(--yellow);
+    }
+
+    #demo .section-title {
+      color: var(--text);
+    }
+
+    #demo .section-title em {
+      color: var(--yellow);
+    }
+
+    .demo-scanlines {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.08) 0, rgba(0, 0, 0, 0.08) 1px, transparent 1px, transparent 3px);
+    }
+
+    .demo-layout {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .demo-screen {
+      background: #050510;
+      border: 1px solid var(--line);
+      box-shadow: 0 0 0 1px var(--purple-dk), 12px 12px 0 #000, 0 0 60px rgba(124, 58, 237, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .demo-screen-bar {
+      background: rgba(255, 255, 255, 0.03);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 0.5rem 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .demo-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 0;
+    }
+
+    .demo-dot-r {
+      background: var(--pink);
+    }
+
+    .demo-dot-y {
+      background: var(--yellow);
+    }
+
+    .demo-dot-g {
+      background: var(--green);
+    }
+
+    .demo-screen-title {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.38rem;
+      color: rgba(255, 255, 255, 0.25);
+      margin-left: auto;
+      letter-spacing: 0.1em;
+    }
+
+    #gameCanvas {
+      display: block;
+      width: 100%;
+      image-rendering: pixelated;
+      background: #050510;
+    }
+
+    .demo-controls-hint {
+      padding: 0.7rem 0.9rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .ctrl {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.33rem;
+      color: rgba(255, 255, 255, 0.3);
+      letter-spacing: 0.08em;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .kbd {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+      padding: 0.2rem 0.45rem;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .demo-info {
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .demo-info h3 {
+      font-family: 'Audiowide', sans-serif;
+      font-size: 1.5rem;
+      color: white;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .demo-info p {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.5);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+
+    .demo-stat-pills {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .demo-pill {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.4rem;
+      padding: 0.45rem 0.9rem;
+      border: 1px solid var(--line);
+      color: var(--text-3);
+      letter-spacing: 0.08em;
+      background: var(--bg-card);
+    }
+
+    .demo-pill.active {
+      background: var(--purple-dk);
+      border-color: var(--purple);
+      color: white;
+    }
+
+    /* ─── CONTACT ─────────────────────────────────────────── */
+    #contact {
+      background: var(--bg-2);
+      border-top: 1px solid var(--line);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .form-label {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.42rem;
+      color: var(--text-2);
+      letter-spacing: 0.1em;
+    }
+
+    .form-input,
+    .form-textarea {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      padding: 0.85rem 1rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text);
+      outline: none;
+      transition: border-color .15s, box-shadow .15s;
+      width: 100%;
+      box-shadow: 3px 3px 0 #000;
+    }
+
+    .form-input::placeholder,
+    .form-textarea::placeholder {
+      color: var(--text-3);
+    }
+
+    .form-input:focus,
+    .form-textarea:focus {
+      border-color: var(--purple-dk);
+      box-shadow: 3px 3px 0 var(--purple-dk);
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 130px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-link-card {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      padding: 1.1rem 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      text-decoration: none;
+      transition: transform .15s, box-shadow .15s, border-color .15s;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .contact-link-card:hover {
+      transform: translate(-3px, -3px);
+      box-shadow: 5px 5px 0 var(--lc-color, var(--purple-dk));
+      border-color: var(--lc-color, var(--purple-dk));
+    }
+
+    .contact-link-icon {
+      font-size: 1.3rem;
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      flex-shrink: 0;
+    }
+
+    .contact-link-name {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.42rem;
+      color: var(--text);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.3rem;
+    }
+
+    .contact-link-val {
+      font-size: 0.82rem;
+      color: var(--text-2);
+    }
+
+    /* ─── FOOTER ──────────────────────────────────────────── */
+    footer {
+      background: var(--bg-3);
+      border-top: 1px solid var(--line);
+      padding: 2rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    footer p,
+    footer a {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.4rem;
+      color: var(--text-3);
+      letter-spacing: 0.1em;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: var(--purple);
+    }
+
+    /* ─── SCROLL REVEAL ───────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ─── RESPONSIVE ──────────────────────────────────────── */
+    @media (max-width: 900px) {
+
+      .hero-inner,
+      .about-grid,
+      .skills-layout,
+      .demo-layout,
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .hero-visual-wrap {
+        order: -1;
+      }
+
+      .hero-terminal {
+        width: 100%;
+        max-width: 320px;
+      }
+
+      nav {
+        padding: 0 1.5rem;
+      }
+
+      .nav-links a {
+        font-size: 0.38rem;
+        padding: 0.4rem 0.6rem;
+      }
+
+      .section {
+        padding: 4rem 1.5rem;
+      }
+
+      .tools-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
 </head>
+
 <body class="grid-bg">
 
-<!-- ═══ NAV ═══════════════════════════════════════════ -->
-<nav>
-  <a href="#hero" class="nav-logo">
-    <div class="nav-logo-icon">🕹</div>
-    Digvijay<span>.dev</span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#projects">Games</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#demo">Demo</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="https://magicemperor30.github.io/" target="_blank" style="color:var(--text-3);">GitHub</a></li>
-  </ul>
-  <button class="theme-toggle" id="themeToggle" title="Toggle theme">🌙</button>
-</nav>
+  <!-- ═══ NAV ═══════════════════════════════════════════ -->
+  <nav>
+    <a href="#hero" class="nav-logo">
+      <div class="nav-logo-icon">🕹</div>
+      Digvijay<span>.dev</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Games</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#demo">Demo</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="https://github.com/MagicEmperor30" target="_blank" style="color:var(--text-3);">GitHub</a></li>
+    </ul>
+    <button class="theme-toggle" id="themeToggle" title="Toggle theme">🌙</button>
+  </nav>
 
-<!-- ═══ HERO ═══════════════════════════════════════════ -->
-<section id="hero" class="section">
-  <div class="section-inner">
-    <div class="hero-inner">
+  <!-- ═══ HERO ═══════════════════════════════════════════ -->
+  <section id="hero" class="section">
+    <div class="section-inner">
+      <div class="hero-inner">
 
-      <div class="hero-text reveal">
-        <div class="hero-eyebrow">Unity Game Developer</div>
-        <h1 class="hero-name">
-          Digvijay<br>
-          <span>Sasane</span>
-        </h1>
-        <p class="hero-role">
-          <span id="role-text">Building Worlds in Unity</span>
-          <span class="role-cursor"></span>
-        </p>
-        <p class="hero-desc">
-          I craft immersive game experiences — from pixel-art platformers and tower defense to 3D endless runners and mobile educational games. Currently shipping keyboard learning games at Furtados School of Music.
-        </p>
-        <div class="hero-ctas">
-          <a href="#projects" class="btn btn-primary">▶ View Games</a>
-          <a href="#demo" class="btn btn-outline">🕹 Play Demo</a>
-          <a href="#contact" class="btn btn-purple">✉ Hire Me</a>
-        </div>
-      </div>
-
-      <div class="hero-visual-wrap reveal" id="heroVisual">
-        <div class="hero-terminal">
-          <div class="tc3"></div><div class="tc4"></div>
-          <div class="hero-terminal-bar">
-            <span class="t-dot t-dot-r"></span>
-            <span class="t-dot t-dot-y"></span>
-            <span class="t-dot t-dot-g"></span>
-            <span class="terminal-title">developer.json</span>
-          </div>
-          <div class="terminal-body">
-            <div class="t-comment">// Digvijay Sasane</div>
-            <div>{</div>
-            <div>&nbsp;&nbsp;<span class="t-key">"role"</span>: <span class="t-str">"Game Dev"</span>,</div>
-            <div>&nbsp;&nbsp;<span class="t-key">"engine"</span>: <span class="t-str">"Unity"</span>,</div>
-            <div>&nbsp;&nbsp;<span class="t-key">"lang"</span>: <span class="t-str">"C#"</span>,</div>
-            <div>&nbsp;&nbsp;<span class="t-key">"shipped"</span>: <span class="t-num">2</span>,</div>
-            <div>&nbsp;&nbsp;<span class="t-key">"platforms"</span>: [</div>
-            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-str">"Android"</span>,</div>
-            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-str">"WebGL"</span>,</div>
-            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-str">"Windows"</span></div>
-            <div>&nbsp;&nbsp;],</div>
-            <div>&nbsp;&nbsp;<span class="t-key">"status"</span>: <span class="t-val">"open_to_work"</span></div>
-            <div>}<span class="t-cursor"></span></div>
+        <div class="hero-text reveal">
+          <div class="hero-eyebrow">Unity Game Developer</div>
+          <h1 class="hero-name">
+            Digvijay<br>
+            <span>Sasane</span>
+          </h1>
+          <p class="hero-role">
+            <span id="role-text">Building Worlds in Unity</span>
+            <span class="role-cursor"></span>
+          </p>
+          <p class="hero-desc">
+            I craft immersive game experiences — from pixel-art platformers and tower defense to 3D endless runners and
+            mobile educational games. Currently shipping keyboard learning games at Furtados School of Music.
+          </p>
+          <div class="hero-ctas">
+            <a href="#projects" class="btn btn-primary">▶ View Games</a>
+            <a href="#demo" class="btn btn-outline">🕹 Play Demo</a>
+            <a href="#contact" class="btn btn-purple">✉ Hire Me</a>
           </div>
         </div>
-      </div>
 
-    </div>
-  </div>
-</section>
-
-<div class="px-divider"></div>
-
-<!-- ═══ ABOUT ══════════════════════════════════════════ -->
-<section id="about" class="section">
-  <div class="section-inner">
-    <div class="section-label">Section 01</div>
-    <h2 class="section-title reveal">About <em>Me</em></h2>
-
-    <div class="about-grid">
-      <div class="about-stat-row reveal">
-        <div class="about-stat">
-          <div class="about-stat-icon">🎮</div>
-          <div>
-            <div class="about-stat-num">1+</div>
-            <div class="about-stat-lbl">Years in Game Dev</div>
-          </div>
-        </div>
-        <div class="about-stat">
-          <div class="about-stat-icon">📦</div>
-          <div>
-            <div class="about-stat-num">2</div>
-            <div class="about-stat-lbl">Games Shipped to Production</div>
-          </div>
-        </div>
-        <div class="about-stat">
-          <div class="about-stat-icon">📱</div>
-          <div>
-            <div class="about-stat-num">3</div>
-            <div class="about-stat-lbl">Platforms Deployed</div>
-          </div>
-        </div>
-        <div class="about-stat">
-          <div class="about-stat-icon">🎓</div>
-          <div>
-            <div class="about-stat-num">8.8</div>
-            <div class="about-stat-lbl">CGPA · B.Sc Computer Science</div>
-          </div>
-        </div>
-        <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.5rem;">
-          <span class="highlight-tag" style="background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue);">Unity</span>
-          <span class="highlight-tag" style="background:var(--purple-bg);color:var(--purple);border:1px solid var(--purple-dk);">C#</span>
-          <span class="highlight-tag" style="background:var(--pink-bg);color:var(--pink);border:1px solid var(--pink);">Game Design</span>
-          <span class="highlight-tag" style="background:var(--yellow-bg);color:var(--yellow);border:1px solid var(--yellow);">Mobile</span>
-          <span class="highlight-tag" style="background:var(--green-bg);color:var(--green);border:1px solid var(--green);">WebGL</span>
-        </div>
-      </div>
-
-      <div class="about-text reveal">
-        <p>Hi! I'm Digvijay — a game developer from Mumbai with a passion for building engaging, polished game experiences. I specialize in Unity with C#, covering everything from gameplay systems and enemy AI to custom shaders, VFX, and mobile deployment.</p>
-        <p>Currently working at <strong>Furtados School of Music</strong>, where I'm building a suite of interactive music education games for learning the keyboard — shipped cross-platform to WebGL, Android, and Windows.</p>
-        <p>My previous internship at <strong>Dikshavision LLP</strong> gave me hands-on experience shipping <em>Turbo Rage</em> — a full 3D racing game — to the Google Play Store, complete with spline-based AI, Google Play Games SDK integration, and VFX.</p>
-        <p>I love combining technical craftsmanship with visual creativity — whether it's a 2D pixel-art world, a low-poly 3D environment, or a procedurally generated endless runner.</p>
-        <div style="margin-top:1.8rem;display:flex;gap:1rem;flex-wrap:wrap;">
-          <a href="https://www.linkedin.com/in/digvijay-sasane-725163260/" target="_blank" class="btn btn-primary" style="font-size:0.42rem;">🌐 LinkedIn</a>
-          <a href="https://magicemperor30.itch.io" target="_blank" class="btn btn-outline" style="font-size:0.42rem;">🎮 itch.io</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="px-divider"></div>
-
-<!-- ═══ PROJECTS ═══════════════════════════════════════ -->
-<section id="projects" class="section">
-  <div class="section-inner">
-    <div class="section-label">Section 02</div>
-    <h2 class="section-title reveal">Game <em>Projects</em></h2>
-
-    <div class="projects-grid">
-
-      <div class="project-card accent-purple reveal" data-card>
-        <div class="card-slider" data-slider>
-          <span class="card-genre">2D PLATFORMER</span>
-          <span class="card-platform">PC</span>
-          <div class="card-slider-track">
-            <img src="images/Platformer1.png" alt="Start screen">
-            <img src="images/Platformer2.png" alt="Goblin combat">
-            <img src="images/platformer3.png" alt="Flying enemy">
-            <img src="images/Platformer4.png" alt="Bow shooting">
-            <img src="images/Platformer5.png" alt="Boss fight">
-          </div>
-          <button class="slide-btn slide-prev">‹</button>
-          <button class="slide-btn slide-next">›</button>
-          <div class="slide-pips">
-            <span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span>
-          </div>
-        </div>
-        <div class="card-body">
-          <div class="card-title">Realm of the Death Bringer</div>
-          <p class="card-desc">Complete 2D action platformer with melee combat, ranged bow attacks, multiple enemy AI types (ground, flying, boss), multi-level progression, and a full pause/game-flow system.</p>
-          <div class="card-tags">
-            <span class="card-tag">UNITY</span><span class="card-tag">C#</span><span class="card-tag">PIXEL ART</span><span class="card-tag">ENEMY AI</span><span class="card-tag">BOSS FIGHT</span>
-          </div>
-        </div>
-        <div class="card-footer">
-          <a href="https://magicemperor30.itch.io/realm-of-the-death-bringer" target="_blank" class="card-link">Play on itch.io</a>
-          <span style="font-family:'Press Start 2P',monospace;font-size:0.36rem;color:var(--text-3);">⭐ PERSONAL</span>
-        </div>
-      </div>
-
-      <div class="project-card accent-blue reveal" data-card>
-        <div class="card-slider" data-slider>
-          <span class="card-genre">TOWER DEFENSE</span>
-          <span class="card-platform">PC</span>
-          <div class="card-slider-track">
-            <img src="images/CastleDefender.png" alt="Castle Defenders">
-          </div>
-          <div class="slide-pips"><span class="pip on"></span></div>
-        </div>
-        <div class="card-body">
-          <div class="card-title">Castle Defenders</div>
-          <p class="card-desc">3D voxel-art tower defense with grid-based tower placement, wave-based enemy AI, and strategic resource management. Medieval fantasy aesthetic in HD voxel resolution, mouse-only controls.</p>
-          <div class="card-tags">
-            <span class="card-tag">UNITY</span><span class="card-tag">C#</span><span class="card-tag">VOXEL</span><span class="card-tag">GRID SYSTEM</span><span class="card-tag">3D</span>
-          </div>
-        </div>
-        <div class="card-footer">
-          <a href="https://magicemperor30.itch.io/castle-defenders" target="_blank" class="card-link">Play on itch.io</a>
-          <span style="font-family:'Press Start 2P',monospace;font-size:0.36rem;color:var(--text-3);">⭐ PERSONAL</span>
-        </div>
-      </div>
-
-      <div class="project-card accent-yellow reveal" data-card>
-        <div class="card-slider" data-slider>
-          <span class="card-genre">ENDLESS RUNNER</span>
-          <span class="card-platform">PC</span>
-          <div class="card-slider-track">
-            <img src="images/KingsRush1.png" alt="Kings Rush menu">
-            <img src="images/KingsRush2.png" alt="Kings Rush run">
-          </div>
-          <button class="slide-btn slide-prev">‹</button>
-          <button class="slide-btn slide-next">›</button>
-          <div class="slide-pips"><span class="pip on"></span><span class="pip"></span></div>
-        </div>
-        <div class="card-body">
-          <div class="card-title">Kings Rush</div>
-          <p class="card-desc">3D endless runner on a physics-based shaky bridge. Procedurally generated obstacles, collectible power-ups, and checkpoints. Rigidbody physics make every run completely unique.</p>
-          <div class="card-tags">
-            <span class="card-tag">UNITY</span><span class="card-tag">C#</span><span class="card-tag">PROCEDURAL</span><span class="card-tag">PHYSICS</span><span class="card-tag">3D</span>
-          </div>
-        </div>
-        <div class="card-footer">
-          <a href="https://magicemperor30.itch.io/kings-rush" target="_blank" class="card-link">Play on itch.io</a>
-          <span style="font-family:'Press Start 2P',monospace;font-size:0.36rem;color:var(--text-3);">⭐ PERSONAL</span>
-        </div>
-      </div>
-
-      <div class="project-card accent-green reveal" data-card>
-        <div class="card-slider" data-slider>
-          <span class="card-genre">FPS SHOOTER</span>
-          <span class="card-platform">PC</span>
-          <div class="card-slider-track">
-            <img src="images/ZombieShooter.png" alt="Zombie Shooter forest">
-          </div>
-          <div class="slide-pips"><span class="pip on"></span></div>
-        </div>
-        <div class="card-body">
-          <div class="card-title">Zombie Shooter</div>
-          <p class="card-desc">First-person survival shooter in a dark atmospheric forest. Survive zombie waves using precise aim and positioning — built with dramatic real-time lighting and dense foliage rendering.</p>
-          <div class="card-tags">
-            <span class="card-tag">UNITY</span><span class="card-tag">FPS</span><span class="card-tag">ENEMY AI</span><span class="card-tag">LIGHTING</span>
-          </div>
-        </div>
-        <div class="card-footer">
-          <a href="https://magicemperor30.itch.io/zombie-killer" target="_blank" class="card-link">Play on itch.io</a>
-          <span style="font-family:'Press Start 2P',monospace;font-size:0.36rem;color:var(--text-3);">⭐ PERSONAL PROJECT</span>
-        </div>
-      </div>
-
-      <div class="project-card accent-pink reveal" data-card>
-        <div class="card-slider" data-slider>
-          <span class="card-genre">3D RACING</span>
-          <span class="card-platform" style="border-color:var(--green);color:var(--green);">ANDROID</span>
-          <div class="card-slider-track">
-            <div style="min-width:100%;height:100%;background:linear-gradient(135deg,#0a0014 0%,#1a0030 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;">
-              <span style="font-size:4rem;">🏎</span>
-              <span style="font-family:'Press Start 2P',monospace;font-size:0.5rem;color:rgba(255,255,255,0.35);letter-spacing:0.1em;">TURBO RAGE</span>
+        <div class="hero-visual-wrap reveal" id="heroVisual">
+          <div class="hero-terminal">
+            <div class="tc3"></div>
+            <div class="tc4"></div>
+            <div class="hero-terminal-bar">
+              <span class="t-dot t-dot-r"></span>
+              <span class="t-dot t-dot-y"></span>
+              <span class="t-dot t-dot-g"></span>
+              <span class="terminal-title">developer.json</span>
+            </div>
+            <div class="terminal-body">
+              <div class="t-comment">// Digvijay Sasane</div>
+              <div>{</div>
+              <div>&nbsp;&nbsp;<span class="t-key">"role"</span>: <span class="t-str">"Game Dev"</span>,</div>
+              <div>&nbsp;&nbsp;<span class="t-key">"engine"</span>: <span class="t-str">"Unity"</span>,</div>
+              <div>&nbsp;&nbsp;<span class="t-key">"lang"</span>: <span class="t-str">"C#"</span>,</div>
+              <div>&nbsp;&nbsp;<span class="t-key">"shipped"</span>: <span class="t-num">2</span>,</div>
+              <div>&nbsp;&nbsp;<span class="t-key">"platforms"</span>: [</div>
+              <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-str">"Android"</span>,</div>
+              <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-str">"WebGL"</span>,</div>
+              <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-str">"Windows"</span></div>
+              <div>&nbsp;&nbsp;],</div>
+              <div>&nbsp;&nbsp;<span class="t-key">"status"</span>: <span class="t-val">"open_to_work"</span></div>
+              <div>}<span class="t-cursor"></span></div>
             </div>
           </div>
-          <div class="slide-pips"><span class="pip on"></span></div>
         </div>
-        <div class="card-body">
-          <div class="card-title">Turbo Rage</div>
-          <p class="card-desc">Arcade 3D racing game live on Google Play. Spline-based AI opponents, custom shaders and VFX, Google Play Games SDK, Google Login — built during Dikshavision LLP internship.</p>
-          <div class="card-tags">
-            <span class="card-tag">UNITY</span><span class="card-tag">SPLINE AI</span><span class="card-tag">SHADERS</span><span class="card-tag">GOOGLE PLAY</span><span class="card-tag">PUBLISHED</span>
-          </div>
-        </div>
-        <div class="card-footer">
-          <a href="https://play.google.com/store/apps/details?id=com.DikshaVisionLLP.TurboRage" target="_blank" class="card-link">Play Store</a>
-          <span style="font-family:'Press Start 2P',monospace;font-size:0.36rem;color:var(--pink);">✦ PUBLISHED</span>
-        </div>
-      </div>
 
-      <div class="project-card accent-blue reveal" data-card>
-        <div class="card-slider" data-slider>
-          <span class="card-genre">EDUCATIONAL</span>
-          <span class="card-platform" style="border-color:var(--blue);color:var(--blue);">MULTI-PLATFORM</span>
-          <div class="card-slider-track">
-            <div style="min-width:100%;height:100%;background:linear-gradient(135deg,#000c1f 0%,#001530 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;">
-              <span style="font-size:4rem;">🎹</span>
-              <span style="font-family:'Press Start 2P',monospace;font-size:0.5rem;color:rgba(255,255,255,0.35);letter-spacing:0.1em;">KEYS ARE FUN</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="px-divider"></div>
+
+  <!-- ═══ ABOUT ══════════════════════════════════════════ -->
+  <section id="about" class="section">
+    <div class="section-inner">
+      <div class="section-label">Section 01</div>
+      <h2 class="section-title reveal">About <em>Me</em></h2>
+
+      <div class="about-grid">
+        <div class="about-stat-row reveal">
+          <div class="about-stat">
+            <div class="about-stat-icon">🎮</div>
+            <div>
+              <div class="about-stat-num">1+</div>
+              <div class="about-stat-lbl">Years in Game Dev</div>
             </div>
           </div>
-          <div class="slide-pips"><span class="pip on"></span></div>
-        </div>
-        <div class="card-body">
-          <div class="card-title">Keys Are Fun</div>
-          <p class="card-desc">Suite of 2D music education games for keyboard learning — rhythm challenges, puzzles, and beat mechanics — built with educators and live on keysarefun.com and Google Play.</p>
-          <div class="card-tags">
-            <span class="card-tag">UNITY</span><span class="card-tag">WEBGL</span><span class="card-tag">ANDROID</span><span class="card-tag">EDUCATION</span><span class="card-tag">PUBLISHED</span>
+          <div class="about-stat">
+            <div class="about-stat-icon">📦</div>
+            <div>
+              <div class="about-stat-num">2</div>
+              <div class="about-stat-lbl">Games Shipped to Production</div>
+            </div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-icon">📱</div>
+            <div>
+              <div class="about-stat-num">3</div>
+              <div class="about-stat-lbl">Platforms Deployed</div>
+            </div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-icon">🎓</div>
+            <div>
+              <div class="about-stat-num">8.8</div>
+              <div class="about-stat-lbl">CGPA · B.Sc Computer Science</div>
+            </div>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.5rem;">
+            <span class="highlight-tag"
+              style="background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue);">Unity</span>
+            <span class="highlight-tag"
+              style="background:var(--purple-bg);color:var(--purple);border:1px solid var(--purple-dk);">C#</span>
+            <span class="highlight-tag"
+              style="background:var(--pink-bg);color:var(--pink);border:1px solid var(--pink);">Game Design</span>
+            <span class="highlight-tag"
+              style="background:var(--yellow-bg);color:var(--yellow);border:1px solid var(--yellow);">Mobile</span>
+            <span class="highlight-tag"
+              style="background:var(--green-bg);color:var(--green);border:1px solid var(--green);">WebGL</span>
           </div>
         </div>
-        <div class="card-footer">
-          <a href="https://play.google.com/store/apps/details?id=com.keysarefun" target="_blank" class="card-link">Play Store</a>
-          <span style="font-family:'Press Start 2P',monospace;font-size:0.36rem;color:var(--blue);">✦ PUBLISHED</span>
-        </div>
-      </div>
 
-    </div>
-  </div>
-</section>
-
-<div class="px-divider"></div>
-
-<!-- ═══ SKILLS ══════════════════════════════════════════ -->
-<section id="skills" class="section">
-  <div class="section-inner">
-    <div class="section-label">Section 03</div>
-    <h2 class="section-title reveal">Skills & <em>Tools</em></h2>
-
-    <div class="skills-layout">
-      <div class="reveal">
-        <div class="skill-category">
-          <div class="skill-cat-title">Core Skills</div>
-          <div class="skill-bars" id="skillBars">
-            <div class="skill-row"><span class="skill-name-lbl">Unity</span><div class="skill-bar-wrap"><div class="skill-bar-fill" style="--bar-color:var(--purple)" data-pct="70"></div></div><span class="skill-pct">70%</span></div>
-            <div class="skill-row"><span class="skill-name-lbl">C#</span><div class="skill-bar-wrap"><div class="skill-bar-fill" style="--bar-color:var(--blue)" data-pct="65"></div></div><span class="skill-pct">65%</span></div>
-            <div class="skill-row"><span class="skill-name-lbl">Game Design</span><div class="skill-bar-wrap"><div class="skill-bar-fill" style="--bar-color:var(--pink)" data-pct="65"></div></div><span class="skill-pct">65%</span></div>
-            <div class="skill-row"><span class="skill-name-lbl">Enemy AI</span><div class="skill-bar-wrap"><div class="skill-bar-fill" style="--bar-color:var(--green)" data-pct="60"></div></div><span class="skill-pct">60%</span></div>
-            <div class="skill-row"><span class="skill-name-lbl">UI Design</span><div class="skill-bar-wrap"><div class="skill-bar-fill" style="--bar-color:var(--yellow)" data-pct="60"></div></div><span class="skill-pct">60%</span></div>
-            <div class="skill-row"><span class="skill-name-lbl">Mobile Dev</span><div class="skill-bar-wrap"><div class="skill-bar-fill" style="--bar-color:var(--purple)" data-pct="60"></div></div><span class="skill-pct">60%</span></div>
+        <div class="about-text reveal">
+          <p>Hi! I'm Digvijay — a game developer from Mumbai with a passion for building engaging, polished game
+            experiences. I specialize in Unity with C#, covering everything from gameplay systems and enemy AI to custom
+            shaders, VFX, and mobile deployment.</p>
+          <p>Currently working at <strong>Furtados School of Music</strong>, where I'm building a suite of interactive
+            music education games for learning the keyboard — shipped cross-platform to WebGL, Android, and Windows.</p>
+          <p>My previous internship at <strong>Dikshavision LLP</strong> gave me hands-on experience shipping <em>Turbo
+              Rage</em> — a full 3D racing game — to the Google Play Store, complete with spline-based AI, Google Play
+            Games SDK integration, and VFX.</p>
+          <p>I love combining technical craftsmanship with visual creativity — whether it's a 2D pixel-art world, a
+            low-poly 3D environment, or a procedurally generated endless runner.</p>
+          <div style="margin-top:1.8rem;display:flex;gap:1rem;flex-wrap:wrap;">
+            <a href="https://www.linkedin.com/in/digvijay-sasane-725163260/" target="_blank" class="btn btn-primary"
+              style="font-size:0.42rem;">🌐 LinkedIn</a>
+            <a href="https://magicemperor30.itch.io" target="_blank" class="btn btn-outline"
+              style="font-size:0.42rem;">🎮 itch.io</a>
           </div>
-        </div>
-      </div>
-
-      <div class="reveal">
-        <div class="skill-cat-title">Tools & Platforms</div>
-        <div class="tools-grid">
-          <div class="tool-chip" style="--chip-color:var(--purple)"><div class="tool-chip-icon">🎮</div><div class="tool-chip-name">Unity</div><div class="tool-chip-badge">PRIMARY</div></div>
-          <div class="tool-chip" style="--chip-color:var(--blue)"><div class="tool-chip-icon">💎</div><div class="tool-chip-name">C# .NET</div><div class="tool-chip-badge">PRIMARY</div></div>
-          <div class="tool-chip" style="--chip-color:var(--pink)"><div class="tool-chip-icon">📱</div><div class="tool-chip-name">Android</div><div class="tool-chip-badge">DEPLOYED</div></div>
-          <div class="tool-chip" style="--chip-color:var(--green)"><div class="tool-chip-icon">🌐</div><div class="tool-chip-name">WebGL</div><div class="tool-chip-badge">DEPLOYED</div></div>
-          <div class="tool-chip" style="--chip-color:var(--yellow)"><div class="tool-chip-icon">☁</div><div class="tool-chip-name">Unity Cloud</div><div class="tool-chip-badge">USED</div></div>
-          <div class="tool-chip" style="--chip-color:var(--blue)"><div class="tool-chip-icon">🔑</div><div class="tool-chip-name">Google Play SDK</div><div class="tool-chip-badge">INTEGRATED</div></div>
-          <div class="tool-chip" style="--chip-color:var(--purple)"><div class="tool-chip-icon">✏️</div><div class="tool-chip-name">VS Code</div><div class="tool-chip-badge">DAILY</div></div>
-          <div class="tool-chip" style="--chip-color:var(--pink)"><div class="tool-chip-icon">🎨</div><div class="tool-chip-name">GameUI Design</div><div class="tool-chip-badge">VFX</div></div>
-          <div class="tool-chip" style="--chip-color:var(--green)"><div class="tool-chip-icon">🔧</div><div class="tool-chip-name">Git</div><div class="tool-chip-badge">VERSION CTRL</div></div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<div class="px-divider"></div>
+  <div class="px-divider"></div>
 
-<!-- ═══ DEMO ════════════════════════════════════════════ -->
-<section id="demo" class="section">
-  <div class="demo-scanlines"></div>
-  <div class="section-inner">
-    <div class="section-label">Section 04</div>
-    <h2 class="section-title reveal">Playable <em>Demo</em></h2>
+  <!-- ═══ PROJECTS ═══════════════════════════════════════ -->
+  <section id="projects" class="section">
+    <div class="section-inner">
+      <div class="section-label">Section 02</div>
+      <h2 class="section-title reveal">Game <em>Projects</em></h2>
 
-    <div class="demo-layout">
-      <div class="reveal">
-        <div class="demo-screen px-corners" style="--c:var(--purple)">
-          <div class="tc3"></div><div class="tc4"></div>
-          <div class="demo-screen-bar">
-            <div class="demo-dot demo-dot-r"></div>
-            <div class="demo-dot demo-dot-y"></div>
-            <div class="demo-dot demo-dot-g"></div>
-            <span class="demo-screen-title">PIXEL DODGE · MINI GAME</span>
+      <div class="projects-grid">
+
+        <div class="project-card accent-purple reveal" data-card>
+          <div class="card-slider" data-slider>
+            <span class="card-genre">2D PLATFORMER</span>
+            <span class="card-platform">PC</span>
+            <div class="card-slider-track">
+              <img src="images/Platformer1.png" alt="Start screen">
+              <img src="images/Platformer2.png" alt="Goblin combat">
+              <img src="images/platformer3.png" alt="Flying enemy">
+              <img src="images/Platformer4.png" alt="Bow shooting">
+              <img src="images/Platformer5.png" alt="Boss fight">
+            </div>
+            <button class="slide-btn slide-prev">‹</button>
+            <button class="slide-btn slide-next">›</button>
+            <div class="slide-pips">
+              <span class="pip on"></span><span class="pip"></span><span class="pip"></span><span
+                class="pip"></span><span class="pip"></span>
+            </div>
           </div>
-          <canvas id="gameCanvas" width="480" height="280"></canvas>
-          <div class="demo-controls-hint">
-            <span class="ctrl"><span class="kbd">← →</span> MOVE</span>
-            <span class="ctrl"><span class="kbd">↑</span> JUMP</span>
-            <span class="ctrl"><span class="kbd">SPACE</span> START/RESTART</span>
+          <div class="card-body">
+            <div class="card-title">Realm of the Death Bringer</div>
+            <p class="card-desc">Complete 2D action platformer with melee combat, ranged bow attacks, multiple enemy AI
+              types (ground, flying, boss), multi-level progression, and a full pause/game-flow system.</p>
+            <div class="card-tags">
+              <span class="card-tag">UNITY</span><span class="card-tag">C#</span><span class="card-tag">PIXEL
+                ART</span><span class="card-tag">ENEMY AI</span><span class="card-tag">BOSS FIGHT</span>
+            </div>
+          </div>
+          <div class="card-footer">
+            <a href="https://magicemperor30.itch.io/realm-of-the-death-bringer" target="_blank" class="card-link">Play
+              on itch.io</a>
+            <span style="font-family:'Press Start 2P',monospace;font-size:0.36rem;color:var(--text-3);">⭐
+              PERSONAL</span>
           </div>
         </div>
+
+        <div class="project-card accent-blue reveal" data-card>
+          <div class="card-slider" data-slider>
+            <span class="card-genre">TOWER DEFENSE</span>
+            <span class="card-platform">PC</span>
+            <div class="card-slider-track">
+              <img src="images/CastleDefender.png" alt="Castle Defenders">
+            </div>
+            <div class="slide-pips"><span class="pip on"></span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-title">Castle Defenders</div>
+            <p class="card-desc">3D voxel-art tower defense with grid-based tower placement, wave-based enemy AI, and
+              strategic resource management. Medieval fantasy aesthetic in HD voxel resolution, mouse-only controls.</p>
+            <div class="card-tags">
+              <span class="card-tag">UNITY</span><span class="card-tag">C#</span><span
+                class="card-tag">VOXEL</span><span class="card-tag">GRID SYSTEM</span><span class="card-tag">3D</span>
+            </div>
+          </div>
+          <div class="card-footer">
+            <a href="https://magicemperor30.itch.io/castle-defenders" target="_blank" class="card-link">Play on
+              itch.io</a>
+            <span style="font-family:'Press Start 2P',monospace;font-size:0.36rem;color:var(--text-3);">⭐
+              PERSONAL</span>
+          </div>
+        </div>
+
+        <div class="project-card accent-yellow reveal" data-card>
+          <div class="card-slider" data-slider>
+            <span class="card-genre">ENDLESS RUNNER</span>
+            <span class="card-platform">PC</span>
+            <div class="card-slider-track">
+              <img src="images/KingsRush1.png" alt="Kings Rush menu">
+              <img src="images/KingsRush2.png" alt="Kings Rush run">
+            </div>
+            <button class="slide-btn slide-prev">‹</button>
+            <button class="slide-btn slide-next">›</button>
+            <div class="slide-pips"><span class="pip on"></span><span class="pip"></span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-title">Kings Rush</div>
+            <p class="card-desc">3D endless runner on a physics-based shaky bridge. Procedurally generated obstacles,
+              collectible power-ups, and checkpoints. Rigidbody physics make every run completely unique.</p>
+            <div class="card-tags">
+              <span class="card-tag">UNITY</span><span class="card-tag">C#</span><span
+                class="card-tag">PROCEDURAL</span><span class="card-tag">PHYSICS</span><span class="card-tag">3D</span>
+            </div>
+          </div>
+          <div class="card-footer">
+            <a href="https://magicemperor30.itch.io/kings-rush" target="_blank" class="card-link">Play on itch.io</a>
+            <span style="font-family:'Press Start 2P',monospace;font-size:0.36rem;color:var(--text-3);">⭐
+              PERSONAL</span>
+          </div>
+        </div>
+
+        <div class="project-card accent-green reveal" data-card>
+          <div class="card-slider" data-slider>
+            <span class="card-genre">FPS SHOOTER</span>
+            <span class="card-platform">PC</span>
+            <div class="card-slider-track">
+              <img src="images/ZombieShooter.png" alt="Zombie Shooter forest">
+            </div>
+            <div class="slide-pips"><span class="pip on"></span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-title">Zombie Shooter</div>
+            <p class="card-desc">First-person survival shooter in a dark atmospheric forest. Survive zombie waves using
+              precise aim and positioning — built with dramatic real-time lighting and dense foliage rendering.</p>
+            <div class="card-tags">
+              <span class="card-tag">UNITY</span><span class="card-tag">FPS</span><span class="card-tag">ENEMY
+                AI</span><span class="card-tag">LIGHTING</span>
+            </div>
+          </div>
+          <div class="card-footer">
+            <a href="https://magicemperor30.itch.io/zombie-killer" target="_blank" class="card-link">Play on itch.io</a>
+            <span style="font-family:'Press Start 2P',monospace;font-size:0.36rem;color:var(--text-3);">⭐ PERSONAL
+              PROJECT</span>
+          </div>
+        </div>
+
+        <div class="project-card accent-pink reveal" data-card>
+          <div class="card-slider" data-slider>
+            <span class="card-genre">3D RACING</span>
+            <span class="card-platform" style="border-color:var(--green);color:var(--green);">ANDROID</span>
+            <div class="card-slider-track">
+              <div
+                style="min-width:100%;height:100%;background:linear-gradient(135deg,#0a0014 0%,#1a0030 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;">
+                <span style="font-size:4rem;">🏎</span>
+                <span
+                  style="font-family:'Press Start 2P',monospace;font-size:0.5rem;color:rgba(255,255,255,0.35);letter-spacing:0.1em;">TURBO
+                  RAGE</span>
+              </div>
+            </div>
+            <div class="slide-pips"><span class="pip on"></span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-title">Turbo Rage</div>
+            <p class="card-desc">Arcade 3D racing game live on Google Play. Spline-based AI opponents, custom shaders
+              and VFX, Google Play Games SDK, Google Login — built during Dikshavision LLP internship.</p>
+            <div class="card-tags">
+              <span class="card-tag">UNITY</span><span class="card-tag">SPLINE AI</span><span
+                class="card-tag">SHADERS</span><span class="card-tag">GOOGLE PLAY</span><span
+                class="card-tag">PUBLISHED</span>
+            </div>
+          </div>
+          <div class="card-footer">
+            <a href="https://play.google.com/store/apps/details?id=com.DikshaVisionLLP.TurboRage" target="_blank"
+              class="card-link">Play Store</a>
+            <span style="font-family:'Press Start 2P',monospace;font-size:0.36rem;color:var(--pink);">✦ PUBLISHED</span>
+          </div>
+        </div>
+
+        <div class="project-card accent-blue reveal" data-card>
+          <div class="card-slider" data-slider>
+            <span class="card-genre">EDUCATIONAL</span>
+            <span class="card-platform" style="border-color:var(--blue);color:var(--blue);">MULTI-PLATFORM</span>
+            <div class="card-slider-track">
+              <div
+                style="min-width:100%;height:100%;background:linear-gradient(135deg,#000c1f 0%,#001530 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;">
+                <span style="font-size:4rem;">🎹</span>
+                <span
+                  style="font-family:'Press Start 2P',monospace;font-size:0.5rem;color:rgba(255,255,255,0.35);letter-spacing:0.1em;">KEYS
+                  ARE FUN</span>
+              </div>
+            </div>
+            <div class="slide-pips"><span class="pip on"></span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-title">Keys Are Fun</div>
+            <p class="card-desc">Suite of 2D music education games for keyboard learning — rhythm challenges, puzzles,
+              and beat mechanics — built with educators and live on keysarefun.com and Google Play.</p>
+            <div class="card-tags">
+              <span class="card-tag">UNITY</span><span class="card-tag">WEBGL</span><span
+                class="card-tag">ANDROID</span><span class="card-tag">EDUCATION</span><span
+                class="card-tag">PUBLISHED</span>
+            </div>
+          </div>
+          <div class="card-footer">
+            <a href="https://play.google.com/store/apps/details?id=com.keysarefun" target="_blank"
+              class="card-link">Play Store</a>
+            <span style="font-family:'Press Start 2P',monospace;font-size:0.36rem;color:var(--blue);">✦ PUBLISHED</span>
+          </div>
+        </div>
+
       </div>
+    </div>
+  </section>
 
-      <div class="demo-info reveal">
-        <h3>Pixel Dodge<br>Mini Game</h3>
-        <p>A playable mini game built right into this portfolio — dodge falling pixel blocks, collect gems, and survive as long as possible. Built with vanilla Canvas API to showcase game logic and animation skills.</p>
-        <div class="demo-stat-pills">
-          <span class="demo-pill active">Canvas API</span>
-          <span class="demo-pill">Physics</span>
-          <span class="demo-pill">Collision</span>
-          <span class="demo-pill">Procedural</span>
+  <div class="px-divider"></div>
+
+  <!-- ═══ SKILLS ══════════════════════════════════════════ -->
+  <section id="skills" class="section">
+    <div class="section-inner">
+      <div class="section-label">Section 03</div>
+      <h2 class="section-title reveal">Skills & <em>Tools</em></h2>
+
+      <div class="skills-layout">
+        <div class="reveal">
+          <div class="skill-category">
+            <div class="skill-cat-title">Core Skills</div>
+            <div class="skill-bars" id="skillBars">
+              <div class="skill-row"><span class="skill-name-lbl">Unity</span>
+                <div class="skill-bar-wrap">
+                  <div class="skill-bar-fill" style="--bar-color:var(--purple)" data-pct="70"></div>
+                </div><span class="skill-pct">70%</span>
+              </div>
+              <div class="skill-row"><span class="skill-name-lbl">C#</span>
+                <div class="skill-bar-wrap">
+                  <div class="skill-bar-fill" style="--bar-color:var(--blue)" data-pct="65"></div>
+                </div><span class="skill-pct">65%</span>
+              </div>
+              <div class="skill-row"><span class="skill-name-lbl">Game Design</span>
+                <div class="skill-bar-wrap">
+                  <div class="skill-bar-fill" style="--bar-color:var(--pink)" data-pct="65"></div>
+                </div><span class="skill-pct">65%</span>
+              </div>
+              <div class="skill-row"><span class="skill-name-lbl">Enemy AI</span>
+                <div class="skill-bar-wrap">
+                  <div class="skill-bar-fill" style="--bar-color:var(--green)" data-pct="60"></div>
+                </div><span class="skill-pct">60%</span>
+              </div>
+              <div class="skill-row"><span class="skill-name-lbl">UI Design</span>
+                <div class="skill-bar-wrap">
+                  <div class="skill-bar-fill" style="--bar-color:var(--yellow)" data-pct="60"></div>
+                </div><span class="skill-pct">60%</span>
+              </div>
+              <div class="skill-row"><span class="skill-name-lbl">Mobile Dev</span>
+                <div class="skill-bar-wrap">
+                  <div class="skill-bar-fill" style="--bar-color:var(--purple)" data-pct="60"></div>
+                </div><span class="skill-pct">60%</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div style="display:flex;flex-direction:column;gap:0.7rem;">
-          <a href="https://magicemperor30.itch.io" target="_blank" class="btn btn-purple" style="font-size:0.45rem;text-align:center;">🕹 Full Games on itch.io</a>
-          <a href="https://play.google.com/store/apps/details?id=com.keysarefun" target="_blank" class="btn btn-outline" style="font-size:0.45rem;text-align:center;">📱 Keys Are Fun — Play Store</a>
+
+        <div class="reveal">
+          <div class="skill-cat-title">Tools & Platforms</div>
+          <div class="tools-grid">
+            <div class="tool-chip" style="--chip-color:var(--purple)">
+              <div class="tool-chip-icon">🎮</div>
+              <div class="tool-chip-name">Unity</div>
+              <div class="tool-chip-badge">PRIMARY</div>
+            </div>
+            <div class="tool-chip" style="--chip-color:var(--blue)">
+              <div class="tool-chip-icon">💎</div>
+              <div class="tool-chip-name">C# .NET</div>
+              <div class="tool-chip-badge">PRIMARY</div>
+            </div>
+            <div class="tool-chip" style="--chip-color:var(--pink)">
+              <div class="tool-chip-icon">📱</div>
+              <div class="tool-chip-name">Android</div>
+              <div class="tool-chip-badge">DEPLOYED</div>
+            </div>
+            <div class="tool-chip" style="--chip-color:var(--green)">
+              <div class="tool-chip-icon">🌐</div>
+              <div class="tool-chip-name">WebGL</div>
+              <div class="tool-chip-badge">DEPLOYED</div>
+            </div>
+            <div class="tool-chip" style="--chip-color:var(--yellow)">
+              <div class="tool-chip-icon">☁</div>
+              <div class="tool-chip-name">Unity Cloud</div>
+              <div class="tool-chip-badge">USED</div>
+            </div>
+            <div class="tool-chip" style="--chip-color:var(--blue)">
+              <div class="tool-chip-icon">🔑</div>
+              <div class="tool-chip-name">Google Play SDK</div>
+              <div class="tool-chip-badge">INTEGRATED</div>
+            </div>
+            <div class="tool-chip" style="--chip-color:var(--purple)">
+              <div class="tool-chip-icon">✏️</div>
+              <div class="tool-chip-name">VS Code</div>
+              <div class="tool-chip-badge">DAILY</div>
+            </div>
+            <div class="tool-chip" style="--chip-color:var(--pink)">
+              <div class="tool-chip-icon">🎨</div>
+              <div class="tool-chip-name">GameUI Design</div>
+              <div class="tool-chip-badge">VFX</div>
+            </div>
+            <div class="tool-chip" style="--chip-color:var(--green)">
+              <div class="tool-chip-icon">🔧</div>
+              <div class="tool-chip-name">Git</div>
+              <div class="tool-chip-badge">VERSION CTRL</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<div class="px-divider"></div>
+  <div class="px-divider"></div>
 
-<!-- ═══ CONTACT ═════════════════════════════════════════ -->
-<section id="contact" class="section">
-  <div class="section-inner">
-    <div class="section-label">Section 05</div>
-    <h2 class="section-title reveal">Get in <em>Touch</em></h2>
+  <!-- ═══ DEMO ════════════════════════════════════════════ -->
+  <section id="demo" class="section">
+    <div class="demo-scanlines"></div>
+    <div class="section-inner">
+      <div class="section-label">Section 04</div>
+      <h2 class="section-title reveal">Playable <em>Demo</em></h2>
 
-    <div class="contact-grid">
-      <div class="reveal">
-        <p style="color:var(--text-2);margin-bottom:2rem;line-height:1.75;">Open to Junior game developer roles, freelance projects, and exciting collaborations. Based in Mumbai — available remotely. Let's build something awesome together!</p>
-        <div class="contact-form">
-          <div class="form-group">
-            <label class="form-label">Your Name</label>
-            <input class="form-input" type="text" placeholder="Player One...">
+      <div class="demo-layout">
+        <div class="reveal">
+          <div class="demo-screen px-corners" style="--c:var(--purple)">
+            <div class="tc3"></div>
+            <div class="tc4"></div>
+            <div class="demo-screen-bar">
+              <div class="demo-dot demo-dot-r"></div>
+              <div class="demo-dot demo-dot-y"></div>
+              <div class="demo-dot demo-dot-g"></div>
+              <span class="demo-screen-title">PIXEL DODGE · MINI GAME</span>
+            </div>
+            <canvas id="gameCanvas" width="480" height="280"></canvas>
+            <div class="demo-controls-hint">
+              <span class="ctrl"><span class="kbd">← →</span> MOVE</span>
+              <span class="ctrl"><span class="kbd">↑</span> JUMP</span>
+              <span class="ctrl"><span class="kbd">SPACE</span> START/RESTART</span>
+            </div>
           </div>
-          <div class="form-group">
-            <label class="form-label">Email</label>
-            <input class="form-input" type="email" placeholder="your@email.com">
-          </div>
-          <div class="form-group">
-            <label class="form-label">Message</label>
-            <textarea class="form-textarea" placeholder="Hey Digvijay, I'd love to..."></textarea>
-          </div>
-          <button class="btn btn-primary" style="width:100%;text-align:center;font-size:0.48rem;">▶ Send Message</button>
         </div>
-      </div>
 
-      <div class="reveal">
-        <div style="margin-bottom:1.5rem;">
-          <div class="section-label" style="margin-bottom:0.5rem;">Direct Links</div>
-        </div>
-        <div class="contact-links">
-          <a href="mailto:piyushsasane30@gmail.com" class="contact-link-card" style="--lc-color:var(--purple-dk)">
-            <div class="contact-link-icon">✉️</div>
-            <div><div class="contact-link-name">Email</div><div class="contact-link-val">piyushsasane30@gmail.com</div></div>
-          </a>
-          <a href="tel:9653673717" class="contact-link-card" style="--lc-color:var(--blue)">
-            <div class="contact-link-icon">📞</div>
-            <div><div class="contact-link-name">Phone</div><div class="contact-link-val">9653673717 · Mumbai, India</div></div>
-          </a>
-          <a href="https://magicemperor30.itch.io" target="_blank" class="contact-link-card" style="--lc-color:var(--pink)">
-            <div class="contact-link-icon">🎮</div>
-            <div><div class="contact-link-name">Itch.io</div><div class="contact-link-val">magicemperor30.itch.io</div></div>
-          </a>
-          <a href="https://linkedin.com/in/digvijay-sasane-725163260" target="_blank" class="contact-link-card" style="--lc-color:var(--green)">
-            <div class="contact-link-icon">🌐</div>
-            <div><div class="contact-link-name">LinkedIn</div><div class="contact-link-val">linkedin.com/in/digvijay-sasane</div></div>
-          </a>
-          <a href="https://magicemperor30.github.io/" target="_blank" class="contact-link-card" style="--lc-color:var(--text-2)">
-            <div class="contact-link-icon">🐙</div>
-            <div><div class="contact-link-name">GitHub</div><div class="contact-link-val">github.com/magicemperor30</div></div>
-          </a>
+        <div class="demo-info reveal">
+          <h3>Pixel Dodge<br>Mini Game</h3>
+          <p>A playable mini game built right into this portfolio — dodge falling pixel blocks, collect gems, and
+            survive as long as possible. Built with vanilla Canvas API to showcase game logic and animation skills.</p>
+          <div class="demo-stat-pills">
+            <span class="demo-pill active">Canvas API</span>
+            <span class="demo-pill">Physics</span>
+            <span class="demo-pill">Collision</span>
+            <span class="demo-pill">Procedural</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:0.7rem;">
+            <a href="https://magicemperor30.itch.io" target="_blank" class="btn btn-purple"
+              style="font-size:0.45rem;text-align:center;">🕹 Full Games on itch.io</a>
+            <a href="https://play.google.com/store/apps/details?id=com.keysarefun" target="_blank"
+              class="btn btn-outline" style="font-size:0.45rem;text-align:center;">📱 Keys Are Fun — Play Store</a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ═══ FOOTER ══════════════════════════════════════════ -->
-<footer>
-  <p>© 2025 Digvijay Sasane · Game Developer · Mumbai</p>
-  <div style="display:flex;gap:1.5rem;">
-    <a href="https://magicemperor30.github.io/" target="_blank">GitHub</a>
-    <a href="https://magicemperor30.itch.io" target="_blank">itch.io</a>
-    <a href="mailto:piyushsasane30@gmail.com">Email</a>
-    <a href="https://linkedin.com/in/digvijay-sasane-725163260" target="_blank">LinkedIn</a>
-  </div>
-</footer>
+  <div class="px-divider"></div>
 
-<!-- ═══ SCRIPTS ══════════════════════════════════════════ -->
-<script>
-/* ── Theme Toggle ── */
-const themeToggle = document.getElementById('themeToggle');
-const body = document.body;
-// Restore saved preference
-if(localStorage.getItem('theme') === 'light') {
-  body.classList.add('light');
-  themeToggle.textContent = '☀️';
-}
-themeToggle.addEventListener('click', () => {
-  body.classList.toggle('light');
-  const isLight = body.classList.contains('light');
-  themeToggle.textContent = isLight ? '☀️' : '🌙';
-  localStorage.setItem('theme', isLight ? 'light' : 'dark');
-});
-/* ── Typewriter role ── */
-const roles = ['Building Worlds in Unity','Crafting Fun Games','Shipping Mobile Games','Designing Enemy AI','Writing Clean C# Code'];
-let ri=0, ci=0, del=false;
-const roleTxt = document.getElementById('role-text');
-function typeRole(){
-  const r = roles[ri];
-  if(!del){ roleTxt.textContent = r.slice(0,ci+1); ci++; if(ci===r.length){del=true; setTimeout(typeRole,1800); return;} }
-  else { roleTxt.textContent = r.slice(0,ci-1); ci--; if(ci===0){del=false; ri=(ri+1)%roles.length;} }
-  setTimeout(typeRole, del ? 45 : 85);
-}
-typeRole();
+  <!-- ═══ CONTACT ═════════════════════════════════════════ -->
+  <section id="contact" class="section">
+    <div class="section-inner">
+      <div class="section-label">Section 05</div>
+      <h2 class="section-title reveal">Get in <em>Touch</em></h2>
 
-/* ── Floating particles around terminal ── */
-const heroVisual = document.getElementById('heroVisual');
-const particleColors = ['#a78bfa','#60a5fa','#f472b6','#fbbf24','#34d399'];
-for(let i=0;i<8;i++){
-  const p = document.createElement('div');
-  p.className = 'hero-particle';
-  const sz = Math.random()*6+3;
-  Object.assign(p.style,{
-    width:sz+'px', height:sz+'px',
-    background: particleColors[Math.floor(Math.random()*particleColors.length)],
-    left: Math.random()*100+'%',
-    bottom: '5%',
-    animationDuration: (Math.random()*4+3)+'s',
-    animationDelay: (Math.random()*4)+'s',
-    borderRadius: Math.random()>0.5?'0':'50%'
-  });
-  heroVisual.appendChild(p);
-}
+      <div class="contact-grid">
+        <div class="reveal">
+          <p style="color:var(--text-2);margin-bottom:2rem;line-height:1.75;">Open to Junior game developer roles,
+            freelance projects, and exciting collaborations. Based in Mumbai — available remotely. Let's build something
+            awesome together!</p>
+          <div class="contact-form">
+            <div class="form-group">
+              <label class="form-label">Your Name</label>
+              <input class="form-input" type="text" placeholder="Player One...">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email</label>
+              <input class="form-input" type="email" placeholder="your@email.com">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Message</label>
+              <textarea class="form-textarea" placeholder="Hey Digvijay, I'd love to..."></textarea>
+            </div>
+            <button class="btn btn-primary" style="width:100%;text-align:center;font-size:0.48rem;">▶ Send
+              Message</button>
+          </div>
+        </div>
 
-/* ── Sliders ── */
-document.querySelectorAll('[data-slider]').forEach(sl => {
-  const track = sl.querySelector('.card-slider-track');
-  if(!track) return;
-  const imgs = track.querySelectorAll('img, div');
-  if(imgs.length<2) return;
-  const pips = sl.querySelectorAll('.pip');
-  const prev = sl.querySelector('.slide-prev');
-  const next = sl.querySelector('.slide-next');
-  let cur=0;
-  function go(n){
-    cur = ((n%imgs.length)+imgs.length)%imgs.length;
-    track.style.transform=`translateX(-${cur*100}%)`;
-    pips.forEach((p,i)=>p.classList.toggle('on',i===cur));
-  }
-  if(prev) prev.addEventListener('click',e=>{e.stopPropagation();go(cur-1);});
-  if(next) next.addEventListener('click',e=>{e.stopPropagation();go(cur+1);});
-  pips.forEach((p,i)=>p.addEventListener('click',()=>go(i)));
-  let t = setInterval(()=>go(cur+1),3500);
-  sl.addEventListener('mouseenter',()=>clearInterval(t));
-  sl.addEventListener('mouseleave',()=>{t=setInterval(()=>go(cur+1),3500);});
-});
+        <div class="reveal">
+          <div style="margin-bottom:1.5rem;">
+            <div class="section-label" style="margin-bottom:0.5rem;">Direct Links</div>
+          </div>
+          <div class="contact-links">
+            <a href="mailto:piyushsasane30@gmail.com" class="contact-link-card" style="--lc-color:var(--purple-dk)">
+              <div class="contact-link-icon">✉️</div>
+              <div>
+                <div class="contact-link-name">Email</div>
+                <div class="contact-link-val">piyushsasane30@gmail.com</div>
+              </div>
+            </a>
+            <a href="tel:9653673717" class="contact-link-card" style="--lc-color:var(--blue)">
+              <div class="contact-link-icon">📞</div>
+              <div>
+                <div class="contact-link-name">Phone</div>
+                <div class="contact-link-val">9653673717 · Mumbai, India</div>
+              </div>
+            </a>
+            <a href="https://magicemperor30.itch.io" target="_blank" class="contact-link-card"
+              style="--lc-color:var(--pink)">
+              <div class="contact-link-icon">🎮</div>
+              <div>
+                <div class="contact-link-name">Itch.io</div>
+                <div class="contact-link-val">magicemperor30.itch.io</div>
+              </div>
+            </a>
+            <a href="https://linkedin.com/in/digvijay-sasane-725163260" target="_blank" class="contact-link-card"
+              style="--lc-color:var(--green)">
+              <div class="contact-link-icon">🌐</div>
+              <div>
+                <div class="contact-link-name">LinkedIn</div>
+                <div class="contact-link-val">linkedin.com/in/digvijay-sasane</div>
+              </div>
+            </a>
+            <a href="https://magicemperor30.github.io/" target="_blank" class="contact-link-card"
+              style="--lc-color:var(--text-2)">
+              <div class="contact-link-icon">🐙</div>
+              <div>
+                <div class="contact-link-name">GitHub</div>
+                <div class="contact-link-val">github.com/magicemperor30</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-/* ── Skill bars on scroll ── */
-const skillObs = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      document.querySelectorAll('.skill-bar-fill').forEach(b=>{
-        b.style.width = b.dataset.pct + '%';
+  <!-- ═══ FOOTER ══════════════════════════════════════════ -->
+  <footer>
+    <p>© 2025 Digvijay Sasane · Game Developer · Mumbai</p>
+    <div style="display:flex;gap:1.5rem;">
+      <a href="https://magicemperor30.github" target="_blank">GitHub</a>
+      <a href="https://magicemperor30.itch.io" target="_blank">itch.io</a>
+      <a href="mailto:piyushsasane30@gmail.com">Email</a>
+      <a href="https://linkedin.com/in/digvijay-sasane-725163260" target="_blank">LinkedIn</a>
+    </div>
+  </footer>
+
+  <!-- ═══ SCRIPTS ══════════════════════════════════════════ -->
+  <script>
+    /* ── Theme Toggle ── */
+    const themeToggle = document.getElementById('themeToggle');
+    const body = document.body;
+    // Restore saved preference
+    if (localStorage.getItem('theme') === 'light') {
+      body.classList.add('light');
+      themeToggle.textContent = '☀️';
+    }
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('light');
+      const isLight = body.classList.contains('light');
+      themeToggle.textContent = isLight ? '☀️' : '🌙';
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    });
+    /* ── Typewriter role ── */
+    const roles = ['Building Worlds in Unity', 'Crafting Fun Games', 'Shipping Mobile Games', 'Designing Enemy AI', 'Writing Clean C# Code'];
+    let ri = 0, ci = 0, del = false;
+    const roleTxt = document.getElementById('role-text');
+    function typeRole() {
+      const r = roles[ri];
+      if (!del) { roleTxt.textContent = r.slice(0, ci + 1); ci++; if (ci === r.length) { del = true; setTimeout(typeRole, 1800); return; } }
+      else { roleTxt.textContent = r.slice(0, ci - 1); ci--; if (ci === 0) { del = false; ri = (ri + 1) % roles.length; } }
+      setTimeout(typeRole, del ? 45 : 85);
+    }
+    typeRole();
+
+    /* ── Floating particles around terminal ── */
+    const heroVisual = document.getElementById('heroVisual');
+    const particleColors = ['#a78bfa', '#60a5fa', '#f472b6', '#fbbf24', '#34d399'];
+    for (let i = 0; i < 8; i++) {
+      const p = document.createElement('div');
+      p.className = 'hero-particle';
+      const sz = Math.random() * 6 + 3;
+      Object.assign(p.style, {
+        width: sz + 'px', height: sz + 'px',
+        background: particleColors[Math.floor(Math.random() * particleColors.length)],
+        left: Math.random() * 100 + '%',
+        bottom: '5%',
+        animationDuration: (Math.random() * 4 + 3) + 's',
+        animationDelay: (Math.random() * 4) + 's',
+        borderRadius: Math.random() > 0.5 ? '0' : '50%'
       });
-      skillObs.disconnect();
+      heroVisual.appendChild(p);
     }
-  });
-},{threshold:0.3});
-const sbEl = document.getElementById('skillBars');
-if(sbEl) skillObs.observe(sbEl);
 
-/* ── Scroll reveal ── */
-const revObs = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
-},{threshold:0.1});
-document.querySelectorAll('.reveal').forEach((el,i)=>{ el.style.transitionDelay=(i%5*0.07)+'s'; revObs.observe(el); });
+    /* ── Sliders ── */
+    document.querySelectorAll('[data-slider]').forEach(sl => {
+      const track = sl.querySelector('.card-slider-track');
+      if (!track) return;
+      const imgs = track.querySelectorAll('img, div');
+      if (imgs.length < 2) return;
+      const pips = sl.querySelectorAll('.pip');
+      const prev = sl.querySelector('.slide-prev');
+      const next = sl.querySelector('.slide-next');
+      let cur = 0;
+      function go(n) {
+        cur = ((n % imgs.length) + imgs.length) % imgs.length;
+        track.style.transform = `translateX(-${cur * 100}%)`;
+        pips.forEach((p, i) => p.classList.toggle('on', i === cur));
+      }
+      if (prev) prev.addEventListener('click', e => { e.stopPropagation(); go(cur - 1); });
+      if (next) next.addEventListener('click', e => { e.stopPropagation(); go(cur + 1); });
+      pips.forEach((p, i) => p.addEventListener('click', () => go(i)));
+      let t = setInterval(() => go(cur + 1), 3500);
+      sl.addEventListener('mouseenter', () => clearInterval(t));
+      sl.addEventListener('mouseleave', () => { t = setInterval(() => go(cur + 1), 3500); });
+    });
 
-/* ════════════════════════════════
-   MINI GAME — Pixel Dodge
-   ════════════════════════════════ */
-const canvas = document.getElementById('gameCanvas');
-const ctx = canvas.getContext('2d');
+    /* ── Skill bars on scroll ── */
+    const skillObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          document.querySelectorAll('.skill-bar-fill').forEach(b => {
+            b.style.width = b.dataset.pct + '%';
+          });
+          skillObs.disconnect();
+        }
+      });
+    }, { threshold: 0.3 });
+    const sbEl = document.getElementById('skillBars');
+    if (sbEl) skillObs.observe(sbEl);
 
-const W = 480, H = 280;
-const COLORS = { bg:'#050510', ground:'#0d0d20', player:'#a78bfa', playerEye:'#fff', block:'#f472b6', blockDark:'#be185d', gem:'#fbbf24', gemShine:'#fef3c7', text:'#ffffff', textDim:'rgba(255,255,255,0.3)', score:'#fbbf24', ground2:'#0a0a1a' };
-const GEM_SZ = 10;
-const BLOCK_W = 28, BLOCK_H = 28;
-const GROUND_Y = H - 50;
-const PLAYER_W = 18, PLAYER_H = 24;
+    /* ── Scroll reveal ── */
+    const revObs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach((el, i) => { el.style.transitionDelay = (i % 5 * 0.07) + 's'; revObs.observe(el); });
 
-let state = 'idle';
-let score=0, hi=0, frame=0, speed=2.2;
-let player, blocks, gems, particles;
+    /* ════════════════════════════════
+       MINI GAME — Pixel Dodge
+       ════════════════════════════════ */
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
 
-function initGame(){
-  player = { x:W/2-PLAYER_W/2, y:GROUND_Y-PLAYER_H, vy:0, onGround:true, facing:1 };
-  blocks = []; gems = []; particles = [];
-  score=0; frame=0; speed=2.2;
-}
-initGame();
+    const W = 480, H = 280;
+    const COLORS = { bg: '#050510', ground: '#0d0d20', player: '#a78bfa', playerEye: '#fff', block: '#f472b6', blockDark: '#be185d', gem: '#fbbf24', gemShine: '#fef3c7', text: '#ffffff', textDim: 'rgba(255,255,255,0.3)', score: '#fbbf24', ground2: '#0a0a1a' };
+    const GEM_SZ = 10;
+    const BLOCK_W = 28, BLOCK_H = 28;
+    const GROUND_Y = H - 50;
+    const PLAYER_W = 18, PLAYER_H = 24;
 
-const keys={};
-document.addEventListener('keydown',e=>{
-  keys[e.key]=true;
-  if(e.key===' '){ e.preventDefault(); if(state==='idle'||state==='dead'){ state='playing'; initGame(); } else if(player.onGround&&state==='playing'){ player.vy=-9; player.onGround=false; } }
-  if((e.key==='ArrowUp'||e.key==='w')&&player.onGround&&state==='playing'){ player.vy=-9; player.onGround=false; }
-});
-document.addEventListener('keyup',e=>{ keys[e.key]=false; });
+    let state = 'idle';
+    let score = 0, hi = 0, frame = 0, speed = 2.2;
+    let player, blocks, gems, particles;
 
-function pxRect(x,y,w,h,col){ ctx.fillStyle=col; ctx.fillRect(Math.round(x),Math.round(y),w,h); }
-function drawPlayer(p){
-  pxRect(p.x,p.y,PLAYER_W,PLAYER_H,COLORS.player);
-  ctx.fillStyle='rgba(0,0,0,0.25)';
-  ctx.fillRect(Math.round(p.x)+PLAYER_W-4,Math.round(p.y),4,PLAYER_H);
-  const eyeX = p.facing>0 ? p.x+PLAYER_W-5 : p.x+3;
-  pxRect(eyeX,p.y+6,4,4,COLORS.playerEye);
-  pxRect(eyeX+1,p.y+7,2,2,'#1a1825');
-  const legOff = Math.sin(frame*0.3)*3;
-  pxRect(p.x+2,p.y+PLAYER_H,5,legOff>0?5:3,'#7c3aed');
-  pxRect(p.x+PLAYER_W-7,p.y+PLAYER_H,5,legOff<=0?5:3,'#7c3aed');
-}
-function drawBlock(b){
-  pxRect(b.x,b.y,BLOCK_W,BLOCK_H,COLORS.block);
-  pxRect(b.x,b.y,BLOCK_W,4,COLORS.blockDark);
-  pxRect(b.x,b.y+BLOCK_H-4,BLOCK_W,4,'rgba(0,0,0,0.3)');
-  ctx.fillStyle='rgba(255,255,255,0.12)';
-  ctx.fillRect(Math.round(b.x+2),Math.round(b.y+2),4,4);
-}
-function drawGem(g){
-  const t=Math.sin(frame*0.08+g.phase)*2;
-  pxRect(g.x+GEM_SZ/2-2,g.y+t,4,4,COLORS.gem);
-  pxRect(g.x+GEM_SZ/2-4,g.y+4+t,8,4,COLORS.gem);
-  pxRect(g.x+GEM_SZ/2-2,g.y+8+t,4,4,COLORS.gem);
-  ctx.fillStyle='rgba(255,255,255,0.5)';
-  ctx.fillRect(Math.round(g.x+GEM_SZ/2),Math.round(g.y+t+1),2,2);
-}
-function spawnParticles(x,y,col,n=8){
-  for(let i=0;i<n;i++){
-    particles.push({ x,y, vx:(Math.random()-0.5)*6, vy:(Math.random()-0.5)*6, life:1, col, sz:Math.random()*4+2 });
-  }
-}
-
-function gameLoop(){
-  requestAnimationFrame(gameLoop);
-  ctx.clearRect(0,0,W,H);
-  pxRect(0,0,W,H,COLORS.bg);
-  ctx.fillStyle='rgba(255,255,255,0.18)';
-  for(let i=0;i<30;i++){
-    const sx=((i*73+frame*0.2)%W); const sy=((i*47)%(GROUND_Y-20));
-    ctx.fillRect(Math.round(sx),Math.round(sy),2,2);
-  }
-  pxRect(0,GROUND_Y,W,H-GROUND_Y,COLORS.ground);
-  pxRect(0,GROUND_Y,W,4,COLORS.ground2);
-  ctx.fillStyle='rgba(255,255,255,0.04)';
-  for(let gx=0;gx<W;gx+=16) ctx.fillRect(gx,GROUND_Y,8,4);
-
-  if(state==='idle'){
-    ctx.fillStyle=COLORS.text;
-    ctx.font='bold 14px "Press Start 2P",monospace';
-    ctx.textAlign='center';
-    ctx.fillText('PIXEL DODGE',W/2,H/2-24);
-    ctx.font='7px "Press Start 2P",monospace';
-    ctx.fillStyle=COLORS.textDim;
-    ctx.fillText('PRESS SPACE TO START',W/2,H/2+4);
-    ctx.fillStyle=COLORS.score;
-    ctx.fillText('BEST: '+hi,W/2,H/2+24);
-    drawPlayer(player);
-    return;
-  }
-
-  if(state==='playing'){
-    frame++;
-    speed = 2.2 + score*0.012;
-    if(keys['ArrowLeft']||keys['a']){ player.x-=4; player.facing=-1; }
-    if(keys['ArrowRight']||keys['d']){ player.x+=4; player.facing=1; }
-    player.x = Math.max(0,Math.min(W-PLAYER_W,player.x));
-    player.vy += 0.5;
-    player.y += player.vy;
-    if(player.y >= GROUND_Y-PLAYER_H){ player.y=GROUND_Y-PLAYER_H; player.vy=0; player.onGround=true; }
-    if(frame%Math.max(28,60-Math.floor(score/3))===0){
-      blocks.push({ x:Math.random()*(W-BLOCK_W), y:-BLOCK_H, vy: 1.5+Math.random()*2+score*0.01 });
+    function initGame() {
+      player = { x: W / 2 - PLAYER_W / 2, y: GROUND_Y - PLAYER_H, vy: 0, onGround: true, facing: 1 };
+      blocks = []; gems = []; particles = [];
+      score = 0; frame = 0; speed = 2.2;
     }
-    if(frame%90===0){
-      gems.push({ x:Math.random()*(W-GEM_SZ*2)+GEM_SZ, y:-20, vy:1.2+Math.random(), phase:Math.random()*Math.PI*2 });
+    initGame();
+
+    const keys = {};
+    document.addEventListener('keydown', e => {
+      keys[e.key] = true;
+      if (e.key === ' ') { e.preventDefault(); if (state === 'idle' || state === 'dead') { state = 'playing'; initGame(); } else if (player.onGround && state === 'playing') { player.vy = -9; player.onGround = false; } }
+      if ((e.key === 'ArrowUp' || e.key === 'w') && player.onGround && state === 'playing') { player.vy = -9; player.onGround = false; }
+    });
+    document.addEventListener('keyup', e => { keys[e.key] = false; });
+
+    function pxRect(x, y, w, h, col) { ctx.fillStyle = col; ctx.fillRect(Math.round(x), Math.round(y), w, h); }
+    function drawPlayer(p) {
+      pxRect(p.x, p.y, PLAYER_W, PLAYER_H, COLORS.player);
+      ctx.fillStyle = 'rgba(0,0,0,0.25)';
+      ctx.fillRect(Math.round(p.x) + PLAYER_W - 4, Math.round(p.y), 4, PLAYER_H);
+      const eyeX = p.facing > 0 ? p.x + PLAYER_W - 5 : p.x + 3;
+      pxRect(eyeX, p.y + 6, 4, 4, COLORS.playerEye);
+      pxRect(eyeX + 1, p.y + 7, 2, 2, '#1a1825');
+      const legOff = Math.sin(frame * 0.3) * 3;
+      pxRect(p.x + 2, p.y + PLAYER_H, 5, legOff > 0 ? 5 : 3, '#7c3aed');
+      pxRect(p.x + PLAYER_W - 7, p.y + PLAYER_H, 5, legOff <= 0 ? 5 : 3, '#7c3aed');
     }
-    for(let i=blocks.length-1;i>=0;i--){
-      const b=blocks[i];
-      b.y+=b.vy;
-      if(b.y>H){ blocks.splice(i,1); score++; continue; }
-      if(player.x<b.x+BLOCK_W && player.x+PLAYER_W>b.x && player.y<b.y+BLOCK_H && player.y+PLAYER_H>b.y){
-        spawnParticles(player.x+PLAYER_W/2,player.y+PLAYER_H/2,COLORS.player,12);
-        state='dead'; if(score>hi)hi=score;
+    function drawBlock(b) {
+      pxRect(b.x, b.y, BLOCK_W, BLOCK_H, COLORS.block);
+      pxRect(b.x, b.y, BLOCK_W, 4, COLORS.blockDark);
+      pxRect(b.x, b.y + BLOCK_H - 4, BLOCK_W, 4, 'rgba(0,0,0,0.3)');
+      ctx.fillStyle = 'rgba(255,255,255,0.12)';
+      ctx.fillRect(Math.round(b.x + 2), Math.round(b.y + 2), 4, 4);
+    }
+    function drawGem(g) {
+      const t = Math.sin(frame * 0.08 + g.phase) * 2;
+      pxRect(g.x + GEM_SZ / 2 - 2, g.y + t, 4, 4, COLORS.gem);
+      pxRect(g.x + GEM_SZ / 2 - 4, g.y + 4 + t, 8, 4, COLORS.gem);
+      pxRect(g.x + GEM_SZ / 2 - 2, g.y + 8 + t, 4, 4, COLORS.gem);
+      ctx.fillStyle = 'rgba(255,255,255,0.5)';
+      ctx.fillRect(Math.round(g.x + GEM_SZ / 2), Math.round(g.y + t + 1), 2, 2);
+    }
+    function spawnParticles(x, y, col, n = 8) {
+      for (let i = 0; i < n; i++) {
+        particles.push({ x, y, vx: (Math.random() - 0.5) * 6, vy: (Math.random() - 0.5) * 6, life: 1, col, sz: Math.random() * 4 + 2 });
       }
     }
-    for(let i=gems.length-1;i>=0;i--){
-      const g=gems[i];
-      g.y+=g.vy;
-      if(g.y>H){ gems.splice(i,1); continue; }
-      if(player.x<g.x+GEM_SZ*2 && player.x+PLAYER_W>g.x && player.y<g.y+GEM_SZ*2 && player.y+PLAYER_H>g.y){
-        spawnParticles(g.x+GEM_SZ,g.y+GEM_SZ,COLORS.gem,6);
-        gems.splice(i,1); score+=5;
+
+    function gameLoop() {
+      requestAnimationFrame(gameLoop);
+      ctx.clearRect(0, 0, W, H);
+      pxRect(0, 0, W, H, COLORS.bg);
+      ctx.fillStyle = 'rgba(255,255,255,0.18)';
+      for (let i = 0; i < 30; i++) {
+        const sx = ((i * 73 + frame * 0.2) % W); const sy = ((i * 47) % (GROUND_Y - 20));
+        ctx.fillRect(Math.round(sx), Math.round(sy), 2, 2);
+      }
+      pxRect(0, GROUND_Y, W, H - GROUND_Y, COLORS.ground);
+      pxRect(0, GROUND_Y, W, 4, COLORS.ground2);
+      ctx.fillStyle = 'rgba(255,255,255,0.04)';
+      for (let gx = 0; gx < W; gx += 16) ctx.fillRect(gx, GROUND_Y, 8, 4);
+
+      if (state === 'idle') {
+        ctx.fillStyle = COLORS.text;
+        ctx.font = 'bold 14px "Press Start 2P",monospace';
+        ctx.textAlign = 'center';
+        ctx.fillText('PIXEL DODGE', W / 2, H / 2 - 24);
+        ctx.font = '7px "Press Start 2P",monospace';
+        ctx.fillStyle = COLORS.textDim;
+        ctx.fillText('PRESS SPACE TO START', W / 2, H / 2 + 4);
+        ctx.fillStyle = COLORS.score;
+        ctx.fillText('BEST: ' + hi, W / 2, H / 2 + 24);
+        drawPlayer(player);
+        return;
+      }
+
+      if (state === 'playing') {
+        frame++;
+        speed = 2.2 + score * 0.012;
+        if (keys['ArrowLeft'] || keys['a']) { player.x -= 4; player.facing = -1; }
+        if (keys['ArrowRight'] || keys['d']) { player.x += 4; player.facing = 1; }
+        player.x = Math.max(0, Math.min(W - PLAYER_W, player.x));
+        player.vy += 0.5;
+        player.y += player.vy;
+        if (player.y >= GROUND_Y - PLAYER_H) { player.y = GROUND_Y - PLAYER_H; player.vy = 0; player.onGround = true; }
+        if (frame % Math.max(28, 60 - Math.floor(score / 3)) === 0) {
+          blocks.push({ x: Math.random() * (W - BLOCK_W), y: -BLOCK_H, vy: 1.5 + Math.random() * 2 + score * 0.01 });
+        }
+        if (frame % 90 === 0) {
+          gems.push({ x: Math.random() * (W - GEM_SZ * 2) + GEM_SZ, y: -20, vy: 1.2 + Math.random(), phase: Math.random() * Math.PI * 2 });
+        }
+        for (let i = blocks.length - 1; i >= 0; i--) {
+          const b = blocks[i];
+          b.y += b.vy;
+          if (b.y > H) { blocks.splice(i, 1); score++; continue; }
+          if (player.x < b.x + BLOCK_W && player.x + PLAYER_W > b.x && player.y < b.y + BLOCK_H && player.y + PLAYER_H > b.y) {
+            spawnParticles(player.x + PLAYER_W / 2, player.y + PLAYER_H / 2, COLORS.player, 12);
+            state = 'dead'; if (score > hi) hi = score;
+          }
+        }
+        for (let i = gems.length - 1; i >= 0; i--) {
+          const g = gems[i];
+          g.y += g.vy;
+          if (g.y > H) { gems.splice(i, 1); continue; }
+          if (player.x < g.x + GEM_SZ * 2 && player.x + PLAYER_W > g.x && player.y < g.y + GEM_SZ * 2 && player.y + PLAYER_H > g.y) {
+            spawnParticles(g.x + GEM_SZ, g.y + GEM_SZ, COLORS.gem, 6);
+            gems.splice(i, 1); score += 5;
+          }
+        }
+      }
+
+      gems.forEach(g => drawGem(g));
+      blocks.forEach(b => drawBlock(b));
+      drawPlayer(player);
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.x += p.vx; p.y += p.vy; p.vy += 0.2; p.life -= 0.04;
+        if (p.life <= 0) { particles.splice(i, 1); continue; }
+        ctx.globalAlpha = p.life;
+        pxRect(p.x, p.y, p.sz, p.sz, p.col);
+        ctx.globalAlpha = 1;
+      }
+
+      ctx.font = '8px "Press Start 2P",monospace';
+      ctx.textAlign = 'left'; ctx.fillStyle = COLORS.score;
+      ctx.fillText('SCORE: ' + score, 10, 20);
+      ctx.textAlign = 'right'; ctx.fillStyle = COLORS.textDim;
+      ctx.fillText('BEST: ' + hi, W - 10, 20);
+
+      const spd = Math.min((speed - 2.2) / 3, 1);
+      ctx.fillStyle = 'rgba(255,255,255,0.08)';
+      ctx.fillRect(10, 28, 80, 4);
+      ctx.fillStyle = `hsl(${120 - spd * 120},100%,60%)`;
+      ctx.fillRect(10, 28, Math.round(80 * spd), 4);
+
+      if (state === 'dead') {
+        ctx.fillStyle = 'rgba(0,0,0,0.7)';
+        ctx.fillRect(0, 0, W, H);
+        ctx.fillStyle = '#f472b6';
+        ctx.font = 'bold 14px "Press Start 2P",monospace';
+        ctx.textAlign = 'center';
+        ctx.fillText('GAME OVER', W / 2, H / 2 - 22);
+        ctx.font = '7px "Press Start 2P",monospace';
+        ctx.fillStyle = COLORS.score;
+        ctx.fillText('SCORE: ' + score + '  BEST: ' + hi, W / 2, H / 2 + 2);
+        ctx.fillStyle = COLORS.textDim;
+        ctx.fillText('SPACE TO RESTART', W / 2, H / 2 + 22);
+        frame++;
       }
     }
-  }
-
-  gems.forEach(g=>drawGem(g));
-  blocks.forEach(b=>drawBlock(b));
-  drawPlayer(player);
-  for(let i=particles.length-1;i>=0;i--){
-    const p=particles[i];
-    p.x+=p.vx; p.y+=p.vy; p.vy+=0.2; p.life-=0.04;
-    if(p.life<=0){ particles.splice(i,1); continue; }
-    ctx.globalAlpha=p.life;
-    pxRect(p.x,p.y,p.sz,p.sz,p.col);
-    ctx.globalAlpha=1;
-  }
-
-  ctx.font='8px "Press Start 2P",monospace';
-  ctx.textAlign='left'; ctx.fillStyle=COLORS.score;
-  ctx.fillText('SCORE: '+score,10,20);
-  ctx.textAlign='right'; ctx.fillStyle=COLORS.textDim;
-  ctx.fillText('BEST: '+hi,W-10,20);
-
-  const spd = Math.min((speed-2.2)/3,1);
-  ctx.fillStyle='rgba(255,255,255,0.08)';
-  ctx.fillRect(10,28,80,4);
-  ctx.fillStyle=`hsl(${120-spd*120},100%,60%)`;
-  ctx.fillRect(10,28,Math.round(80*spd),4);
-
-  if(state==='dead'){
-    ctx.fillStyle='rgba(0,0,0,0.7)';
-    ctx.fillRect(0,0,W,H);
-    ctx.fillStyle='#f472b6';
-    ctx.font='bold 14px "Press Start 2P",monospace';
-    ctx.textAlign='center';
-    ctx.fillText('GAME OVER',W/2,H/2-22);
-    ctx.font='7px "Press Start 2P",monospace';
-    ctx.fillStyle=COLORS.score;
-    ctx.fillText('SCORE: '+score+'  BEST: '+hi,W/2,H/2+2);
-    ctx.fillStyle=COLORS.textDim;
-    ctx.fillText('SPACE TO RESTART',W/2,H/2+22);
-    frame++;
-  }
-}
-gameLoop();
-</script>
+    gameLoop();
+  </script>
 </body>
+
 </html>
