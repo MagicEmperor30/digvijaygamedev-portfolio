@@ -11,9 +11,7 @@
     rel="stylesheet">
 
   <style>
-    /* ─── TOKENS ─────────────────────────────────────────── */
     :root {
-      /* Dark theme palette */
       --bg: #080808;
       --bg-2: #0e0e0e;
       --bg-3: #141414;
@@ -21,38 +19,27 @@
       --bg-hover: #1a1a1a;
       --line: #222222;
       --line-lt: #2a2a2a;
-
       --text: #f0f0f0;
       --text-2: #a0a0a0;
       --text-3: #606060;
-
-      /* Accents — keep the vivid game-dev colors, darker bgs */
       --purple: #a78bfa;
       --purple-dk: #7c3aed;
       --purple-bg: #1a1030;
-
       --blue: #60a5fa;
       --blue-bg: #0a1628;
-
       --pink: #f472b6;
       --pink-bg: #280a1a;
-
       --yellow: #fbbf24;
       --yellow-bg: #201400;
-
       --green: #34d399;
       --green-bg: #001a10;
-
       --px: 2px;
-
       --shadow-sm: 4px 4px 0px #000;
       --shadow-md: 6px 6px 0px #000;
       --shadow-lg: 8px 8px 0px #000;
-
       --r: 0px;
     }
 
-    /* ─── LIGHT THEME OVERRIDES ──────────────────────────── */
     body.light {
       --bg: #f5f5f5;
       --bg-2: #ffffff;
@@ -76,9 +63,7 @@
 
     body.light .grid-bg {
       background-color: var(--bg);
-      background-image:
-        linear-gradient(#e0e0e0 1px, transparent 1px),
-        linear-gradient(90deg, #e0e0e0 1px, transparent 1px);
+      background-image: linear-gradient(#e0e0e0 1px, transparent 1px), linear-gradient(90deg, #e0e0e0 1px, transparent 1px);
     }
 
     body.light nav {
@@ -125,7 +110,15 @@
       background: #f0f0ff;
     }
 
-    /* ─── THEME TOGGLE BUTTON ────────────────────────────── */
+    body.light .modal-overlay {
+      background: rgba(0, 0, 0, 0.85);
+    }
+
+    body.light .modal-box {
+      background: #fff;
+      border-color: #ddd;
+    }
+
     .theme-toggle {
       width: 34px;
       height: 34px;
@@ -146,7 +139,6 @@
       transform: scale(1.08);
     }
 
-    /* ─── RESET ──────────────────────────────────────────── */
     *,
     *::before,
     *::after {
@@ -169,70 +161,13 @@
       transition: background .25s, color .25s;
     }
 
-    /* ─── SUBTLE GRID BG ─────────────────────────────────── */
     .grid-bg {
       background-color: var(--bg);
-      background-image:
-        linear-gradient(var(--line) 1px, transparent 1px),
-        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
       background-size: 40px 40px;
     }
 
-    /* ─── BORDER UTILS ───────────────────────────────────── */
-    .px-border {
-      border: var(--px) solid var(--line);
-    }
-
-    .px-border-purple {
-      border: var(--px) solid var(--purple-dk);
-    }
-
-    .px-border-blue {
-      border: var(--px) solid var(--blue);
-    }
-
-    .px-border-pink {
-      border: var(--px) solid var(--pink);
-    }
-
-    /* ─── PIXEL CORNERS ───────────────────────────────────── */
-    .px-corners {
-      position: relative;
-    }
-
-    .px-corners::before,
-    .px-corners::after,
-    .px-corners .c3,
-    .px-corners .c4 {
-      content: '';
-      position: absolute;
-      width: 7px;
-      height: 7px;
-      background: var(--purple);
-      z-index: 2;
-    }
-
-    .px-corners::before {
-      top: -3px;
-      left: -3px;
-    }
-
-    .px-corners::after {
-      top: -3px;
-      right: -3px;
-    }
-
-    .px-corners .c3 {
-      bottom: -3px;
-      left: -3px;
-    }
-
-    .px-corners .c4 {
-      bottom: -3px;
-      right: -3px;
-    }
-
-    /* ─── NAV ─────────────────────────────────────────────── */
+    /* ── NAV ── */
     nav {
       position: fixed;
       top: 0;
@@ -296,7 +231,7 @@
       background: var(--purple-bg);
     }
 
-    /* ─── HERO ────────────────────────────────────────────── */
+    /* ── HERO ── */
     #hero {
       min-height: 100vh;
       display: flex;
@@ -308,7 +243,6 @@
       background: var(--bg);
     }
 
-    /* subtle radial glow behind hero */
     #hero::before {
       content: '';
       position: absolute;
@@ -332,7 +266,6 @@
       z-index: 1;
     }
 
-    /* hero visual — replaced sprite with a sleek code terminal look */
     .hero-visual-wrap {
       display: flex;
       justify-content: center;
@@ -421,7 +354,6 @@
       animation: blink .7s step-end infinite;
     }
 
-    /* corner decoration dots */
     .hero-terminal::before {
       content: '';
       position: absolute;
@@ -464,7 +396,6 @@
       z-index: 3;
     }
 
-    /* floating lines / particles */
     .hero-particle {
       position: absolute;
       background: var(--purple);
@@ -492,8 +423,6 @@
         opacity: 0;
       }
     }
-
-    .hero-text {}
 
     .hero-eyebrow {
       font-family: 'Press Start 2P', monospace;
@@ -586,7 +515,7 @@
       flex-wrap: wrap;
     }
 
-    /* ─── BUTTONS ─────────────────────────────────────────── */
+    /* ── BUTTONS ── */
     .btn {
       font-family: 'Press Start 2P', monospace;
       font-size: 0.5rem;
@@ -643,7 +572,7 @@
       box-shadow: 7px 7px 0 #3b1a8a;
     }
 
-    /* ─── SECTION SHELL ───────────────────────────────────── */
+    /* ── SECTION ── */
     .section {
       padding: 6rem 3rem;
     }
@@ -683,18 +612,12 @@
       color: var(--purple);
     }
 
-    /* ─── DIVIDER ─────────────────────────────────────────── */
     .px-divider {
       height: 4px;
-      background: repeating-linear-gradient(90deg,
-          var(--blue) 0, var(--blue) 12px,
-          var(--purple-dk) 12px, var(--purple-dk) 24px,
-          var(--pink) 24px, var(--pink) 36px,
-          var(--yellow) 36px, var(--yellow) 48px,
-          var(--green) 48px, var(--green) 60px);
+      background: repeating-linear-gradient(90deg, var(--blue) 0, var(--blue) 12px, var(--purple-dk) 12px, var(--purple-dk) 24px, var(--pink) 24px, var(--pink) 36px, var(--yellow) 36px, var(--yellow) 48px, var(--green) 48px, var(--green) 60px);
     }
 
-    /* ─── ABOUT ───────────────────────────────────────────── */
+    /* ── ABOUT ── */
     #about {
       background: var(--bg-2);
       border-top: 1px solid var(--line);
@@ -786,7 +709,7 @@
       letter-spacing: 0.08em;
     }
 
-    /* ─── PROJECTS ────────────────────────────────────────── */
+    /* ── PROJECT CARDS ── */
     #projects {
       background: var(--bg);
     }
@@ -806,6 +729,7 @@
       display: flex;
       flex-direction: column;
       position: relative;
+      cursor: pointer;
     }
 
     .project-card.accent-blue {
@@ -839,7 +763,26 @@
       box-shadow: 8px 8px 0 var(--card-color);
     }
 
-    /* slider */
+    .card-click-hint {
+      position: absolute;
+      bottom: 48px;
+      right: 10px;
+      z-index: 6;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.3rem;
+      padding: 0.22rem 0.5rem;
+      background: rgba(0, 0, 0, 0.7);
+      color: var(--card-color, var(--purple));
+      border: 1px solid var(--card-color, var(--purple));
+      letter-spacing: 0.06em;
+      opacity: 0;
+      transition: opacity .2s;
+    }
+
+    .project-card:hover .card-click-hint {
+      opacity: 1;
+    }
+
     .card-slider {
       position: relative;
       height: 195px;
@@ -1024,7 +967,311 @@
       content: '→';
     }
 
-    /* ─── SKILLS ──────────────────────────────────────────── */
+    /* ── MODAL ── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.92);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s;
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal-box {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      box-shadow: 12px 12px 0 #000, 0 0 0 1px var(--modal-color, var(--purple-dk));
+      max-width: 720px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      transform: translateY(20px);
+      transition: transform .2s;
+    }
+
+    .modal-overlay.open .modal-box {
+      transform: translateY(0);
+    }
+
+    .modal-header {
+      background: var(--bg-3);
+      border-bottom: 1px solid var(--line);
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+
+    .modal-genre {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.38rem;
+      padding: 0.3rem 0.7rem;
+      background: var(--modal-color, var(--purple));
+      color: #000;
+      letter-spacing: 0.08em;
+    }
+
+    .modal-title {
+      font-family: 'Audiowide', sans-serif;
+      font-size: 1.3rem;
+      color: var(--text);
+      flex: 1;
+    }
+
+    .modal-close {
+      width: 32px;
+      height: 32px;
+      background: transparent;
+      border: 1px solid var(--line);
+      color: var(--text-3);
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      transition: background .15s, color .15s;
+      font-family: monospace;
+    }
+
+    .modal-close:hover {
+      background: var(--bg-hover);
+      color: var(--text);
+    }
+
+    .modal-body {
+      padding: 1.8rem 1.5rem;
+    }
+
+    .modal-section-title {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.45rem;
+      color: var(--modal-color, var(--purple));
+      letter-spacing: 0.1em;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .modal-section-title::before {
+      content: '▶';
+      font-size: 0.4rem;
+    }
+
+    .modal-overview {
+      color: var(--text-2);
+      font-size: 0.9rem;
+      line-height: 1.75;
+      margin-bottom: 1.8rem;
+    }
+
+    .modal-tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.9rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .modal-tech-item {
+      background: var(--bg-3);
+      border: 1px solid var(--line);
+      padding: 1rem 1.1rem;
+    }
+
+    .modal-tech-label {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.36rem;
+      color: var(--modal-color, var(--purple));
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+
+    .modal-tech-value {
+      font-size: 0.82rem;
+      color: var(--text-2);
+      line-height: 1.5;
+    }
+
+    .modal-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .modal-features li {
+      font-size: 0.85rem;
+      color: var(--text-2);
+      padding-left: 1.2rem;
+      position: relative;
+      line-height: 1.6;
+    }
+
+    .modal-features li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--modal-color, var(--purple));
+      font-size: 0.7rem;
+    }
+
+    .modal-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-tag {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.36rem;
+      padding: 0.3rem 0.6rem;
+      background: var(--bg);
+      border: 1px solid var(--modal-color, var(--purple-dk));
+      color: var(--modal-color, var(--purple));
+      letter-spacing: 0.05em;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    /* ── SOFTWARE PROJECTS ── */
+    #software {
+      background: var(--bg-2);
+      border-top: 1px solid var(--line);
+    }
+
+    .sw-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .sw-card {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-sm);
+      padding: 1.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      transition: transform .15s, box-shadow .15s, border-color .15s;
+      position: relative;
+    }
+
+    .sw-card.sw-blue {
+      --sw-color: var(--blue);
+    }
+
+    .sw-card.sw-pink {
+      --sw-color: var(--pink);
+    }
+
+    .sw-card.sw-green {
+      --sw-color: var(--green);
+    }
+
+    .sw-card:hover {
+      transform: translate(-3px, -3px);
+      border-color: var(--sw-color);
+      box-shadow: 6px 6px 0 var(--sw-color);
+    }
+
+    .sw-card-type {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.34rem;
+      padding: 0.22rem 0.55rem;
+      background: var(--sw-color);
+      color: #000;
+      letter-spacing: 0.08em;
+      display: inline-block;
+      align-self: flex-start;
+    }
+
+    .sw-card-title {
+      font-family: 'Audiowide', sans-serif;
+      font-size: 1rem;
+      color: var(--text);
+    }
+
+    .sw-card-desc {
+      font-size: 0.85rem;
+      color: var(--text-2);
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    .sw-card-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+    }
+
+    .sw-tag {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.32rem;
+      padding: 0.2rem 0.45rem;
+      background: var(--bg-3);
+      border: 1px solid var(--line);
+      color: var(--text-3);
+    }
+
+    .sw-card-footer {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      border-top: 1px solid var(--line);
+      padding-top: 0.9rem;
+    }
+
+    .sw-link {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.36rem;
+      color: var(--sw-color);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: gap .2s;
+    }
+
+    .sw-link:hover {
+      gap: 0.7rem;
+    }
+
+    .sw-link::after {
+      content: '→';
+    }
+
+    .sw-icon {
+      font-size: 2rem;
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      opacity: 0.12;
+    }
+
+    /* ── SKILLS ── */
     #skills {
       background: var(--bg-2);
       border-top: 1px solid var(--line);
@@ -1103,7 +1350,6 @@
       text-align: right;
     }
 
-    /* tool grid */
     .tools-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -1150,7 +1396,7 @@
       letter-spacing: 0.05em;
     }
 
-    /* ─── DEMO SECTION ────────────────────────────────────── */
+    /* ── DEMO ── */
     #demo {
       background: var(--bg);
       border-top: 1px solid var(--line);
@@ -1158,16 +1404,8 @@
       overflow: hidden;
     }
 
-    #demo .section-label {
-      color: var(--text-3);
-    }
-
     #demo .section-label::before {
       color: var(--yellow);
-    }
-
-    #demo .section-title {
-      color: var(--text);
     }
 
     #demo .section-title em {
@@ -1267,10 +1505,6 @@
       color: rgba(255, 255, 255, 0.5);
     }
 
-    .demo-info {
-      color: rgba(255, 255, 255, 0.85);
-    }
-
     .demo-info h3 {
       font-family: 'Audiowide', sans-serif;
       font-size: 1.5rem;
@@ -1309,7 +1543,7 @@
       color: white;
     }
 
-    /* ─── CONTACT ─────────────────────────────────────────── */
+    /* ── CONTACT ── */
     #contact {
       background: var(--bg-2);
       border-top: 1px solid var(--line);
@@ -1419,7 +1653,6 @@
       color: var(--text-2);
     }
 
-    /* ─── FOOTER ──────────────────────────────────────────── */
     footer {
       background: var(--bg-3);
       border-top: 1px solid var(--line);
@@ -1444,7 +1677,6 @@
       color: var(--purple);
     }
 
-    /* ─── SCROLL REVEAL ───────────────────────────────────── */
     .reveal {
       opacity: 0;
       transform: translateY(24px);
@@ -1456,8 +1688,7 @@
       transform: none;
     }
 
-    /* ─── RESPONSIVE ──────────────────────────────────────── */
-    @media (max-width: 900px) {
+    @media (max-width:900px) {
 
       .hero-inner,
       .about-grid,
@@ -1493,13 +1724,33 @@
       .tools-grid {
         grid-template-columns: repeat(2, 1fr);
       }
+
+      .modal-box {
+        max-height: 95vh;
+      }
+
+      .modal-tech-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 
 <body class="grid-bg">
 
-  <!-- ═══ NAV ═══════════════════════════════════════════ -->
+  <!-- ═══ MODAL OVERLAY ═══ -->
+  <div class="modal-overlay" id="projectModal" role="dialog" aria-modal="true">
+    <div class="modal-box" id="modalBox">
+      <div class="modal-header">
+        <span class="modal-genre" id="modalGenre"></span>
+        <div class="modal-title" id="modalTitle"></div>
+        <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- ═══ NAV ═══ -->
   <nav>
     <a href="#hero" class="nav-logo">
       <div class="nav-logo-icon">🕹</div>
@@ -1508,6 +1759,7 @@
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#projects">Games</a></li>
+      <li><a href="#software">Software</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#demo">Demo</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -1516,40 +1768,29 @@
     <button class="theme-toggle" id="themeToggle" title="Toggle theme">🌙</button>
   </nav>
 
-  <!-- ═══ HERO ═══════════════════════════════════════════ -->
+  <!-- ═══ HERO ═══ -->
   <section id="hero" class="section">
     <div class="section-inner">
       <div class="hero-inner">
-
         <div class="hero-text reveal">
           <div class="hero-eyebrow">Unity Game Developer</div>
-          <h1 class="hero-name">
-            Digvijay<br>
-            <span>Sasane</span>
-          </h1>
-          <p class="hero-role">
-            <span id="role-text">Building Worlds in Unity</span>
-            <span class="role-cursor"></span>
-          </p>
-          <p class="hero-desc">
-            I craft immersive game experiences — from pixel-art platformers and tower defense to 3D endless runners and
-            mobile educational games. Currently shipping keyboard learning games at Furtados School of Music.
-          </p>
+          <h1 class="hero-name">Digvijay<br><span>Sasane</span></h1>
+          <p class="hero-role"><span id="role-text">Building Worlds in Unity</span><span class="role-cursor"></span></p>
+          <p class="hero-desc">I craft immersive game experiences — from pixel-art platformers and tower defense to 3D
+            endless runners and mobile educational games. Currently shipping keyboard learning games at Furtados School
+            of Music.</p>
           <div class="hero-ctas">
             <a href="#projects" class="btn btn-primary">▶ View Games</a>
             <a href="#demo" class="btn btn-outline">🕹 Play Demo</a>
             <a href="#contact" class="btn btn-purple">✉ Hire Me</a>
           </div>
         </div>
-
         <div class="hero-visual-wrap reveal" id="heroVisual">
           <div class="hero-terminal">
             <div class="tc3"></div>
             <div class="tc4"></div>
             <div class="hero-terminal-bar">
-              <span class="t-dot t-dot-r"></span>
-              <span class="t-dot t-dot-y"></span>
-              <span class="t-dot t-dot-g"></span>
+              <span class="t-dot t-dot-r"></span><span class="t-dot t-dot-y"></span><span class="t-dot t-dot-g"></span>
               <span class="terminal-title">developer.json</span>
             </div>
             <div class="terminal-body">
@@ -1569,19 +1810,17 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
   <div class="px-divider"></div>
 
-  <!-- ═══ ABOUT ══════════════════════════════════════════ -->
+  <!-- ═══ ABOUT ═══ -->
   <section id="about" class="section">
     <div class="section-inner">
       <div class="section-label">Section 01</div>
       <h2 class="section-title reveal">About <em>Me</em></h2>
-
       <div class="about-grid">
         <div class="about-stat-row reveal">
           <div class="about-stat">
@@ -1625,7 +1864,6 @@
               style="background:var(--green-bg);color:var(--green);border:1px solid var(--green);">WebGL</span>
           </div>
         </div>
-
         <div class="about-text reveal">
           <p>Hi! I'm Digvijay — a game developer from Mumbai with a passion for building engaging, polished game
             experiences. I specialize in Unity with C#, covering everything from gameplay systems and enemy AI to custom
@@ -1650,18 +1888,35 @@
 
   <div class="px-divider"></div>
 
-  <!-- ═══ PROJECTS ═══════════════════════════════════════ -->
+  <!-- ═══ PROJECTS ═══ -->
   <section id="projects" class="section">
     <div class="section-inner">
       <div class="section-label">Section 02</div>
       <h2 class="section-title reveal">Game <em>Projects</em></h2>
+      <p class="reveal"
+        style="color:var(--text-3);font-family:'Press Start 2P',monospace;font-size:0.4rem;margin-bottom:2rem;letter-spacing:0.08em;">
+        ▶ CLICK ANY CARD FOR TECHNICAL DETAILS</p>
 
       <div class="projects-grid">
 
-        <div class="project-card accent-purple reveal" data-card>
+        <!-- Realm of the Death Bringer -->
+        <div class="project-card accent-purple reveal" data-card data-modal-color="#7c3aed"
+          data-modal-genre="2D PLATFORMER" data-modal-title="Realm of the Death Bringer"
+          data-modal-overview="A complete 2D action platformer built in Unity. Players battle goblins, flying eyes, and the multi-phase Death Bringer boss across layered levels — using melee, aerial, and ranged bow attacks. The architecture centers on a Finite State Machine player controller and a modular enemy AI system."
+          data-modal-tech='[
+            {"label":"Player FSM","value":"Idle, Walk, Run, Jump, Attack, GetHit, Die states — driven by a C# enum-based FSM with Animator parameter sync"},
+            {"label":"Combat System","value":"Input-buffered combo sequencing via ComboStep enum; melee + ranged (bow) attack modes with separate hitbox activation windows"},
+            {"label":"Enemy AI","value":"Ground patrol FSM with LoS detection; flying enemy path-following with aggro radius; each type has independent health and knockback logic"},
+            {"label":"Boss Fight","value":"Multi-phase boss with distinct attack patterns per phase, health-threshold transitions, and dedicated animation state machine"},
+            {"label":"Animation","value":"Animator Controllers with 2D Freeform Blend Trees for locomotion; isAttacking safety timeout to prevent state lock"},
+            {"label":"Level Design","value":"Multi-level progression with checkpoints, pause/resume system, and game-flow state manager"}
+          ]'
+          data-modal-features='["FSM-driven player controller with 8 distinct states and smooth Animator transitions","Input-buffered combo system with ComboStep enum — attacks chain correctly even on lag frames","Ranged bow mechanic with projectile pooling to avoid GC spikes","Flying enemy AI using patrol waypoints + aggro detection radius","Multi-phase boss with health-threshold phase transitions and unique attack sets","Full pause menu, death screen, and level-complete flow"]'
+          data-modal-tags="Unity|C#|FSM|Enemy AI|Pixel Art|Animator|Object Pool|Boss Fight|2D Physics"
+          data-modal-link="https://magicemperor30.itch.io/realm-of-the-death-bringer"
+          data-modal-link-label="Play on itch.io">
           <div class="card-slider" data-slider>
-            <span class="card-genre">2D PLATFORMER</span>
-            <span class="card-platform">PC</span>
+            <span class="card-genre">2D PLATFORMER</span><span class="card-platform">PC</span>
             <div class="card-slider-track">
               <img src="images/Platformer1.png" alt="Start screen">
               <img src="images/Platformer2.png" alt="Goblin combat">
@@ -1669,110 +1924,166 @@
               <img src="images/Platformer4.png" alt="Bow shooting">
               <img src="images/Platformer5.png" alt="Boss fight">
             </div>
-            <button class="slide-btn slide-prev">‹</button>
-            <button class="slide-btn slide-next">›</button>
-            <div class="slide-pips">
-              <span class="pip on"></span><span class="pip"></span><span class="pip"></span><span
-                class="pip"></span><span class="pip"></span>
-            </div>
+            <button class="slide-btn slide-prev">‹</button><button class="slide-btn slide-next">›</button>
+            <div class="slide-pips"><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span
+                class="pip"></span><span class="pip"></span></div>
           </div>
           <div class="card-body">
             <div class="card-title">Realm of the Death Bringer</div>
-            <p class="card-desc">Complete 2D action platformer with melee combat, ranged bow attacks, multiple enemy AI
-              types (ground, flying, boss), multi-level progression, and a full pause/game-flow system.</p>
+            <p class="card-desc">FSM-driven player controller with 8 states, input-buffered combo system, multi-type
+              enemy AI, and a multi-phase boss encounter — built with modular C# architecture and Animator Blend Trees.
+            </p>
             <div class="card-tags">
-              <span class="card-tag">UNITY</span><span class="card-tag">C#</span><span class="card-tag">PIXEL
-                ART</span><span class="card-tag">ENEMY AI</span><span class="card-tag">BOSS FIGHT</span>
+              <span class="card-tag">FSM</span><span class="card-tag">C#</span><span class="card-tag">COMBO
+                SYSTEM</span><span class="card-tag">ENEMY AI</span><span class="card-tag">BOSS FIGHT</span>
             </div>
           </div>
           <div class="card-footer">
-            <a href="https://magicemperor30.itch.io/realm-of-the-death-bringer" target="_blank" class="card-link">Play
-              on itch.io</a>
+            <a href="https://magicemperor30.itch.io/realm-of-the-death-bringer" target="_blank" class="card-link"
+              onclick="event.stopPropagation()">Play on itch.io</a>
             <span style="font-family:'Press Start 2P',monospace;font-size:0.36rem;color:var(--text-3);">⭐
               PERSONAL</span>
           </div>
+          <span class="card-click-hint">CLICK FOR TECH DETAILS</span>
         </div>
 
-        <div class="project-card accent-blue reveal" data-card>
+        <!-- Castle Defenders -->
+        <div class="project-card accent-blue reveal" data-card data-modal-color="#3b82f6"
+          data-modal-genre="TOWER DEFENSE" data-modal-title="Castle Defenders"
+          data-modal-overview="A 3D voxel-art tower defense game built in Unity. Players place towers on an isometric grid, manage resources, and survive escalating enemy waves. The standout technical feature is BFS-based dynamic pathfinding — enemies re-route in real time when new towers block their path."
+          data-modal-tech='[
+            {"label":"Pathfinding","value":"BFS (Breadth-First Search) dynamic path recalculation — enemies re-route live when towers are placed, blocking nodes mid-wave"},
+            {"label":"Grid System","value":"Isometric grid with tile occupancy tracking; mouse-to-grid raycasting for accurate tower placement in 3D isometric space"},
+            {"label":"Projectile Handling","value":"Tower projectile system with target locking, arc calculation, and splash/single-target damage modes"},
+            {"label":"Wave System","value":"Configurable wave spawner with enemy type composition, spawn intervals, and difficulty curve scaling"},
+            {"label":"Economy","value":"Resource/economy manager tracking gold earned per kill, tower cost validation, and upgrade tree progression"},
+            {"label":"Game Setup","value":"Game manager with wave counter, lives system, pause/resume, and win/lose state transitions"}
+          ]'
+          data-modal-features='["BFS dynamic pathfinding — enemies re-route in real time when towers block their path","Isometric grid with raycasting for precise 3D tower placement","Multiple tower types with unique attack ranges, fire rates, and damage profiles","Wave-based enemy spawner with configurable difficulty scaling","Resource economy with gold-per-kill tracking and tower upgrade trees","Full game loop: wave counter, lives, win/lose screens"]'
+          data-modal-tags="Unity|C#|BFS Pathfinding|Isometric Grid|Raycasting|Wave System|Tower Defense|Voxel Art"
+          data-modal-link="https://magicemperor30.itch.io/castle-defenders" data-modal-link-label="Play on itch.io">
           <div class="card-slider" data-slider>
-            <span class="card-genre">TOWER DEFENSE</span>
-            <span class="card-platform">PC</span>
-            <div class="card-slider-track">
-              <img src="images/CastleDefender.png" alt="Castle Defenders">
-            </div>
+            <span class="card-genre">TOWER DEFENSE</span><span class="card-platform">PC</span>
+            <div class="card-slider-track"><img src="images/CastleDefender.png" alt="Castle Defenders"></div>
             <div class="slide-pips"><span class="pip on"></span></div>
           </div>
           <div class="card-body">
             <div class="card-title">Castle Defenders</div>
-            <p class="card-desc">3D voxel-art tower defense with grid-based tower placement, wave-based enemy AI, and
-              strategic resource management. Medieval fantasy aesthetic in HD voxel resolution, mouse-only controls.</p>
+            <p class="card-desc">BFS dynamic pathfinding so enemies re-route live when towers block their path.
+              Isometric grid with raycasting for tower placement, projectile handling, and wave-based difficulty
+              scaling.</p>
             <div class="card-tags">
-              <span class="card-tag">UNITY</span><span class="card-tag">C#</span><span
-                class="card-tag">VOXEL</span><span class="card-tag">GRID SYSTEM</span><span class="card-tag">3D</span>
+              <span class="card-tag">BFS PATH</span><span class="card-tag">ISO GRID</span><span class="card-tag">WAVE
+                SYSTEM</span><span class="card-tag">3D</span><span class="card-tag">VOXEL</span>
             </div>
           </div>
           <div class="card-footer">
-            <a href="https://magicemperor30.itch.io/castle-defenders" target="_blank" class="card-link">Play on
-              itch.io</a>
+            <a href="https://magicemperor30.itch.io/castle-defenders" target="_blank" class="card-link"
+              onclick="event.stopPropagation()">Play on itch.io</a>
             <span style="font-family:'Press Start 2P',monospace;font-size:0.36rem;color:var(--text-3);">⭐
               PERSONAL</span>
           </div>
+          <span class="card-click-hint">CLICK FOR TECH DETAILS</span>
         </div>
 
-        <div class="project-card accent-yellow reveal" data-card>
+        <!-- Kings Rush -->
+        <div class="project-card accent-yellow reveal" data-card data-modal-color="#f59e0b"
+          data-modal-genre="ENDLESS RUNNER" data-modal-title="Kings Rush"
+          data-modal-overview="A 3D endless runner set on a physics-based shaky bridge. Procedurally generated obstacles make every run unique. Built to explore Rigidbody physics, procedural level generation, inheritance-based C# architecture, and Animator transition design."
+          data-modal-tech='[
+            {"label":"Procedural Generation","value":"Runtime obstacle spawner using configurable spawn pools, randomized positioning, and distance-based difficulty scaling"},
+            {"label":"Rigidbody Physics","value":"Physics materials for friction/bounce variation; collision event handling for trip/knockback and checkpoint validation"},
+            {"label":"Animator Transitions","value":"Running, tripping, and recovery animation states with parameter-driven transitions and blend timing"},
+            {"label":"Architecture","value":"Inheritance-based C# system: base Obstacle class extended by Falling, Shifting, and Static subtypes via polymorphism"},
+            {"label":"Dependency Injection","value":"ScriptableObject config for spawn rates, speed curves, and power-up durations — all inspector-tunable without recompile"},
+            {"label":"Power-Ups & Checkpoints","value":"Collectable power-ups (speed boost, shield) with timed effect management; checkpoint system for run extension"}
+          ]'
+          data-modal-features='["Procedural obstacle generation with per-run randomized layouts — no two runs identical","Rigidbody physics bridge with dynamic tilt and collision response","Inheritance hierarchy: base Obstacle → Falling, Shifting, Static subtypes","ScriptableObject-driven config for spawn rates and difficulty curves (no recompile needed)","Animator state machine: run → trip → recover with blend-timed transitions","Power-up system with timed effect management and checkpoint run extension"]'
+          data-modal-tags="Unity|C#|Procedural Gen|Rigidbody|Inheritance|ScriptableObject|Animator|Physics Materials"
+          data-modal-link="https://magicemperor30.itch.io/kings-rush" data-modal-link-label="Play on itch.io">
           <div class="card-slider" data-slider>
-            <span class="card-genre">ENDLESS RUNNER</span>
-            <span class="card-platform">PC</span>
+            <span class="card-genre">ENDLESS RUNNER</span><span class="card-platform">PC</span>
             <div class="card-slider-track">
               <img src="images/KingsRush1.png" alt="Kings Rush menu">
               <img src="images/KingsRush2.png" alt="Kings Rush run">
             </div>
-            <button class="slide-btn slide-prev">‹</button>
-            <button class="slide-btn slide-next">›</button>
+            <button class="slide-btn slide-prev">‹</button><button class="slide-btn slide-next">›</button>
             <div class="slide-pips"><span class="pip on"></span><span class="pip"></span></div>
           </div>
           <div class="card-body">
             <div class="card-title">Kings Rush</div>
-            <p class="card-desc">3D endless runner on a physics-based shaky bridge. Procedurally generated obstacles,
-              collectible power-ups, and checkpoints. Rigidbody physics make every run completely unique.</p>
+            <p class="card-desc">Procedural obstacle generation with Rigidbody physics on a shaky bridge.
+              Inheritance-based C# obstacle hierarchy, ScriptableObject config, Animator transitions for
+              run/trip/recover states.</p>
             <div class="card-tags">
-              <span class="card-tag">UNITY</span><span class="card-tag">C#</span><span
-                class="card-tag">PROCEDURAL</span><span class="card-tag">PHYSICS</span><span class="card-tag">3D</span>
+              <span class="card-tag">PROCEDURAL</span><span class="card-tag">RIGIDBODY</span><span
+                class="card-tag">INHERITANCE</span><span class="card-tag">SCRIPTABLE OBJ</span>
             </div>
           </div>
           <div class="card-footer">
-            <a href="https://magicemperor30.itch.io/kings-rush" target="_blank" class="card-link">Play on itch.io</a>
+            <a href="https://magicemperor30.itch.io/kings-rush" target="_blank" class="card-link"
+              onclick="event.stopPropagation()">Play on itch.io</a>
             <span style="font-family:'Press Start 2P',monospace;font-size:0.36rem;color:var(--text-3);">⭐
               PERSONAL</span>
           </div>
+          <span class="card-click-hint">CLICK FOR TECH DETAILS</span>
         </div>
 
-        <div class="project-card accent-green reveal" data-card>
+        <!-- Zombie Shooter -->
+        <div class="project-card accent-green reveal" data-card data-modal-color="#10b981"
+          data-modal-genre="FPS SHOOTER" data-modal-title="Zombie Shooter"
+          data-modal-overview="A first-person survival shooter in a dark atmospheric forest. Players manage health, ammo, and a battery-limited flashlight while surviving zombie waves. Level geometry and props were built with ProBuilder for rapid environment iteration."
+          data-modal-tech='[
+            {"label":"FPS Controller","value":"Standard FPS character controller with mouse-look, gravity, and collision — tuned for tense indoor/outdoor traversal"},
+            {"label":"Enemy AI","value":"Zombie NavMesh agents with aggro detection radius; state machine: Patrol → Chase → Attack based on player proximity"},
+            {"label":"Weapon System","value":"Multi-weapon switcher with per-weapon ammo pools, reload logic, and raycast-based hitscan shooting"},
+            {"label":"Health System","value":"Player HP with damage-on-contact zombie attacks; on-screen health indicator and game-over trigger"},
+            {"label":"Flashlight Mechanic","value":"Battery-drain flashlight with collectible battery pickups; tension mechanic when battery depletes in dark areas"},
+            {"label":"Level Design","value":"Dark forest and bunker environments built with ProBuilder for rapid geometry prototyping and prop creation"}
+          ]'
+          data-modal-features='["NavMesh zombie AI with patrol → chase → attack state transitions","Multi-weapon system with per-weapon ammo pools and raycast hitscan","Battery-limited flashlight with pickup collectibles for tension","ProBuilder-constructed level geometry — forest and bunker environments","Health system with zombie contact damage and game-over state","Dramatic real-time lighting using Unity spot/point lights in dark environments"]'
+          data-modal-tags="Unity|C#|NavMesh AI|FPS|Raycast|ProBuilder|Weapon System|Real-Time Lighting"
+          data-modal-link="https://magicemperor30.itch.io/zombie-killer" data-modal-link-label="Play on itch.io">
           <div class="card-slider" data-slider>
-            <span class="card-genre">FPS SHOOTER</span>
-            <span class="card-platform">PC</span>
-            <div class="card-slider-track">
-              <img src="images/ZombieShooter.png" alt="Zombie Shooter forest">
-            </div>
+            <span class="card-genre">FPS SHOOTER</span><span class="card-platform">PC</span>
+            <div class="card-slider-track"><img src="images/ZombieShooter.png" alt="Zombie Shooter forest"></div>
             <div class="slide-pips"><span class="pip on"></span></div>
           </div>
           <div class="card-body">
             <div class="card-title">Zombie Shooter</div>
-            <p class="card-desc">First-person survival shooter in a dark atmospheric forest. Survive zombie waves using
-              precise aim and positioning — built with dramatic real-time lighting and dense foliage rendering.</p>
+            <p class="card-desc">NavMesh zombie AI with patrol/chase/attack FSM, multi-weapon raycast hitscan system,
+              battery-drain flashlight mechanic, and ProBuilder-built environments in dark real-time lighting.</p>
             <div class="card-tags">
-              <span class="card-tag">UNITY</span><span class="card-tag">FPS</span><span class="card-tag">ENEMY
-                AI</span><span class="card-tag">LIGHTING</span>
+              <span class="card-tag">NAVMESH AI</span><span class="card-tag">RAYCAST</span><span
+                class="card-tag">PROBUILDER</span><span class="card-tag">FPS</span><span
+                class="card-tag">LIGHTING</span>
             </div>
           </div>
           <div class="card-footer">
-            <a href="https://magicemperor30.itch.io/zombie-killer" target="_blank" class="card-link">Play on itch.io</a>
-            <span style="font-family:'Press Start 2P',monospace;font-size:0.36rem;color:var(--text-3);">⭐ PERSONAL
-              PROJECT</span>
+            <a href="https://magicemperor30.itch.io/zombie-killer" target="_blank" class="card-link"
+              onclick="event.stopPropagation()">Play on itch.io</a>
+            <span style="font-family:'Press Start 2P',monospace;font-size:0.36rem;color:var(--text-3);">⭐
+              PERSONAL</span>
           </div>
+          <span class="card-click-hint">CLICK FOR TECH DETAILS</span>
         </div>
 
-        <div class="project-card accent-pink reveal" data-card>
+        <!-- Turbo Rage -->
+        <div class="project-card accent-pink reveal" data-card data-modal-color="#ec4899" data-modal-genre="3D RACING"
+          data-modal-title="Turbo Rage"
+          data-modal-overview="An arcade 3D racing game shipped to Google Play Store, built during my internship at Dikshavision LLP. Features spline-based AI opponent navigation, custom HLSL shaders including a dynamic wall-lighting glow effect, and full Google Play Games SDK integration for leaderboards and Google Login."
+          data-modal-tech='[
+            {"label":"Spline AI","value":"AI opponents navigate circuits via spline-defined paths with speed control, overtaking logic, and collision avoidance"},
+            {"label":"HLSL Shaders","value":"Custom HLSL shader for dynamic wall-lighting glow effect — responds to player car proximity for visual feedback"},
+            {"label":"VFX","value":"Particle-based tire smoke, engine sparks, and boost trail effects using Unity Particle System and VFX Graph"},
+            {"label":"Google Play SDK","value":"Google Play Games Services integration: leaderboard submission, score tracking, and Google Login authentication"},
+            {"label":"Race Management","value":"Race manager handling lap counting, position ranking among AI + player, finish-line detection, and result screen"},
+            {"label":"Android Build","value":"Published Android build with ProGuard, keystore signing, and Play Store submission pipeline"}
+          ]'
+          data-modal-features='["Spline-based AI opponents with overtaking logic and collision avoidance","Custom HLSL wall-lighting glow shader responding to player proximity","Google Play Games Services integration — leaderboards and Google Login","Particle VFX: tire smoke, sparks, and boost trail effects","Race manager: lap counting, position ranking, finish detection","Live on Google Play Store — shipped production Android build"]'
+          data-modal-tags="Unity|C#|HLSL Shaders|Spline AI|Google Play SDK|VFX|Android|Published"
+          data-modal-link="https://play.google.com/store/apps/details?id=com.DikshaVisionLLP.TurboRage"
+          data-modal-link-label="Google Play Store">
           <div class="card-slider" data-slider>
             <span class="card-genre">3D RACING</span>
             <span class="card-platform" style="border-color:var(--green);color:var(--green);">ANDROID</span>
@@ -1789,22 +2100,38 @@
           </div>
           <div class="card-body">
             <div class="card-title">Turbo Rage</div>
-            <p class="card-desc">Arcade 3D racing game live on Google Play. Spline-based AI opponents, custom shaders
-              and VFX, Google Play Games SDK, Google Login — built during Dikshavision LLP internship.</p>
+            <p class="card-desc">Spline-based AI navigation, custom HLSL wall-glow shader, Google Play Games SDK for
+              leaderboards and login, VFX particle effects — shipped to Google Play Store during Dikshavision LLP
+              internship.</p>
             <div class="card-tags">
-              <span class="card-tag">UNITY</span><span class="card-tag">SPLINE AI</span><span
-                class="card-tag">SHADERS</span><span class="card-tag">GOOGLE PLAY</span><span
-                class="card-tag">PUBLISHED</span>
+              <span class="card-tag">SPLINE AI</span><span class="card-tag">HLSL</span><span class="card-tag">GOOGLE
+                PLAY SDK</span><span class="card-tag">VFX</span><span class="card-tag">PUBLISHED</span>
             </div>
           </div>
           <div class="card-footer">
             <a href="https://play.google.com/store/apps/details?id=com.DikshaVisionLLP.TurboRage" target="_blank"
-              class="card-link">Play Store</a>
+              class="card-link" onclick="event.stopPropagation()">Play Store</a>
             <span style="font-family:'Press Start 2P',monospace;font-size:0.36rem;color:var(--pink);">✦ PUBLISHED</span>
           </div>
+          <span class="card-click-hint">CLICK FOR TECH DETAILS</span>
         </div>
 
-        <div class="project-card accent-blue reveal" data-card>
+        <!-- Keys Are Fun -->
+        <div class="project-card accent-blue reveal" data-card data-modal-color="#3b82f6" data-modal-genre="EDUCATIONAL"
+          data-modal-title="Keys Are Fun"
+          data-modal-overview="A suite of 2D music education games for keyboard learning built at Furtados School of Music. The architecture includes BLE MIDI connectivity between Android and external MIDI hardware, animation state machines for music feedback, and a cross-platform build pipeline targeting WebGL, Android, and Windows."
+          data-modal-tech='[
+            {"label":"BLE MIDI","value":"Bluetooth MIDI (BLE) connectivity between Android devices and external MIDI hardware using kshoji plugin — resolved GATT slot exhaustion, scan/reconnect race conditions, and Android 9 audio routing failures"},
+            {"label":"Gameplay Systems","value":"Rhythm validation engine comparing MIDI input timestamps against target beat windows; note-hit scoring and streak logic"},
+            {"label":"Animation FSM","value":"Animator Controllers with state machines for visual feedback — correct/wrong note animations, combo streaks, and lesson completion"},
+            {"label":"UI Architecture","value":"TextMeshPro marquee/scrolling UI for lesson selection; Rect Mask 2D-based single-script solution optimized for low-RAM Android devices"},
+            {"label":"Cross-Platform Build","value":"Unity build pipeline managing WebGL (keysarefun.com), Android (Google Play), and Windows targets from a single codebase"},
+            {"label":"Agile Workflow","value":"Collaborated with designers, artists, and QA in Agile sprints — owns build configuration and release cycle management"}
+          ]'
+          data-modal-features='["BLE MIDI connectivity to external hardware — resolved GATT slot exhaustion and Android 9 audio routing bugs","Rhythm engine validating MIDI input timestamps against target beat windows","Animator FSMs for note-hit feedback, combo streaks, and lesson completion","TextMeshPro marquee UI optimized for low-RAM Android with Rect Mask 2D","Cross-platform build pipeline: WebGL, Android, and Windows from one codebase","Live on keysarefun.com and Google Play Store"]'
+          data-modal-tags="Unity|C#|BLE MIDI|Animator FSM|TextMeshPro|WebGL|Android|Windows|Published|Agile"
+          data-modal-link="https://play.google.com/store/apps/details?id=com.keysarefun"
+          data-modal-link-label="Google Play Store">
           <div class="card-slider" data-slider>
             <span class="card-genre">EDUCATIONAL</span>
             <span class="card-platform" style="border-color:var(--blue);color:var(--blue);">MULTI-PLATFORM</span>
@@ -1821,18 +2148,92 @@
           </div>
           <div class="card-body">
             <div class="card-title">Keys Are Fun</div>
-            <p class="card-desc">Suite of 2D music education games for keyboard learning — rhythm challenges, puzzles,
-              and beat mechanics — built with educators and live on keysarefun.com and Google Play.</p>
+            <p class="card-desc">BLE MIDI hardware integration, rhythm validation engine, Animator FSMs for note
+              feedback, Rect Mask 2D UI for low-RAM Android, cross-platform build pipeline — live on WebGL & Google
+              Play.</p>
             <div class="card-tags">
-              <span class="card-tag">UNITY</span><span class="card-tag">WEBGL</span><span
-                class="card-tag">ANDROID</span><span class="card-tag">EDUCATION</span><span
+              <span class="card-tag">BLE MIDI</span><span class="card-tag">RHYTHM ENGINE</span><span
+                class="card-tag">CROSS-PLATFORM</span><span class="card-tag">WEBGL</span><span
                 class="card-tag">PUBLISHED</span>
             </div>
           </div>
           <div class="card-footer">
-            <a href="https://play.google.com/store/apps/details?id=com.keysarefun" target="_blank"
-              class="card-link">Play Store</a>
+            <a href="https://play.google.com/store/apps/details?id=com.keysarefun" target="_blank" class="card-link"
+              onclick="event.stopPropagation()">Play Store</a>
             <span style="font-family:'Press Start 2P',monospace;font-size:0.36rem;color:var(--blue);">✦ PUBLISHED</span>
+          </div>
+          <span class="card-click-hint">CLICK FOR TECH DETAILS</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="px-divider"></div>
+
+  <!-- ═══ SOFTWARE PROJECTS ═══ -->
+  <section id="software" class="section">
+    <div class="section-inner">
+      <div class="section-label">Section 03</div>
+      <h2 class="section-title reveal">Software <em>Projects</em></h2>
+      <p class="reveal"
+        style="color:var(--text-2);font-size:0.9rem;margin-bottom:2.5rem;max-width:600px;line-height:1.75;">Beyond game
+        dev — full-stack and frontend projects demonstrating Node.js backends, REST API design, React component
+        architecture, and database integration.</p>
+
+      <div class="sw-grid">
+
+        <!-- Expense Tracker -->
+        <div class="sw-card sw-green reveal">
+          <span class="sw-icon">💰</span>
+          <span class="sw-card-type">FULL-STACK WEB APP</span>
+          <div class="sw-card-title">Expense Tracker App</div>
+          <p class="sw-card-desc">Full-stack expense manager with user authentication (Passport.js local strategy),
+            bcrypt password hashing, PostgreSQL for persistent storage, session management, and a budget/savings
+            calculator. Structured with Express.js route separation and EJS templating.</p>
+          <div class="sw-card-stack">
+            <span class="sw-tag">Node.js</span><span class="sw-tag">Express</span><span
+              class="sw-tag">PostgreSQL</span><span class="sw-tag">Passport.js</span><span
+              class="sw-tag">bcrypt</span><span class="sw-tag">EJS</span><span class="sw-tag">REST API</span>
+          </div>
+          <div class="sw-card-footer">
+            <a href="https://github.com/MagicEmperor30/ExpenseTrackerApp" target="_blank" class="sw-link">GitHub
+              Repo</a>
+          </div>
+        </div>
+
+        <!-- Anime Suggestion -->
+        <div class="sw-card sw-pink reveal">
+          <span class="sw-icon">🎌</span>
+          <span class="sw-card-type">REST API BACKEND</span>
+          <div class="sw-card-title">Anime Suggestion Website</div>
+          <p class="sw-card-desc">Node.js + Express backend serving personalized anime recommendations via RESTful API
+            endpoints. Connects frontend preference inputs to backend filtering logic, with EJS views for server-side
+            rendering and modular route structure.</p>
+          <div class="sw-card-stack">
+            <span class="sw-tag">Node.js</span><span class="sw-tag">Express</span><span class="sw-tag">REST
+              API</span><span class="sw-tag">EJS</span><span class="sw-tag">CSS</span>
+          </div>
+          <div class="sw-card-footer">
+            <a href="https://github.com/MagicEmperor30/animesuggestion" target="_blank" class="sw-link">GitHub Repo</a>
+          </div>
+        </div>
+
+        <!-- React Calculator -->
+        <div class="sw-card sw-blue reveal">
+          <span class="sw-icon">🧮</span>
+          <span class="sw-card-type">REACT FRONTEND</span>
+          <div class="sw-card-title">React Calculator</div>
+          <p class="sw-card-desc">A clean React calculator built with functional components and hooks. Demonstrates
+            React state management, controlled input handling, and component decomposition — a foundational project
+            showing cross-platform UI development skills beyond Unity.</p>
+          <div class="sw-card-stack">
+            <span class="sw-tag">React</span><span class="sw-tag">JavaScript</span><span
+              class="sw-tag">Hooks</span><span class="sw-tag">Component Architecture</span>
+          </div>
+          <div class="sw-card-footer">
+            <a href="https://github.com/MagicEmperor30/Simple-React-Calculator" target="_blank" class="sw-link">GitHub
+              Repo</a>
           </div>
         </div>
 
@@ -1842,12 +2243,11 @@
 
   <div class="px-divider"></div>
 
-  <!-- ═══ SKILLS ══════════════════════════════════════════ -->
+  <!-- ═══ SKILLS ═══ -->
   <section id="skills" class="section">
     <div class="section-inner">
-      <div class="section-label">Section 03</div>
+      <div class="section-label">Section 04</div>
       <h2 class="section-title reveal">Skills & <em>Tools</em></h2>
-
       <div class="skills-layout">
         <div class="reveal">
           <div class="skill-category">
@@ -1886,7 +2286,6 @@
             </div>
           </div>
         </div>
-
         <div class="reveal">
           <div class="skill-cat-title">Tools & Platforms</div>
           <div class="tools-grid">
@@ -1927,8 +2326,8 @@
             </div>
             <div class="tool-chip" style="--chip-color:var(--pink)">
               <div class="tool-chip-icon">🎨</div>
-              <div class="tool-chip-name">GameUI Design</div>
-              <div class="tool-chip-badge">VFX</div>
+              <div class="tool-chip-name">HLSL / VFX</div>
+              <div class="tool-chip-badge">SHADERS</div>
             </div>
             <div class="tool-chip" style="--chip-color:var(--green)">
               <div class="tool-chip-icon">🔧</div>
@@ -1943,16 +2342,15 @@
 
   <div class="px-divider"></div>
 
-  <!-- ═══ DEMO ════════════════════════════════════════════ -->
+  <!-- ═══ DEMO ═══ -->
   <section id="demo" class="section">
     <div class="demo-scanlines"></div>
     <div class="section-inner">
-      <div class="section-label">Section 04</div>
+      <div class="section-label">Section 05</div>
       <h2 class="section-title reveal">Playable <em>Demo</em></h2>
-
       <div class="demo-layout">
         <div class="reveal">
-          <div class="demo-screen px-corners" style="--c:var(--purple)">
+          <div class="demo-screen">
             <div class="tc3"></div>
             <div class="tc4"></div>
             <div class="demo-screen-bar">
@@ -1969,7 +2367,6 @@
             </div>
           </div>
         </div>
-
         <div class="demo-info reveal">
           <h3>Pixel Dodge<br>Mini Game</h3>
           <p>A playable mini game built right into this portfolio — dodge falling pixel blocks, collect gems, and
@@ -1993,35 +2390,27 @@
 
   <div class="px-divider"></div>
 
-  <!-- ═══ CONTACT ═════════════════════════════════════════ -->
+  <!-- ═══ CONTACT ═══ -->
   <section id="contact" class="section">
     <div class="section-inner">
-      <div class="section-label">Section 05</div>
+      <div class="section-label">Section 06</div>
       <h2 class="section-title reveal">Get in <em>Touch</em></h2>
-
       <div class="contact-grid">
         <div class="reveal">
           <p style="color:var(--text-2);margin-bottom:2rem;line-height:1.75;">Open to Junior game developer roles,
             freelance projects, and exciting collaborations. Based in Mumbai — available remotely. Let's build something
             awesome together!</p>
           <div class="contact-form">
-            <div class="form-group">
-              <label class="form-label">Your Name</label>
-              <input class="form-input" type="text" placeholder="Player One...">
-            </div>
-            <div class="form-group">
-              <label class="form-label">Email</label>
-              <input class="form-input" type="email" placeholder="your@email.com">
-            </div>
-            <div class="form-group">
-              <label class="form-label">Message</label>
-              <textarea class="form-textarea" placeholder="Hey Digvijay, I'd love to..."></textarea>
-            </div>
+            <div class="form-group"><label class="form-label">Your Name</label><input class="form-input" type="text"
+                placeholder="Player One..."></div>
+            <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email"
+                placeholder="your@email.com"></div>
+            <div class="form-group"><label class="form-label">Message</label><textarea class="form-textarea"
+                placeholder="Hey Digvijay, I'd love to..."></textarea></div>
             <button class="btn btn-primary" style="width:100%;text-align:center;font-size:0.48rem;">▶ Send
               Message</button>
           </div>
         </div>
-
         <div class="reveal">
           <div style="margin-bottom:1.5rem;">
             <div class="section-label" style="margin-bottom:0.5rem;">Direct Links</div>
@@ -2071,7 +2460,6 @@
     </div>
   </section>
 
-  <!-- ═══ FOOTER ══════════════════════════════════════════ -->
   <footer>
     <p>© 2025 Digvijay Sasane · Game Developer · Mumbai</p>
     <div style="display:flex;gap:1.5rem;">
@@ -2082,23 +2470,19 @@
     </div>
   </footer>
 
-  <!-- ═══ SCRIPTS ══════════════════════════════════════════ -->
   <script>
     /* ── Theme Toggle ── */
     const themeToggle = document.getElementById('themeToggle');
     const body = document.body;
-    // Restore saved preference
-    if (localStorage.getItem('theme') === 'light') {
-      body.classList.add('light');
-      themeToggle.textContent = '☀️';
-    }
+    if (localStorage.getItem('theme') === 'light') { body.classList.add('light'); themeToggle.textContent = '☀️'; }
     themeToggle.addEventListener('click', () => {
       body.classList.toggle('light');
       const isLight = body.classList.contains('light');
       themeToggle.textContent = isLight ? '☀️' : '🌙';
       localStorage.setItem('theme', isLight ? 'light' : 'dark');
     });
-    /* ── Typewriter role ── */
+
+    /* ── Typewriter ── */
     const roles = ['Building Worlds in Unity', 'Crafting Fun Games', 'Shipping Mobile Games', 'Designing Enemy AI', 'Writing Clean C# Code'];
     let ri = 0, ci = 0, del = false;
     const roleTxt = document.getElementById('role-text');
@@ -2110,22 +2494,13 @@
     }
     typeRole();
 
-    /* ── Floating particles around terminal ── */
+    /* ── Particles ── */
     const heroVisual = document.getElementById('heroVisual');
     const particleColors = ['#a78bfa', '#60a5fa', '#f472b6', '#fbbf24', '#34d399'];
     for (let i = 0; i < 8; i++) {
-      const p = document.createElement('div');
-      p.className = 'hero-particle';
+      const p = document.createElement('div'); p.className = 'hero-particle';
       const sz = Math.random() * 6 + 3;
-      Object.assign(p.style, {
-        width: sz + 'px', height: sz + 'px',
-        background: particleColors[Math.floor(Math.random() * particleColors.length)],
-        left: Math.random() * 100 + '%',
-        bottom: '5%',
-        animationDuration: (Math.random() * 4 + 3) + 's',
-        animationDelay: (Math.random() * 4) + 's',
-        borderRadius: Math.random() > 0.5 ? '0' : '50%'
-      });
+      Object.assign(p.style, { width: sz + 'px', height: sz + 'px', background: particleColors[Math.floor(Math.random() * particleColors.length)], left: Math.random() * 100 + '%', bottom: '5%', animationDuration: (Math.random() * 4 + 3) + 's', animationDelay: (Math.random() * 4) + 's', borderRadius: Math.random() > 0.5 ? '0' : '50%' });
       heroVisual.appendChild(p);
     }
 
@@ -2139,11 +2514,7 @@
       const prev = sl.querySelector('.slide-prev');
       const next = sl.querySelector('.slide-next');
       let cur = 0;
-      function go(n) {
-        cur = ((n % imgs.length) + imgs.length) % imgs.length;
-        track.style.transform = `translateX(-${cur * 100}%)`;
-        pips.forEach((p, i) => p.classList.toggle('on', i === cur));
-      }
+      function go(n) { cur = ((n % imgs.length) + imgs.length) % imgs.length; track.style.transform = `translateX(-${cur * 100}%)`; pips.forEach((p, i) => p.classList.toggle('on', i === cur)); }
       if (prev) prev.addEventListener('click', e => { e.stopPropagation(); go(cur - 1); });
       if (next) next.addEventListener('click', e => { e.stopPropagation(); go(cur + 1); });
       pips.forEach((p, i) => p.addEventListener('click', () => go(i)));
@@ -2152,16 +2523,9 @@
       sl.addEventListener('mouseleave', () => { t = setInterval(() => go(cur + 1), 3500); });
     });
 
-    /* ── Skill bars on scroll ── */
+    /* ── Skill bars ── */
     const skillObs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          document.querySelectorAll('.skill-bar-fill').forEach(b => {
-            b.style.width = b.dataset.pct + '%';
-          });
-          skillObs.disconnect();
-        }
-      });
+      entries.forEach(e => { if (e.isIntersecting) { document.querySelectorAll('.skill-bar-fill').forEach(b => { b.style.width = b.dataset.pct + '%'; }); skillObs.disconnect(); } });
     }, { threshold: 0.3 });
     const sbEl = document.getElementById('skillBars');
     if (sbEl) skillObs.observe(sbEl);
@@ -2172,30 +2536,81 @@
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach((el, i) => { el.style.transitionDelay = (i % 5 * 0.07) + 's'; revObs.observe(el); });
 
-    /* ════════════════════════════════
+    /* ══════════════════════════════════
+       PROJECT MODAL SYSTEM
+    ═══════════════════════════════════ */
+    const modal = document.getElementById('projectModal');
+    const modalBox = document.getElementById('modalBox');
+    const modalGenre = document.getElementById('modalGenre');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalBody = document.getElementById('modalBody');
+    const modalClose = document.getElementById('modalClose');
+
+    function openModal(card) {
+      const color = card.dataset.modalColor || '#7c3aed';
+      modalBox.style.setProperty('--modal-color', color);
+      modalGenre.textContent = card.dataset.modalGenre || '';
+      modalTitle.textContent = card.dataset.modalTitle || '';
+
+      let techHTML = '';
+      try {
+        const techItems = JSON.parse(card.dataset.modalTech || '[]');
+        techHTML = `<div class="modal-tech-grid">${techItems.map(t => `<div class="modal-tech-item"><div class="modal-tech-label">${t.label}</div><div class="modal-tech-value">${t.value}</div></div>`).join('')}</div>`;
+      } catch (e) { }
+
+      let featuresHTML = '';
+      try {
+        const features = JSON.parse(card.dataset.modalFeatures || '[]');
+        featuresHTML = `<ul class="modal-features">${features.map(f => `<li>${f}</li>`).join('')}</ul>`;
+      } catch (e) { }
+
+      const tags = (card.dataset.modalTags || '').split('|').filter(Boolean);
+      const tagsHTML = tags.length ? `<div class="modal-tags">${tags.map(t => `<span class="modal-tag">${t}</span>`).join('')}</div>` : '';
+
+      const link = card.dataset.modalLink;
+      const linkLabel = card.dataset.modalLinkLabel || 'View Project';
+      const actionsHTML = link ? `<div class="modal-actions"><a href="${link}" target="_blank" class="btn btn-purple" style="font-size:0.45rem;">▶ ${linkLabel}</a></div>` : '';
+
+      modalBody.innerHTML = `
+        <p class="modal-overview">${card.dataset.modalOverview || ''}</p>
+        <div class="modal-section-title">Technical Implementation</div>
+        ${techHTML}
+        <div class="modal-section-title">Key Features</div>
+        ${featuresHTML}
+        <div class="modal-section-title">Tech Stack</div>
+        ${tagsHTML}
+        ${actionsHTML}
+      `;
+
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('[data-card]').forEach(card => {
+      card.addEventListener('click', () => openModal(card));
+    });
+
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    /* ═══════════════════════
        MINI GAME — Pixel Dodge
-       ════════════════════════════════ */
+    ════════════════════════ */
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
-
     const W = 480, H = 280;
     const COLORS = { bg: '#050510', ground: '#0d0d20', player: '#a78bfa', playerEye: '#fff', block: '#f472b6', blockDark: '#be185d', gem: '#fbbf24', gemShine: '#fef3c7', text: '#ffffff', textDim: 'rgba(255,255,255,0.3)', score: '#fbbf24', ground2: '#0a0a1a' };
-    const GEM_SZ = 10;
-    const BLOCK_W = 28, BLOCK_H = 28;
-    const GROUND_Y = H - 50;
-    const PLAYER_W = 18, PLAYER_H = 24;
-
-    let state = 'idle';
-    let score = 0, hi = 0, frame = 0, speed = 2.2;
+    const GEM_SZ = 10, BLOCK_W = 28, BLOCK_H = 28, GROUND_Y = H - 50, PLAYER_W = 18, PLAYER_H = 24;
+    let state = 'idle', score = 0, hi = 0, frame = 0, speed = 2.2;
     let player, blocks, gems, particles;
-
-    function initGame() {
-      player = { x: W / 2 - PLAYER_W / 2, y: GROUND_Y - PLAYER_H, vy: 0, onGround: true, facing: 1 };
-      blocks = []; gems = []; particles = [];
-      score = 0; frame = 0; speed = 2.2;
-    }
+    function initGame() { player = { x: W / 2 - PLAYER_W / 2, y: GROUND_Y - PLAYER_H, vy: 0, onGround: true, facing: 1 }; blocks = []; gems = []; particles = []; score = 0; frame = 0; speed = 2.2; }
     initGame();
-
     const keys = {};
     document.addEventListener('keydown', e => {
       keys[e.key] = true;
@@ -2203,141 +2618,37 @@
       if ((e.key === 'ArrowUp' || e.key === 'w') && player.onGround && state === 'playing') { player.vy = -9; player.onGround = false; }
     });
     document.addEventListener('keyup', e => { keys[e.key] = false; });
-
     function pxRect(x, y, w, h, col) { ctx.fillStyle = col; ctx.fillRect(Math.round(x), Math.round(y), w, h); }
-    function drawPlayer(p) {
-      pxRect(p.x, p.y, PLAYER_W, PLAYER_H, COLORS.player);
-      ctx.fillStyle = 'rgba(0,0,0,0.25)';
-      ctx.fillRect(Math.round(p.x) + PLAYER_W - 4, Math.round(p.y), 4, PLAYER_H);
-      const eyeX = p.facing > 0 ? p.x + PLAYER_W - 5 : p.x + 3;
-      pxRect(eyeX, p.y + 6, 4, 4, COLORS.playerEye);
-      pxRect(eyeX + 1, p.y + 7, 2, 2, '#1a1825');
-      const legOff = Math.sin(frame * 0.3) * 3;
-      pxRect(p.x + 2, p.y + PLAYER_H, 5, legOff > 0 ? 5 : 3, '#7c3aed');
-      pxRect(p.x + PLAYER_W - 7, p.y + PLAYER_H, 5, legOff <= 0 ? 5 : 3, '#7c3aed');
-    }
-    function drawBlock(b) {
-      pxRect(b.x, b.y, BLOCK_W, BLOCK_H, COLORS.block);
-      pxRect(b.x, b.y, BLOCK_W, 4, COLORS.blockDark);
-      pxRect(b.x, b.y + BLOCK_H - 4, BLOCK_W, 4, 'rgba(0,0,0,0.3)');
-      ctx.fillStyle = 'rgba(255,255,255,0.12)';
-      ctx.fillRect(Math.round(b.x + 2), Math.round(b.y + 2), 4, 4);
-    }
-    function drawGem(g) {
-      const t = Math.sin(frame * 0.08 + g.phase) * 2;
-      pxRect(g.x + GEM_SZ / 2 - 2, g.y + t, 4, 4, COLORS.gem);
-      pxRect(g.x + GEM_SZ / 2 - 4, g.y + 4 + t, 8, 4, COLORS.gem);
-      pxRect(g.x + GEM_SZ / 2 - 2, g.y + 8 + t, 4, 4, COLORS.gem);
-      ctx.fillStyle = 'rgba(255,255,255,0.5)';
-      ctx.fillRect(Math.round(g.x + GEM_SZ / 2), Math.round(g.y + t + 1), 2, 2);
-    }
-    function spawnParticles(x, y, col, n = 8) {
-      for (let i = 0; i < n; i++) {
-        particles.push({ x, y, vx: (Math.random() - 0.5) * 6, vy: (Math.random() - 0.5) * 6, life: 1, col, sz: Math.random() * 4 + 2 });
-      }
-    }
-
+    function drawPlayer(p) { pxRect(p.x, p.y, PLAYER_W, PLAYER_H, COLORS.player); ctx.fillStyle = 'rgba(0,0,0,0.25)'; ctx.fillRect(Math.round(p.x) + PLAYER_W - 4, Math.round(p.y), 4, PLAYER_H); const eyeX = p.facing > 0 ? p.x + PLAYER_W - 5 : p.x + 3; pxRect(eyeX, p.y + 6, 4, 4, COLORS.playerEye); pxRect(eyeX + 1, p.y + 7, 2, 2, '#1a1825'); const legOff = Math.sin(frame * 0.3) * 3; pxRect(p.x + 2, p.y + PLAYER_H, 5, legOff > 0 ? 5 : 3, '#7c3aed'); pxRect(p.x + PLAYER_W - 7, p.y + PLAYER_H, 5, legOff <= 0 ? 5 : 3, '#7c3aed'); }
+    function drawBlock(b) { pxRect(b.x, b.y, BLOCK_W, BLOCK_H, COLORS.block); pxRect(b.x, b.y, BLOCK_W, 4, COLORS.blockDark); pxRect(b.x, b.y + BLOCK_H - 4, BLOCK_W, 4, 'rgba(0,0,0,0.3)'); ctx.fillStyle = 'rgba(255,255,255,0.12)'; ctx.fillRect(Math.round(b.x + 2), Math.round(b.y + 2), 4, 4); }
+    function drawGem(g) { const t = Math.sin(frame * 0.08 + g.phase) * 2; pxRect(g.x + GEM_SZ / 2 - 2, g.y + t, 4, 4, COLORS.gem); pxRect(g.x + GEM_SZ / 2 - 4, g.y + 4 + t, 8, 4, COLORS.gem); pxRect(g.x + GEM_SZ / 2 - 2, g.y + 8 + t, 4, 4, COLORS.gem); ctx.fillStyle = 'rgba(255,255,255,0.5)'; ctx.fillRect(Math.round(g.x + GEM_SZ / 2), Math.round(g.y + t + 1), 2, 2); }
+    function spawnParticles(x, y, col, n = 8) { for (let i = 0; i < n; i++) { particles.push({ x, y, vx: (Math.random() - 0.5) * 6, vy: (Math.random() - 0.5) * 6, life: 1, col, sz: Math.random() * 4 + 2 }); } }
     function gameLoop() {
       requestAnimationFrame(gameLoop);
-      ctx.clearRect(0, 0, W, H);
-      pxRect(0, 0, W, H, COLORS.bg);
+      ctx.clearRect(0, 0, W, H); pxRect(0, 0, W, H, COLORS.bg);
       ctx.fillStyle = 'rgba(255,255,255,0.18)';
-      for (let i = 0; i < 30; i++) {
-        const sx = ((i * 73 + frame * 0.2) % W); const sy = ((i * 47) % (GROUND_Y - 20));
-        ctx.fillRect(Math.round(sx), Math.round(sy), 2, 2);
-      }
-      pxRect(0, GROUND_Y, W, H - GROUND_Y, COLORS.ground);
-      pxRect(0, GROUND_Y, W, 4, COLORS.ground2);
+      for (let i = 0; i < 30; i++) { const sx = ((i * 73 + frame * 0.2) % W); const sy = ((i * 47) % (GROUND_Y - 20)); ctx.fillRect(Math.round(sx), Math.round(sy), 2, 2); }
+      pxRect(0, GROUND_Y, W, H - GROUND_Y, COLORS.ground); pxRect(0, GROUND_Y, W, 4, COLORS.ground2);
       ctx.fillStyle = 'rgba(255,255,255,0.04)';
-      for (let gx = 0; gx < W; gx += 16) ctx.fillRect(gx, GROUND_Y, 8, 4);
-
-      if (state === 'idle') {
-        ctx.fillStyle = COLORS.text;
-        ctx.font = 'bold 14px "Press Start 2P",monospace';
-        ctx.textAlign = 'center';
-        ctx.fillText('PIXEL DODGE', W / 2, H / 2 - 24);
-        ctx.font = '7px "Press Start 2P",monospace';
-        ctx.fillStyle = COLORS.textDim;
-        ctx.fillText('PRESS SPACE TO START', W / 2, H / 2 + 4);
-        ctx.fillStyle = COLORS.score;
-        ctx.fillText('BEST: ' + hi, W / 2, H / 2 + 24);
-        drawPlayer(player);
-        return;
-      }
-
+      for (let gx = 0; gx < W; gx += 16)ctx.fillRect(gx, GROUND_Y, 8, 4);
+      if (state === 'idle') { ctx.fillStyle = COLORS.text; ctx.font = 'bold 14px "Press Start 2P",monospace'; ctx.textAlign = 'center'; ctx.fillText('PIXEL DODGE', W / 2, H / 2 - 24); ctx.font = '7px "Press Start 2P",monospace'; ctx.fillStyle = COLORS.textDim; ctx.fillText('PRESS SPACE TO START', W / 2, H / 2 + 4); ctx.fillStyle = COLORS.score; ctx.fillText('BEST: ' + hi, W / 2, H / 2 + 24); drawPlayer(player); return; }
       if (state === 'playing') {
-        frame++;
-        speed = 2.2 + score * 0.012;
+        frame++; speed = 2.2 + score * 0.012;
         if (keys['ArrowLeft'] || keys['a']) { player.x -= 4; player.facing = -1; }
         if (keys['ArrowRight'] || keys['d']) { player.x += 4; player.facing = 1; }
         player.x = Math.max(0, Math.min(W - PLAYER_W, player.x));
-        player.vy += 0.5;
-        player.y += player.vy;
+        player.vy += 0.5; player.y += player.vy;
         if (player.y >= GROUND_Y - PLAYER_H) { player.y = GROUND_Y - PLAYER_H; player.vy = 0; player.onGround = true; }
-        if (frame % Math.max(28, 60 - Math.floor(score / 3)) === 0) {
-          blocks.push({ x: Math.random() * (W - BLOCK_W), y: -BLOCK_H, vy: 1.5 + Math.random() * 2 + score * 0.01 });
-        }
-        if (frame % 90 === 0) {
-          gems.push({ x: Math.random() * (W - GEM_SZ * 2) + GEM_SZ, y: -20, vy: 1.2 + Math.random(), phase: Math.random() * Math.PI * 2 });
-        }
-        for (let i = blocks.length - 1; i >= 0; i--) {
-          const b = blocks[i];
-          b.y += b.vy;
-          if (b.y > H) { blocks.splice(i, 1); score++; continue; }
-          if (player.x < b.x + BLOCK_W && player.x + PLAYER_W > b.x && player.y < b.y + BLOCK_H && player.y + PLAYER_H > b.y) {
-            spawnParticles(player.x + PLAYER_W / 2, player.y + PLAYER_H / 2, COLORS.player, 12);
-            state = 'dead'; if (score > hi) hi = score;
-          }
-        }
-        for (let i = gems.length - 1; i >= 0; i--) {
-          const g = gems[i];
-          g.y += g.vy;
-          if (g.y > H) { gems.splice(i, 1); continue; }
-          if (player.x < g.x + GEM_SZ * 2 && player.x + PLAYER_W > g.x && player.y < g.y + GEM_SZ * 2 && player.y + PLAYER_H > g.y) {
-            spawnParticles(g.x + GEM_SZ, g.y + GEM_SZ, COLORS.gem, 6);
-            gems.splice(i, 1); score += 5;
-          }
-        }
+        if (frame % Math.max(28, 60 - Math.floor(score / 3)) === 0) { blocks.push({ x: Math.random() * (W - BLOCK_W), y: -BLOCK_H, vy: 1.5 + Math.random() * 2 + score * 0.01 }); }
+        if (frame % 90 === 0) { gems.push({ x: Math.random() * (W - GEM_SZ * 2) + GEM_SZ, y: -20, vy: 1.2 + Math.random(), phase: Math.random() * Math.PI * 2 }); }
+        for (let i = blocks.length - 1; i >= 0; i--) { const b = blocks[i]; b.y += b.vy; if (b.y > H) { blocks.splice(i, 1); score++; continue; } if (player.x < b.x + BLOCK_W && player.x + PLAYER_W > b.x && player.y < b.y + BLOCK_H && player.y + PLAYER_H > b.y) { spawnParticles(player.x + PLAYER_W / 2, player.y + PLAYER_H / 2, COLORS.player, 12); state = 'dead'; if (score > hi) hi = score; } }
+        for (let i = gems.length - 1; i >= 0; i--) { const g = gems[i]; g.y += g.vy; if (g.y > H) { gems.splice(i, 1); continue; } if (player.x < g.x + GEM_SZ * 2 && player.x + PLAYER_W > g.x && player.y < g.y + GEM_SZ * 2 && player.y + PLAYER_H > g.y) { spawnParticles(g.x + GEM_SZ, g.y + GEM_SZ, COLORS.gem, 6); gems.splice(i, 1); score += 5; } }
       }
-
-      gems.forEach(g => drawGem(g));
-      blocks.forEach(b => drawBlock(b));
-      drawPlayer(player);
-      for (let i = particles.length - 1; i >= 0; i--) {
-        const p = particles[i];
-        p.x += p.vx; p.y += p.vy; p.vy += 0.2; p.life -= 0.04;
-        if (p.life <= 0) { particles.splice(i, 1); continue; }
-        ctx.globalAlpha = p.life;
-        pxRect(p.x, p.y, p.sz, p.sz, p.col);
-        ctx.globalAlpha = 1;
-      }
-
-      ctx.font = '8px "Press Start 2P",monospace';
-      ctx.textAlign = 'left'; ctx.fillStyle = COLORS.score;
-      ctx.fillText('SCORE: ' + score, 10, 20);
-      ctx.textAlign = 'right'; ctx.fillStyle = COLORS.textDim;
-      ctx.fillText('BEST: ' + hi, W - 10, 20);
-
-      const spd = Math.min((speed - 2.2) / 3, 1);
-      ctx.fillStyle = 'rgba(255,255,255,0.08)';
-      ctx.fillRect(10, 28, 80, 4);
-      ctx.fillStyle = `hsl(${120 - spd * 120},100%,60%)`;
-      ctx.fillRect(10, 28, Math.round(80 * spd), 4);
-
-      if (state === 'dead') {
-        ctx.fillStyle = 'rgba(0,0,0,0.7)';
-        ctx.fillRect(0, 0, W, H);
-        ctx.fillStyle = '#f472b6';
-        ctx.font = 'bold 14px "Press Start 2P",monospace';
-        ctx.textAlign = 'center';
-        ctx.fillText('GAME OVER', W / 2, H / 2 - 22);
-        ctx.font = '7px "Press Start 2P",monospace';
-        ctx.fillStyle = COLORS.score;
-        ctx.fillText('SCORE: ' + score + '  BEST: ' + hi, W / 2, H / 2 + 2);
-        ctx.fillStyle = COLORS.textDim;
-        ctx.fillText('SPACE TO RESTART', W / 2, H / 2 + 22);
-        frame++;
-      }
+      gems.forEach(g => drawGem(g)); blocks.forEach(b => drawBlock(b)); drawPlayer(player);
+      for (let i = particles.length - 1; i >= 0; i--) { const p = particles[i]; p.x += p.vx; p.y += p.vy; p.vy += 0.2; p.life -= 0.04; if (p.life <= 0) { particles.splice(i, 1); continue; } ctx.globalAlpha = p.life; pxRect(p.x, p.y, p.sz, p.sz, p.col); ctx.globalAlpha = 1; }
+      ctx.font = '8px "Press Start 2P",monospace'; ctx.textAlign = 'left'; ctx.fillStyle = COLORS.score; ctx.fillText('SCORE: ' + score, 10, 20); ctx.textAlign = 'right'; ctx.fillStyle = COLORS.textDim; ctx.fillText('BEST: ' + hi, W - 10, 20);
+      const spd = Math.min((speed - 2.2) / 3, 1); ctx.fillStyle = 'rgba(255,255,255,0.08)'; ctx.fillRect(10, 28, 80, 4); ctx.fillStyle = `hsl(${120 - spd * 120},100%,60%)`; ctx.fillRect(10, 28, Math.round(80 * spd), 4);
+      if (state === 'dead') { ctx.fillStyle = 'rgba(0,0,0,0.7)'; ctx.fillRect(0, 0, W, H); ctx.fillStyle = '#f472b6'; ctx.font = 'bold 14px "Press Start 2P",monospace'; ctx.textAlign = 'center'; ctx.fillText('GAME OVER', W / 2, H / 2 - 22); ctx.font = '7px "Press Start 2P",monospace'; ctx.fillStyle = COLORS.score; ctx.fillText('SCORE: ' + score + '  BEST: ' + hi, W / 2, H / 2 + 2); ctx.fillStyle = COLORS.textDim; ctx.fillText('SPACE TO RESTART', W / 2, H / 2 + 22); frame++; }
     }
     gameLoop();
   </script>
