@@ -1605,6 +1605,23 @@
       min-height: 130px;
     }
 
+    .form-status {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.42rem;
+      line-height: 1.8;
+      letter-spacing: 0.08em;
+      min-height: 1em;
+      color: var(--text-2);
+    }
+
+    .form-status.ok {
+      color: var(--green);
+    }
+
+    .form-status.err {
+      color: var(--pink);
+    }
+
     .contact-links {
       display: flex;
       flex-direction: column;
@@ -2400,16 +2417,23 @@
           <p style="color:var(--text-2);margin-bottom:2rem;line-height:1.75;">Open to Junior game developer roles,
             freelance projects, and exciting collaborations. Based in Mumbai — available remotely. Let's build something
             awesome together!</p>
-          <div class="contact-form">
-            <div class="form-group"><label class="form-label">Your Name</label><input class="form-input" type="text"
-                placeholder="Player One..."></div>
-            <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email"
-                placeholder="your@email.com"></div>
-            <div class="form-group"><label class="form-label">Message</label><textarea class="form-textarea"
-                placeholder="Hey Digvijay, I'd love to..."></textarea></div>
-            <button class="btn btn-primary" style="width:100%;text-align:center;font-size:0.48rem;">▶ Send
-              Message</button>
-          </div>
+          <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+            <!-- Web3Forms key is injected at deploy time from the WEB3FORMS_ACCESS_KEY repo secret (see .github/workflows/deploy.yml) -->
+            <input type="hidden" name="access_key" value="__WEB3FORMS_ACCESS_KEY__">
+            <input type="hidden" name="subject" value="New message from your portfolio">
+            <input type="hidden" name="from_name" value="Digvijay Portfolio">
+            <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+            <div class="form-group"><label class="form-label" for="cfName">Your Name</label><input class="form-input"
+                id="cfName" name="name" type="text" placeholder="Player One..." required></div>
+            <div class="form-group"><label class="form-label" for="cfEmail">Email</label><input class="form-input"
+                id="cfEmail" name="email" type="email" placeholder="your@email.com" required></div>
+            <div class="form-group"><label class="form-label" for="cfMessage">Message</label><textarea
+                class="form-textarea" id="cfMessage" name="message" placeholder="Hey Digvijay, I'd love to..."
+                required></textarea></div>
+            <button type="submit" class="btn btn-primary" id="cfSubmit"
+              style="width:100%;text-align:center;font-size:0.48rem;">▶ Send Message</button>
+            <p class="form-status" id="cfStatus" role="status" aria-live="polite"></p>
+          </form>
         </div>
         <div class="reveal">
           <div style="margin-bottom:1.5rem;">
@@ -2535,6 +2559,33 @@
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach((el, i) => { el.style.transitionDelay = (i % 5 * 0.07) + 's'; revObs.observe(el); });
+
+    /* ── Contact form (Web3Forms) ── */
+    const contactForm = document.getElementById('contactForm');
+    const cfSubmit = document.getElementById('cfSubmit');
+    const cfStatus = document.getElementById('cfStatus');
+    contactForm.addEventListener('submit', async e => {
+      e.preventDefault();
+      if (contactForm.botcheck.checked) return;
+      const label = cfSubmit.textContent;
+      cfSubmit.disabled = true; cfSubmit.textContent = '… Sending';
+      cfStatus.className = 'form-status'; cfStatus.textContent = '';
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(Object.fromEntries(new FormData(contactForm)))
+        });
+        const data = await res.json();
+        if (!res.ok || !data.success) throw new Error(data.message || 'Request failed');
+        cfStatus.classList.add('ok'); cfStatus.textContent = '✔ MESSAGE SENT! I\'LL GET BACK TO YOU SOON.';
+        contactForm.reset();
+      } catch (err) {
+        cfStatus.classList.add('err'); cfStatus.textContent = '✖ COULD NOT SEND. PLEASE EMAIL ME DIRECTLY.';
+      } finally {
+        cfSubmit.disabled = false; cfSubmit.textContent = label;
+      }
+    });
 
     /* ══════════════════════════════════
        PROJECT MODAL SYSTEM
