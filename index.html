@@ -1916,6 +1916,108 @@
 
       <div class="projects-grid">
 
+        <!-- Cross Cat Luck -->
+        <div class="project-card accent-yellow reveal" data-card data-modal-color="#f59e0b"
+          data-modal-genre="2D STORY-PUZZLE · GAME JAM" data-modal-title="Cross Cat Luck — A Mumbai Chawl Story"
+          data-modal-overview="A 2D story-puzzle adventure built solo in a 7-day game jam (theme: “Lucky Number”). Sai, a 16-year-old who believes she is a jinx, and Mani, a black cat everyone calls bad luck, team up to save their Mumbai chawl from a superstitious builder. Across 9 chapters — each built on a Maharashtrian festival or tradition and centred on a lucky number (1, 11, 5, 21, 9, 6, 7, 8 and 3½) — the player solves puzzles, helps neighbours and collects the 9 signatures that save their home. Role: solo developer — game design, programming, systems, UI and level layout."
+          data-modal-tech='[
+            {"label":"Data-Driven Content","value":"All 9 chapters (cast, props, dialogue, tasks, story events, puzzle settings) authored in JSON and converted to ScriptableObjects by editor tools — content changes need no code changes"},
+            {"label":"Puzzle Templates","value":"15 reusable puzzle templates power 40+ activities: rhythm and call-and-response, sliding gates, one-stroke tracing, logic grids, memory sequence, lane-dodge drive, storm defence, evidence debate and the exact-sum Number Seal"},
+            {"label":"Solvability Check","value":"Breadth-first search solver automatically confirms every strategy-grid puzzle can be finished within its step limit"},
+            {"label":"Story Event System","value":"Script runner for cutscenes, NPC movement, dialogue and world changes after each task (the pandal gets built, lamps light, gudis go up), plus runtime cropping of sprites from storyboard art"},
+            {"label":"NPC Behaviour","value":"Neighbours follow routines, notice the player, chat with each other and comment as she passes; residents persist across chapters while chapter objects are cleaned up"},
+            {"label":"Companion Hints","value":"Mani the cat gives three levels of help computed from the item’s real position: a direction, then a landmark, then she leads you to it"},
+            {"label":"Rendering & UI","value":"URP 2D renderer with Pixel Perfect Camera (320×180 at 4×), Cinemachine 3 with per-area 2D confiners, custom HLSL sprite-outline shader, UI Toolkit (C# + USS) for HUD, journal, menus and puzzle boards"},
+            {"label":"WebGL Build","value":"Single gameplay scene with puzzles opened in runtime-created scenes so nothing loads mid-game; Brotli compression, high code stripping and IL2CPP size optimisation"}
+          ]'
+          data-modal-features='["Theme in the core mechanic — every chapter ends by combining earned number tokens to make its lucky number exactly","Superstitions as tools — a black cat crossing your path, a lemon-and-chilli charm, a lizard’s chirp and a sneeze each become a gameplay ability","Culture taught through play — Nag Panchami, Ganesh Chaturthi, Navratri, a wedding, the Ashtavinayak pilgrimage, Gudi Padwa and more, with an in-journal culture encyclopedia","Visible results — every finished task changes the world, and a neighbour reacts and leads you into the next task","Code-generated environments: a stormy room with rain, drips and lightning; a sunset ghat road with scrolling parallax","Python content generators and custom Unity Editor menus that slice the asset pack, build databases and build scenes","Keyboard, mouse and gamepad support via the Unity Input System"]'
+          data-modal-tags="Unity 6|C#|URP 2D|UI Toolkit|HLSL Shader|Cinemachine|Editor Tooling|Python|WebGL Optimisation|Game Design|Systems Design|Narrative Design"
+          data-modal-link="https://magicemperor30.itch.io/cross-cat-luck"
+          data-modal-link-label="Play on itch.io">
+          <div class="card-slider" data-slider>
+            <span class="card-genre">STORY-PUZZLE</span><span class="card-platform">WEBGL · PC</span>
+            <div class="card-slider-track">
+              <img src="images/CrossCat_Title.png" alt="Cross Cat Luck title screen">
+              <img src="images/CrossCat_Dialogue.png" alt="Aaji dialogue in the rain">
+              <img src="images/CrossCat_NumberSeal.png" alt="Number Seal puzzle making 11">
+              <img src="images/CrossCat_Dindi.png" alt="Walk with the dindi rhythm activity">
+              <img src="images/CrossCat_Chawl.png" alt="Chawl courtyard with Mani the cat">
+              <img src="images/CrossCat_Rain.png" alt="Rainy chawl courtyard">
+            </div>
+            <button class="slide-btn slide-prev">‹</button><button class="slide-btn slide-next">›</button>
+            <div class="slide-pips"><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span
+                class="pip"></span><span class="pip"></span><span class="pip"></span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-title">Cross Cat Luck</div>
+            <p class="card-desc">9-chapter story-puzzle set in a Mumbai chawl, built solo in a 7-day jam. JSON-driven
+              content, 15 reusable puzzle templates powering 40+ activities, a BFS solvability checker, and a cat
+              companion with three-level hints.</p>
+            <div class="card-tags">
+              <span class="card-tag">DATA-DRIVEN</span><span class="card-tag">UI TOOLKIT</span><span
+                class="card-tag">HLSL</span><span class="card-tag">BFS SOLVER</span><span class="card-tag">WEBGL</span>
+            </div>
+          </div>
+          <div class="card-footer">
+            <a href="https://magicemperor30.itch.io/cross-cat-luck" target="_blank" class="card-link"
+              onclick="event.stopPropagation()">Play on itch.io</a>
+            <span style="font-family:'Press Start 2P',monospace;font-size:0.36rem;color:var(--yellow);">🐈‍⬛
+              SOLO</span>
+          </div>
+          <span class="card-click-hint">CLICK FOR TECH DETAILS</span>
+        </div>
+
+        <!-- RG_Prototype -->
+        <div class="project-card accent-pink reveal" data-card data-modal-color="#ef4444"
+          data-modal-genre="3D ACTION · PROTOTYPE" data-modal-title="RG Prototype — Free-Flow Combat"
+          data-modal-overview="A solo-built, Arkham-style free-flow combat prototype in Unity 6 (URP). Fixed isometric camera, one shared combat core for both player and enemies, and a single playable dark-fantasy level ending in a multi-phase boss fight. This is a prototype in progress: the menu layout and settings are verified in-editor, while the latest combat fixes, telekinetic grab, parry system and background music are built and awaiting playtesting."
+          data-modal-tech='[
+            {"label":"Combat Core","value":"Shared target selection and soft-lock, attack alignment, weapon hit detection with swept sphere-casts across the swing, and once-per-swing hit rules — used by player and enemies alike"},
+            {"label":"Combo System","value":"Stage-based combo with input window and recovery, interruptible by dodge and parry"},
+            {"label":"Enemy Director","value":"Token-based director caps simultaneous attackers so enemies cannot surround or stun-lock the player; NavMesh agents with a kinematic Rigidbody"},
+            {"label":"Parry & Counters","value":"Parry window with an immediate animation response and automatic turning toward the attacker"},
+            {"label":"Physics Debugging","value":"Traced an extreme-launch bug to attack lunges targeting far-away enemies; fixed with range gating plus capped root motion as a backstop"},
+            {"label":"Telekinetic Grab","value":"Held objects follow the player’s facing, with Animation Rigging hand IK placed on the object’s bounds"},
+            {"label":"Rendering & VFX","value":"URP Volumes (bloom, vignette, colour grading), fog, flickering real-time point/spot lights, pooled VfxPool particle system and trail-based slash effects"},
+            {"label":"Editor Automation","value":"Editor scripts regenerate the level and menu scenes so layout changes are repeatable; Unity MCP used for scene and asset automation"}
+          ]'
+          data-modal-features='["Free-flow melee combat with combos, parries and counters","Two-handed warhammer and other weapons with distinct attack stages","Skeleton enemies and a multi-phase boss","Telekinetic object manipulation with hand IK","Health HUD with low-health feedback and healing potions","Event-driven fall handling via trigger volume (replacing a per-frame position check)","Generated dark-fantasy main menu with settings and a controls screen built from the real input bindings","Settings for audio mixer volumes, quality, fullscreen, resolution and screen shake — applied at boot and saved via PlayerPrefs","Status: prototype in progress — newest combat, grab and parry systems compile and are pending playtest"]'
+          data-modal-tags="Unity 6|C#|URP|Animator Blend Trees|Animation Rigging IK|NavMesh AI|Input System|ScriptableObjects|AudioMixer|Particle Systems|uGUI + TMP|Editor Tooling"
+          data-modal-link="https://magicemperor30.itch.io/hollow-king"
+          data-modal-link-label="Play on itch.io">
+          <div class="card-slider" data-slider>
+            <span class="card-genre">3D ACTION</span><span class="card-platform">PC · WEBGL</span>
+            <div class="card-slider-track">
+              <img src="images/RG_Combat1.webp" alt="Warrior with sword and shield in a torch-lit hall">
+              <img src="images/RG_Combat2.webp" alt="Slash attack hitting a skeleton">
+              <img src="images/RG_Ritual.jpg" alt="Ritual circle arena">
+              <img src="images/RG_Crypt.webp" alt="Crypt with coffins and skeleton enemies">
+              <img src="images/RG_Arcane.webp" alt="Arcane purple ritual zone">
+              <img src="images/RG_Enemy.webp" alt="Skeleton enemy with health bar">
+            </div>
+            <button class="slide-btn slide-prev">‹</button><button class="slide-btn slide-next">›</button>
+            <div class="slide-pips"><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span
+                class="pip"></span><span class="pip"></span><span class="pip"></span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-title">RG Prototype</div>
+            <p class="card-desc">Arkham-style free-flow combat prototype with a shared combat core, swept sphere-cast
+              hit detection, token-based enemy director, parry/counters, telekinetic grab with hand IK, and a
+              multi-phase boss.</p>
+            <div class="card-tags">
+              <span class="card-tag">COMBAT SYSTEM</span><span class="card-tag">ENEMY DIRECTOR</span><span
+                class="card-tag">IK</span><span class="card-tag">URP</span><span class="card-tag">EDITOR TOOLS</span>
+            </div>
+          </div>
+          <div class="card-footer">
+            <a href="https://magicemperor30.itch.io/hollow-king" target="_blank" class="card-link"
+              onclick="event.stopPropagation()">Play on itch.io</a>
+            <span style="font-family:'Press Start 2P',monospace;font-size:0.36rem;color:var(--pink);">⚙ IN
+              PROGRESS</span>
+          </div>
+          <span class="card-click-hint">CLICK FOR TECH DETAILS</span>
+        </div>
+
         <!-- Realm of the Death Bringer -->
         <div class="project-card accent-purple reveal" data-card data-modal-color="#7c3aed"
           data-modal-genre="2D PLATFORMER" data-modal-title="Realm of the Death Bringer"
